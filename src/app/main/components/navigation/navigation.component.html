@@ -1,0 +1,14 @@
+<div class="navigation-wrapper">
+
+  <div class="navigation-list">
+    <ng-container *ngFor="let link of links">
+      <a
+        class="navigation-item"
+        routerLinkActive="navigation-item--active"
+        [routerLink]="link.routerLink">
+        {{ link.title }}
+      </a>
+    </ng-container>
+  </div>
+
+</div>

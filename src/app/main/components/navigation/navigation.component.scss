@@ -1,0 +1,41 @@
+@import "../../../../styles/box-shadow";
+
+$transition: 1s ease-in-out;
+
+// wrapper
+.navigation-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 16.25rem;
+
+  background-color: var(--page-bg);
+
+  transition: $transition;
+
+  @include box-shadow(1);
+}
+
+// list item
+.navigation-item {
+  display: block;
+  text-decoration: none;
+
+  color: var(--text-secondary-color);
+
+  padding-left: 1.5rem;
+  line-height: 2.25rem;
+}
+
+// hover
+.navigation-item:hover,
+.navigation-item--active {
+  background-color: var(--page-bg-secondary);
+}
+
+// active
+.navigation-item--active {
+  background-color: var(--block-bg-hover);
+}
