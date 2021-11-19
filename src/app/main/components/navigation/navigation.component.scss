@@ -29,13 +29,15 @@ $transition: 1s ease-in-out;
   line-height: 2.25rem;
 }
 
-// hover
-.navigation-item:hover,
-.navigation-item--active {
-  background-color: var(--page-bg-secondary);
-}
-
 // active
 .navigation-item--active {
   background-color: var(--block-bg-hover);
+  color: var(--primary);
 }
+
+// hover
+.navigation-item:hover:not(.navigation-item--active) {
+  background-color: var(--page-bg-secondary);
+  color: var(--text-base-color);
+}
+

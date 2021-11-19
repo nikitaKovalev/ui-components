@@ -24,7 +24,9 @@
     ],
     "paths": {
       "@core/types": ["src/app/core/types/index.ts"],
-      "@core/tokens": ["src/app/core/tokens/index.ts"]
+      "@core/tokens": ["src/app/core/tokens/index.ts"],
+
+      "@ui-components/ui-input": ["src/app/ui-components/ui-input/index.ts"],
     }
   },
   "angularCompilerOptions": {
