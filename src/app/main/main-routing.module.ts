@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './main.component';
-import { InputComponent, MenuButtonComponent } from './components';
+import { InputView, MenuButtonView } from './views';
 
 const routes: Routes = [
   {
@@ -11,11 +11,11 @@ const routes: Routes = [
     children: [
       {
         path: 'input',
-        component: InputComponent,
+        component: InputView,
       },
       {
         path: 'menu-button',
-        component: MenuButtonComponent,
+        component: MenuButtonView,
       },
     ]
   },

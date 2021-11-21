@@ -6,7 +6,8 @@ import { UiInputModule } from '@ui-components/ui-input';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
-import { NavigationComponent, InputComponent, MenuButtonComponent } from './components';
+import { NavigationComponent } from './components';
+import { InputView, MenuButtonView } from './views';
 
 
 @NgModule({
@@ -22,8 +23,9 @@ import { NavigationComponent, InputComponent, MenuButtonComponent } from './comp
     MainComponent,
 
     NavigationComponent,
-    InputComponent,
-    MenuButtonComponent,
+
+    InputView,
+    MenuButtonView,
   ],
 })
 export class MainModule {}
