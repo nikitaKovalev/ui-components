@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { UiInputModule } from '@ui-components/ui-input';
 
@@ -11,6 +12,7 @@ import { NavigationComponent, InputComponent, MenuButtonComponent } from './comp
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
 
     UiInputModule,
 

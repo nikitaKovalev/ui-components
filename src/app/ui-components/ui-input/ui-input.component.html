@@ -1,1 +1,41 @@
-<p>ui-input works!</p>
+<!-- TODO: label could be removed and replaced with elRef.onclick () => input.focus() -->
+<label for="ui-input">
+
+  <div
+    class="ui-input-wrapper"
+    [class.ui-input-wrapper--error]="hasError"
+    [attr.size]="size"
+  >
+
+    <!-- TODO: Label -->
+    <div
+      class="ui-input-label"
+      [class.ui-input-label--active]="!!value">
+      <ng-content></ng-content>
+    </div>
+
+    <!-- Input -->
+    <input
+      class="ui-input"
+      id="ui-input"
+      type="text"
+      autocomplete="off"
+      [placeholder]="placeholder"
+      [(ngModel)]="value"
+      (ngModelChange)="onChange()"
+    >
+
+    <!-- TODO: Error -->
+    <div class="ui-input-error"></div>
+
+    <!-- TODO: Hint -->
+    <div class="ui-input-hint"></div>
+
+    <!-- TODO: Autocomplete -->
+    <div class="ui-input-hint"></div>
+
+    <!-- TODO: Success icon -->
+    <div class="ui-input-icon"></div>
+  </div>
+
+</label>

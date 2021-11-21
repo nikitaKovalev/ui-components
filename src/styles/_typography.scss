@@ -1,4 +1,19 @@
 // todo: change fonts, add variables for sizes (regular, h1, h2, h3, etc..)
 :root {
   --font-family: "Manrope", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  --heading-font: "Manrope", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  --text-font: "Manrope", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-heading: var(--font-heading);
+  --font-heading-1: bold 3.125rem/3.5rem var(--font-heading);
+  --font-heading-2: bold 2.75rem/3rem var(--font-heading);
+  --font-heading-3: bold 2.25rem/2.5rem var(--font-heading);
+  --font-heading-4: bold 1.75rem/2rem var(--font-heading);
+  --font-heading-5: bold 1.5rem/1.75rem var(--font-heading);
+  --font-heading-6: bold 1.25rem/1.5rem var(--font-heading);
+  --font-text: var(--text-font);
+  --font-text-xl: normal 1.1875rem/1.75rem var(--font-text);
+  --font-text-l: normal 1.0625rem/1.5rem var(--font-text);
+  --font-text-m: normal 0.9375rem/1.5rem var(--font-text);
+  --font-text-s: normal 0.8125rem/1.25rem var(--font-text);
+  --font-text-xs: normal 0.6875rem/1rem var(--font-text);
 }
