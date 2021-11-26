@@ -14,6 +14,9 @@ export class UiInputComponent
   extends UIControlValueAccessor {
 
   @Input()
+  public label = '';
+
+  @Input()
   public placeholder = '';
 
   @Input()
