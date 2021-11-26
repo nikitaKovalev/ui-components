@@ -3,9 +3,10 @@
   <form [formGroup]="form">
 
     <ui-input
+      label="User"
       placeholder="Select user or enter username"
+      [uiAutocomplete]="uiAutocomplete"
       formControlName="username">
-      User
     </ui-input>
 
   </form>

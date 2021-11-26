@@ -7,11 +7,11 @@
     [attr.size]="size"
   >
 
-    <!-- TODO: Label -->
+    <!-- Label -->
     <div
       class="ui-input-label"
       [class.ui-input-label--active]="!!value">
-      <ng-content></ng-content>
+      {{ label }}
     </div>
 
     <!-- Input -->
@@ -31,11 +31,12 @@
     <!-- TODO: Hint -->
     <div class="ui-input-hint"></div>
 
-    <!-- TODO: Autocomplete -->
-    <div class="ui-input-hint"></div>
-
     <!-- TODO: Success icon -->
     <div class="ui-input-icon"></div>
   </div>
 
 </label>
+
+<div class="ui-input-autocomplete">
+  <ng-content select="ui-autocomplete"></ng-content>
+</div>
