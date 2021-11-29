@@ -1,5 +1,5 @@
 <!-- TODO: label could be removed and replaced with elRef.onclick () => input.focus() -->
-<label for="ui-input">
+<label [for]="id">
 
   <div
     class="ui-input-wrapper"
@@ -17,7 +17,7 @@
     <!-- Input -->
     <input
       class="ui-input"
-      id="ui-input"
+      [id]="id"
       type="text"
       autocomplete="off"
       [placeholder]="placeholder"
