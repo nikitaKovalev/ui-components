@@ -17,6 +17,7 @@
   cursor: text;
   background-color: var(--page-bg);
   outline: 0 solid hsl(0deg 0% 0% / 0%);
+  overflow: hidden;
 
   position: relative;
 
@@ -74,6 +75,8 @@
 
 /* Label */
 .ui-input-label {
+  width: inherit;
+
   position: absolute;
   bottom: 32%;
 
