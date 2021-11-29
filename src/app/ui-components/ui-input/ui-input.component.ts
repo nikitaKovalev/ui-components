@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Optional, Self } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 import { UIControlValueAccessor } from './ui-input-control-value-accessor';
@@ -22,7 +22,13 @@ export class UiInputComponent
   @Input()
   public size: InputSize = 'large';
 
-  constructor(control: NgControl) {
+  public readonly id = `ui-autocomplete-${ Math.random() }`;
+
+  constructor(
+    @Optional()
+    @Self()
+    control: NgControl
+  ) {
     super(control);
   }
 

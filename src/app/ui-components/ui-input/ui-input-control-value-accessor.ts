@@ -24,6 +24,7 @@ export abstract class UIControlValueAccessor
   }
 
   public get hasError(): boolean | null {
+    if (!this.control) return false;
     return this.control.invalid && (this.control.dirty || this.control.touched);
   }
 

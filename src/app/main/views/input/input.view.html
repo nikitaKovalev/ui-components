@@ -1,14 +1,24 @@
-<div class="pt-5 w-100 d-flex align-items-center justify-content-center">
+<div class="d-flex align-items-center py-3" style="height: 400px">
 
-  <form [formGroup]="form">
+  <ui-input
+    class="col-3"
+    label="User"
+    placeholder="Select user or enter username">
+  </ui-input>
 
+  <ui-input
+    class="col-3 ms-3"
+    label="Recipient"
+    placeholder="Select recipient">
+  </ui-input>
+
+  <form [formGroup]="form" class="ms-3 col-3">
     <ui-input
-      label="User"
-      placeholder="Select user or enter username"
-      [uiAutocomplete]="uiAutocomplete"
+      label="Form Control input"
+      placeholder="Test validations"
       formControlName="username">
     </ui-input>
-
   </form>
+
 
 </div>
