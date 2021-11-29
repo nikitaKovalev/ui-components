@@ -1,5 +1,5 @@
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { Inject, Optional, Self } from '@angular/core';
+import { Directive, Inject, Optional, Self } from '@angular/core';
 
 import { TODO_UNKNOWN } from './ui-input.type';
 
@@ -7,6 +7,7 @@ import { TODO_UNKNOWN } from './ui-input.type';
  * make writeValue abstract and implement value prop inside your component
  * to reuse this class whenever you need to implement ControlValueAccessor
  * **/
+@Directive()
 export abstract class UIControlValueAccessor
   implements ControlValueAccessor {
 
@@ -42,6 +43,11 @@ export abstract class UIControlValueAccessor
 
   public onChange(): void {
     this._onChange(this.value);
+  }
+
+  public onFocus(): void {
+    if (!this.control) return;
+    this.control.control?.markAsTouched();
   }
 
   protected _onChange = (value: TODO_UNKNOWN): void => {};
