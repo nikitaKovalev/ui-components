@@ -17,6 +17,7 @@
   cursor: text;
   background-color: var(--page-bg);
   outline: 0 solid hsl(0deg 0% 0% / 0%);
+  overflow: hidden;
 
   position: relative;
 
@@ -27,7 +28,6 @@
   @include box-shadow(1);
 
   &:focus-within {
-    outline: 2px solid var(--primary);
     @include box-shadow(0);
 
     .ui-input-label {
@@ -35,12 +35,18 @@
       font-size: small;
       color: var(--text-base-color);
     }
+
+    &:not(.ui-input-wrapper--error) {
+      outline: 2px solid var(--primary);
+    }
   }
 
   /*--- Error --*/
   &--error {
     outline: 2px solid var(--warn);
+
     &:focus-within {
+      outline: 2px solid var(--warn-secondary);
       .ui-input-label { color: var(--warn); }
     }
   }
@@ -69,6 +75,8 @@
 
 /* Label */
 .ui-input-label {
+  width: inherit;
+
   position: absolute;
   bottom: 32%;
 

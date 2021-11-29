@@ -17,12 +17,13 @@
     <!-- Input -->
     <input
       class="ui-input"
-      [id]="id"
       type="text"
       autocomplete="off"
+      [id]="id"
       [placeholder]="placeholder"
       [(ngModel)]="value"
       (ngModelChange)="onChange()"
+      (focus)="onFocus()"
     >
 
     <!-- TODO: Error -->
