@@ -1,5 +1,8 @@
 @import "ui-input-variables";
 
+:host {
+  display: block;
+}
 
 /* Wrapper, Sizes, Wrapper on Focus, Wrapper on Error */
 .ui-input-wrapper {
@@ -91,3 +94,6 @@
     color: var(--text-base-color);
   }
 }
+
+/* Autocomplete */
+.ui-input-autocomplete { padding: var(--padding-xs) 0; }

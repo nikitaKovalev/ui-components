@@ -27,6 +27,8 @@
       "@core/tokens": ["src/app/core/tokens/index.ts"],
 
       "@ui-components/ui-input": ["src/app/ui-components/ui-input/index.ts"],
+      "@ui-components/ui-autocomplete": ["src/app/ui-components/ui-autocomplete/index.ts"],
+      "@ui-components/ui-option": ["src/app/ui-components/ui-option/index.ts"],
     }
   },
   "angularCompilerOptions": {

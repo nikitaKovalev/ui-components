@@ -1,0 +1,25 @@
+@import "ui-autocomplete-variables";
+
+.ui-autocomplete {
+  background-color: var(--page-bg);
+  border-radius: var(--radius-l);
+
+  width: 100%;
+
+  display: block;
+  overflow-y: scroll;
+
+  font: var(--font-text-m);
+
+  @include box-shadow(1);
+
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-duration: var(--duration);
+  animation-name: autocomplete-visibility;
+}
+
+@keyframes autocomplete-visibility {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
