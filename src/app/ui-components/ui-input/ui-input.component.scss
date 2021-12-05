@@ -1,5 +1,8 @@
 @import "ui-input-variables";
 
+:host {
+  display: block;
+}
 
 /* Wrapper, Sizes, Wrapper on Focus, Wrapper on Error */
 .ui-input-wrapper {
