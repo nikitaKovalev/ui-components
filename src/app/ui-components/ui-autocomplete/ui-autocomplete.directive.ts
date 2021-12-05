@@ -13,7 +13,7 @@ import {
 import { NgControl } from '@angular/forms';
 import { Overlay } from '@angular/cdk/overlay';
 
-import { fromEvent, take, takeUntil } from 'rxjs';
+import { delay, fromEvent, take, takeUntil } from 'rxjs';
 
 import { UiAutocompleteComponent } from './ui-autocomplete.component';
 import { UiAutocompleteOverlay } from './ui-autocomplete.overlay';
@@ -46,7 +46,8 @@ export class UiAutocompleteDirective
 
   public ngAfterViewInit(): void {
     this.templateRef = this.uiAutocomplete?.templateRef as TemplateRef<any>;
-    this._subInputFocused();
+    this._inputFocused();
+    this._inputBlured();
   }
 
   public subOptionSelected(): void {
@@ -59,7 +60,6 @@ export class UiAutocompleteDirective
         this.close();
 
         const displayValue = this.uiAutocomplete?.displayWith(value);
-
         this._ngControl?.control?.patchValue(value);
 
         if (this._uiInput) {
@@ -68,12 +68,11 @@ export class UiAutocompleteDirective
           this.elRef.nativeElement.value = displayValue || '';
         }
 
-
         this._cdRef.markForCheck();
       });
   }
 
-  private _subInputFocused(): void {
+  private _inputFocused(): void {
     fromEvent(this.elRef.nativeElement, 'focus')
       .pipe(takeUntil(this.destroyed$))
       .subscribe(() => {
@@ -81,6 +80,15 @@ export class UiAutocompleteDirective
 
         this.subOptionSelected();
       })
+  }
+
+  private _inputBlured(): void {
+    fromEvent(this.elRef.nativeElement, 'blur')
+      .pipe(
+        delay(150),
+        takeUntil(this.destroyed$),
+      )
+      .subscribe(() => this.close())
   }
 
 }
