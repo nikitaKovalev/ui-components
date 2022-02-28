@@ -1,14 +1,17 @@
-import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Directive, Inject, Optional, Self } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
-import { TODO_UNKNOWN } from './ui-input.type';
+import { TODO_UNKNOWN } from '@common/core/types';
 
 /**
- * make writeValue abstract and implement value prop inside your component
- * to reuse this class whenever you need to implement ControlValueAccessor
+ * For specific cases:
+ * implement writeValue and override it
+ * implement value prop inside your component
+ *
+ * Extend this class whenever you need to implement ControlValueAccessor
  * **/
 @Directive()
-export abstract class UIControlValueAccessor
+export abstract class UiControlValueAccessor
   implements ControlValueAccessor {
 
   public value: TODO_UNKNOWN = null;
