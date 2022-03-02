@@ -1,23 +1,26 @@
-<div class="d-flex align-items-center py-3" style="height: 400px">
+<div class="row align-items-center py-3" style="height: 400px">
 
-  <ui-input
-    class="col-3"
-    label="User"
-    placeholder="Select user or enter username">
-  </ui-input>
+  <div class="col-3">
+    <ui-input
+      label="User"
+      placeholder="Select user or enter username">
+    </ui-input>
+  </div>
 
-  <ui-input
-    class="col-3 ms-3"
-    label="Recipient"
-    placeholder="Select recipient">
-  </ui-input>
-
-  <form [formGroup]="form" class="ms-3 col-3">
+  <div class="col-3 ml-3">
     <ui-input
       label="Form Control input"
       placeholder="Test validations"
-      formControlName="username">
+      [formControl]="userControl"
+      [uiAutocomplete]="autoUser">
+      <ui-autocomplete #autoUser="uiAutocomplete" [displayWith]="displayUser">
+        <ui-option
+          *ngFor="let user of users"
+          [value]="user">
+          {{ user.name }}
+        </ui-option>
+      </ui-autocomplete>
     </ui-input>
-  </form>
+  </div>
 
 </div>

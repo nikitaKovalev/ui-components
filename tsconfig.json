@@ -26,10 +26,10 @@
       "@common/core/types": ["src/app/_common/_core/types/index.ts"],
       "@common/core/tokens": ["src/app/_common/_core/tokens/index.ts"],
       "@common/core/classes": ["src/app/_common/_core/classes/index.ts"],
+      "@common/core/rxjs-operators": ["src/app/_common/_core/rxjs-operators/index.ts"],
 
       "@ui-components/ui-input": ["src/app/ui-components/ui-input/index.ts"],
       "@ui-components/ui-autocomplete": ["src/app/ui-components/ui-autocomplete/index.ts"],
-      "@ui-components/ui-option": ["src/app/ui-components/ui-option/index.ts"],
     }
   },
   "angularCompilerOptions": {
