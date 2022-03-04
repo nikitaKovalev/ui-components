@@ -32,6 +32,7 @@
       "@ui-components/ui-autocomplete": ["src/app/ui-components/ui-autocomplete/index.ts"],
       "@ui-components/ui-message": ["src/app/ui-components/ui-message/index.ts"],
       "@ui-components/ui-icon": ["src/app/ui-components/ui-icon/index.ts"],
+      "@ui-components/ui-infinite-scroll": ["src/app/ui-components/ui-infinite-scroll/index.ts"],
     }
   },
   "angularCompilerOptions": {
