@@ -30,6 +30,7 @@
 
       "@ui-components/ui-input": ["src/app/ui-components/ui-input/index.ts"],
       "@ui-components/ui-autocomplete": ["src/app/ui-components/ui-autocomplete/index.ts"],
+      "@ui-components/ui-message": ["src/app/ui-components/ui-message/index.ts"],
     }
   },
   "angularCompilerOptions": {

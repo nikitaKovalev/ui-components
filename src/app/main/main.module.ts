@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { UiInputModule } from '@ui-components/ui-input';
 import { UiAutocompleteModule } from '@ui-components/ui-autocomplete';
+import { UiMessageModule } from '@ui-components/ui-message';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
@@ -18,6 +19,7 @@ import { InputView, MenuButtonView } from './views';
 
     UiInputModule,
     UiAutocompleteModule,
+    UiMessageModule,
 
     MainRoutingModule,
   ],
