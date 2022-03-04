@@ -1,0 +1,28 @@
+$primary: #526ed3;
+$accent: #3aa981;
+$warn: #dd4c1e;
+$error: #B33F40;
+
+$darken-amount: 15%;
+
+:host::ng-deep svg {
+  width: 24px;
+  height: 24px;
+
+  &[color = 'primary'] {
+    fill: darken($primary, $darken-amount);
+  }
+
+  &[color = 'accent'] {
+    fill: darken($accent, $darken-amount);
+  }
+
+  &[color = 'warn'] {
+    fill: darken($warn, $darken-amount);
+  }
+
+  &[color = 'error'] {
+    fill: darken($error, $darken-amount);
+  }
+
+}

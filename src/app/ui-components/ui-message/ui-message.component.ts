@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-type Palette = 'primary' | 'accent' | 'warn' | 'error';
+import { Icon, Palette } from './ui-message.type';
 
 /**
  * This component replaces <td-message></td-message> from CovalentMessageModule
@@ -25,12 +25,15 @@ export class UiMessageComponent {
   public color: Palette = 'primary';
 
   @Input()
-  public icon = '';
+  public icon: Icon = 'info_o';
 
   @Input()
   public label = '';
 
   @Input()
   public subLabel = '';
+
+  @Output()
+  public triggerEvent = new EventEmitter<void>();
 
 }

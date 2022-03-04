@@ -1,7 +1,11 @@
 <div
   class="ui-message-wrapper d-flex justify-content-start align-items-center align-content-center py-2 px-3"
   [attr.color]="color">
-  <!-- TODO: ui-icon module -->
+  <ui-icon
+    class="me-3"
+    [color]="color"
+    [name]="icon">
+  </ui-icon>
 
   <div class="ui-message-label d-flex flex-column">
     <div class="fw-bold ui-font-size-14" data-automation="message-label">
@@ -11,5 +15,7 @@
     <div class="ui-font-size-14" data-automation="message-subLabel">
       {{ subLabel }}
     </div>
+
+    <!-- TODO: add trigger button -->
   </div>
 </div>

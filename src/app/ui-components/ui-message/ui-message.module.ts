@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { UiIconModule } from '@ui-components/ui-icon';
+
 import { UiMessageComponent } from './ui-message.component';
 
 
-
 @NgModule({
-  declarations: [
-    UiMessageComponent
+  imports: [
+    CommonModule,
+
+    UiIconModule,
   ],
   exports: [
     UiMessageComponent
   ],
-  imports: [
-    CommonModule
+  declarations: [
+    UiMessageComponent
   ]
 })
 export class UiMessageModule { }
