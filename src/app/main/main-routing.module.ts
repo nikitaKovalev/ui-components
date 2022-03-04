@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './main.component';
-import { InputView, MenuButtonView } from './views';
+import { InputView, MenuButtonView, MessageView } from './views';
 
 const routes: Routes = [
   {
@@ -16,6 +16,10 @@ const routes: Routes = [
       {
         path: 'menu-button',
         component: MenuButtonView,
+      },
+      {
+        path: 'message',
+        component: MessageView,
       },
     ]
   },

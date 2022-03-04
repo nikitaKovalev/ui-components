@@ -9,7 +9,7 @@ import { UiMessageModule } from '@ui-components/ui-message';
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { NavigationComponent } from './components';
-import { InputView, MenuButtonView } from './views';
+import { InputView, MenuButtonView, MessageView } from './views';
 
 
 @NgModule({
@@ -30,6 +30,7 @@ import { InputView, MenuButtonView } from './views';
 
     InputView,
     MenuButtonView,
+    MessageView,
   ],
 })
 export class MainModule {}

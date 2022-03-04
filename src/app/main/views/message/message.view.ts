@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  templateUrl: './menu-button.view.html',
+  selector: 'message',
+  templateUrl: './message.view.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MenuButtonView {}
+export class MessageView {}

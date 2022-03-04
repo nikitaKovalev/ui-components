@@ -14,7 +14,6 @@ const USERS: USER[] = [
 
 @Component({
   templateUrl: './input.view.html',
-  styleUrls: ['./input.view.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputView {

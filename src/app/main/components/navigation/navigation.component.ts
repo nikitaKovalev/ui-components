@@ -13,6 +13,7 @@ export class NavigationComponent {
   public readonly links: Link[] = [
     { routerLink: 'input', title: 'Input' },
     { routerLink: 'menu-button', title: 'Menu Button' },
+    { routerLink: 'message', title: 'Message' },
   ];
 
 }
