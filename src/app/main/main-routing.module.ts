@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './main.component';
-import { InputView, MenuButtonView, MessageView } from './views';
+import { InputView, MenuButtonView, MessageView, TableView } from './views';
 
 const routes: Routes = [
   {
@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path: 'message',
         component: MessageView,
+      },
+      {
+        path: 'table',
+        component: TableView,
       },
     ]
   },

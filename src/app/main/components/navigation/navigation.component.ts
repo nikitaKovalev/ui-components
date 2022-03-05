@@ -14,6 +14,7 @@ export class NavigationComponent {
     { routerLink: 'input', title: 'Input' },
     { routerLink: 'menu-button', title: 'Menu Button' },
     { routerLink: 'message', title: 'Message' },
+    { routerLink: 'table', title: 'Table' },
   ];
 
 }

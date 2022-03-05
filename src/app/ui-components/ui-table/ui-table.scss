@@ -1,0 +1,52 @@
+.ui-table {
+
+  .cdk-table-sticky {
+    opacity: 1;
+    background-color: darken(#f6f6f6, .5%);
+  }
+
+  cdk-table {
+    width: 100%;
+    background: hsl(0deg 0% 100%);
+    border-spacing: 0;
+    font-family: "Manrope", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  }
+
+  cdk-row, cdk-header-row, cdk-footer-row {
+    display: flex;
+  }
+
+  cdk-cell, cdk-header-cell, cdk-footer-cell {
+    flex: 1;
+    padding: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+
+  cdk-header-cell:first-of-type, cdk-cell:first-of-type, cdk-footer-cell:first-of-type {
+    padding-left: 24px;
+  }
+
+  cdk-footer-row, cdk-header-row, cdk-row, cdk-cell, cdk-footer-cell, cdk-header-cell {
+    border-bottom-color: hsl(0deg 0% 0% / 12%);
+  }
+
+  cdk-header-cell {
+    height: 56px;
+    line-height: 58px;
+    text-align: left;
+    color: hsl(0deg 0% 0% / 54%);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  cdk-cell {
+    font-size: 14px;
+  }
+
+  cdk-row, cdk-footer-row {
+    height: 48px;
+    line-height: 48px;
+  }
+
+}

@@ -1,1 +1,2 @@
-export { WINDOW, LOCAL_STORAGE } from './global-object.token';
+export { WINDOW } from './window.token';
+export { LOCAL_STORAGE } from './local-storage.token';
