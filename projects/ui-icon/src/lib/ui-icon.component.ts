@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { UI_ICONS, UIIcon } from './icons';
+import { UiIconService } from './ui-icon.service';
 import { Palette } from './ui-icon.type';
 
 const URL = 'http://www.w3.org/2000/svg';
@@ -23,7 +23,7 @@ export class UiIconComponent {
       this._elRef.nativeElement.removeChild(this._icon);
     }
 
-    const content = this._getContent(name);
+    const content = this._uiIconSvc.getIcon(name);
     this._icon = this._getSVG(content);
     this._renderer.setAttribute(this._icon, 'color', this.color);
     this._elRef.nativeElement.appendChild(this._icon);
@@ -36,11 +36,8 @@ export class UiIconComponent {
     private readonly _renderer: Renderer2,
     @Inject(DOCUMENT)
     private readonly _document: Document,
+    private readonly _uiIconSvc: UiIconService,
   ) {}
-
-  private _getContent(name: string): string {
-    return UI_ICONS.find((icon: UIIcon) => icon.name === name)?.data ?? '';
-  }
 
   private _getSVG(content: string): SVGElement {
     const div = this._document.createElement('div');

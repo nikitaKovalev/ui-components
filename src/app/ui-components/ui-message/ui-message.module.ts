@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UiIconModule } from '@ui-components/ui-icon';
+import { UI_ICONS, UiIconModule, UiIconService } from '@libs/ui-icon';
 
 import { UiMessageComponent } from './ui-message.component';
 
@@ -19,4 +19,12 @@ import { UiMessageComponent } from './ui-message.component';
     UiMessageComponent
   ]
 })
-export class UiMessageModule { }
+export class UiMessageModule {
+
+  constructor(
+    private readonly _uiIconService: UiIconService,
+  ) {
+    this._uiIconService.registry(UI_ICONS);
+  }
+
+}
