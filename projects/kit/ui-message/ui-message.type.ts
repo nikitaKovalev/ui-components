@@ -1,4 +1,3 @@
-export type Palette = 'primary' | 'accent' | 'warn' | 'error';
 export type Icon = 'info'
   | 'info_o'
   | 'warning'

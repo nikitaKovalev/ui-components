@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+import { Palette } from '@ui-components/core/types';
+
 import { UiIconService } from './ui-icon.service';
-import { Palette } from './ui-icon.type';
 
 const URL = 'http://www.w3.org/2000/svg';
 

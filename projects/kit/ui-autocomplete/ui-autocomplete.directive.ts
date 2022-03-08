@@ -22,13 +22,14 @@ import {
 import { TemplatePortal } from '@angular/cdk/portal';
 import { TAB } from '@angular/cdk/keycodes';
 
-import { delay, filter, fromEvent, map, merge, Subject, take, takeUntil, tap } from 'rxjs';
+import { delay, filter, fromEvent, map, merge, Subject, take, takeUntil } from 'rxjs';
+
+import { UiInputComponent } from '@ui-components/kit/ui-input';
+import { TODO_ANY } from '@ui-components/core/types';
+import { watch } from '@ui-components/core/rxjs';
 
 import { UiAutocompleteComponent } from './ui-autocomplete.component';
 
-import { UiInputComponent } from '@ui-components/kit/ui-input';
-
-type TODO_ANY = any;
 
 @Directive({ selector: '[uiAutocomplete]' })
 export class UiAutocompleteDirective
@@ -101,7 +102,7 @@ export class UiAutocompleteDirective
       .pipe(
         /** reduce emit counter */
         take(1),
-        tap(() => this._cdRef.markForCheck()),
+        watch(this._cdRef),
         takeUntil(this._destroyed$),
       )
       .subscribe((value: TODO_ANY) => {
@@ -118,7 +119,7 @@ export class UiAutocompleteDirective
       .pipe(
         filter(() => !!this._ngControl?.control?.value),
         map(() => this.uiAutocomplete.displayWith(this._ngControl.control?.value) || ''),
-        tap(() => this._cdRef.markForCheck()),
+        watch(this._cdRef),
         takeUntil(this._destroyed$),
       )
       .subscribe((value: string) => {

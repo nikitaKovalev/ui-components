@@ -19,12 +19,12 @@ import { fromEvent, merge, Observable, of, Subject, switchMap, takeUntil } from 
 import { tap } from 'rxjs/operators';
 
 import { UiOptionComponent } from '@ui-components/kit/ui-option';
+import { Palette } from '@ui-components/core/types';
 
 import { BOTTOM_LEFT, BOTTOM_RIGHT, PositionType, ToggleType, TOP_LEFT, TOP_RIGHT } from './ui-menu.type';
 import { fadeIn, fadeOut } from './fade.animation';
 import { toggle } from './ui-menu.animation';
 
-export type Palette = 'primary' | 'accent' | 'warn' | 'error';
 
 @Component({
   selector: 'ui-menu',

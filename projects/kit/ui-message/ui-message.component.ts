@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Icon, Palette } from './ui-message.type';
+import { Palette } from '@ui-components/core/types';
+
+import { Icon } from './ui-message.type';
 
 /**
  * This component replaces <td-message></td-message> from CovalentMessageModule
