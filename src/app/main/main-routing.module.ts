@@ -18,7 +18,7 @@ const routes: Routes = [
         component: AutocompleteView,
       },
       {
-        path: 'menu-button',
+        path: 'menu',
         component: MenuButtonView,
       },
       {
