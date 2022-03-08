@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './main.component';
-import { AutocompleteView, InputView, MenuButtonView, MessageView, TableView } from './views';
+import { AutocompleteView, DialogView, InputView, MenuButtonView, MessageView, TableView } from './views';
 
 const routes: Routes = [
   {
@@ -28,6 +28,10 @@ const routes: Routes = [
       {
         path: 'table',
         component: TableView,
+      },
+      {
+        path: 'dialog',
+        component: DialogView,
       },
     ]
   },

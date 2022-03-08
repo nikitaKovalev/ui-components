@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 
 import { Subject, takeUntil } from 'rxjs';
 
-import { autocomplete, watch } from '@common/core/rxjs-operators';
+import { autocomplete, watch } from '@ui-components/core/rxjs';
 
 type User = {
   id: number,

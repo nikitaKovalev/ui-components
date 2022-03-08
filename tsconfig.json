@@ -23,11 +23,6 @@
       "dom"
     ],
     "paths": {
-      "@common/core/types": ["src/app/_common/_core/types/index.ts"],
-      "@common/core/tokens": ["src/app/_common/_core/tokens/index.ts"],
-      "@common/core/classes": ["src/app/_common/_core/classes/index.ts"],
-      "@common/core/rxjs-operators": ["src/app/_common/_core/rxjs-operators/index.ts"],
-
       "@ui-components/kit": ["projects/kit/index"],
       "@ui-components/kit/*": ["projects/kit/*"],
       "@ui-components/core": ["projects/core/index"],

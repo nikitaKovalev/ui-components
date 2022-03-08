@@ -14,6 +14,7 @@ export class NavigationComponent {
     { routerLink: 'input', title: 'Input' },
     { routerLink: 'autocomplete', title: 'Autocomplete' },
     { routerLink: 'menu', title: 'Menu' },
+    { routerLink: 'dialog', title: 'Dialog' },
     { routerLink: 'message', title: 'Message' },
     { routerLink: 'table', title: 'Table' },
   ];
