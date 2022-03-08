@@ -28,13 +28,10 @@
       "@common/core/classes": ["src/app/_common/_core/classes/index.ts"],
       "@common/core/rxjs-operators": ["src/app/_common/_core/rxjs-operators/index.ts"],
 
-      "@ui-components/ui-input": ["src/app/ui-components/ui-input/index.ts"],
-      "@ui-components/ui-autocomplete": ["src/app/ui-components/ui-autocomplete/index.ts"],
-      "@ui-components/ui-message": ["src/app/ui-components/ui-message/index.ts"],
-      "@ui-components/ui-infinite-scroll": ["src/app/ui-components/ui-infinite-scroll/index.ts"],
-      "@ui-components/ui-table": ["src/app/ui-components/ui-table/index.ts"],
-
-      "@libs/ui-icon": ["projects/ui-icon/src/lib/index"],
+      "@ui-components/kit": ["projects/kit/index"],
+      "@ui-components/kit/*": ["projects/kit/*"],
+      "@ui-components/core": ["projects/core/index"],
+      "@ui-components/core/*": ["projects/core/*"],
     }
   },
   "angularCompilerOptions": {

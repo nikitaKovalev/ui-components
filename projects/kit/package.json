@@ -1,0 +1,22 @@
+{
+  "name": "@ui-components/kit",
+  "version": "0.0.1",
+  "keywords": [
+    "angular",
+    "kit",
+    "component",
+    "service",
+    "directive"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0",
+    "@angular/cdk": "^13.0.2"
+  },
+  "dependencies": {
+    "@angular/cdk": "^13.0.2",
+    "rxjs": "~7.4.0",
+    "tslib": "^2.3.0",
+    "bootstrap": "^5.1.3"
+  }
+}

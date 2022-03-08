@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { UiBaseTable } from '@ui-components/ui-table';
+import { UiBaseTable } from '@ui-components/kit/ui-table';
+
 
 @Component({
   selector: 'table-controller',

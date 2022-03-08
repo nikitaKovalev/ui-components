@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["projects/**/test.ts", "**/*.spec.ts"],
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc/lib",
+    "declaration": true,
+    "sourceMap": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "paths": {
+      "@ui-components/kit": ["./dist/kit/index"],
+      "@ui-components/kit/*": ["./dist/kit/*"],
+      "@ui-components/core": ["./dist/core/index"],
+      "@ui-components/core/*": ["./dist/core/*"]
+    }
+  }
+}
