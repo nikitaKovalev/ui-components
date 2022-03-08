@@ -10,7 +10,7 @@ import { UiAutocompleteModule } from '@ui-components/kit/ui-autocomplete';
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { NavigationComponent, TableComponent } from './components';
-import { InputView, MenuButtonView, MessageView, TableView } from './views';
+import { InputView, MenuButtonView, MessageView, TableView, AutocompleteView } from './views';
 
 
 @NgModule({
@@ -35,6 +35,7 @@ import { InputView, MenuButtonView, MessageView, TableView } from './views';
     MenuButtonView,
     MessageView,
     TableView,
+    AutocompleteView,
   ],
 })
 export class MainModule {}

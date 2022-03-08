@@ -14,7 +14,14 @@
   }
   &[size = 'small'] {
     @include size(--padding-small, --radius-s);
-    .ui-input-label { visibility: hidden }
+    .ui-input-label {
+      bottom: 15%;
+      font-size: small;
+    }
+
+    &:focus-within .ui-input-label {
+      visibility: hidden;
+    }
   }
 
   cursor: text;
@@ -47,6 +54,8 @@
   /*--- Error --*/
   &--error {
     outline: 2px solid var(--warn);
+
+    .ui-input-label { color: var(--warn); }
 
     &:focus-within {
       outline: 2px solid var(--warn-secondary);
