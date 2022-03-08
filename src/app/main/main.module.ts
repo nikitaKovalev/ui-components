@@ -6,6 +6,8 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { UiInputModule } from '@ui-components/kit/ui-input';
 import { UiMessageModule } from '@ui-components/kit/ui-message';
 import { UiAutocompleteModule } from '@ui-components/kit/ui-autocomplete';
+import { UiMenuModule } from '@ui-components/kit/ui-menu';
+import { UiOptionModule } from '@ui-components/kit/ui-option';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
@@ -22,6 +24,8 @@ import { InputView, MenuButtonView, MessageView, TableView, AutocompleteView } f
     UiInputModule,
     UiMessageModule,
     UiAutocompleteModule,
+    UiMenuModule,
+    UiOptionModule,
 
     MainRoutingModule,
   ],

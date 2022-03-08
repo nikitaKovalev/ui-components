@@ -1,0 +1,9 @@
+<div class="menu-button-line" top [@top]="trigger"></div>
+<div class="menu-button-line" middle [@middle]="trigger"></div>
+<div class="menu-button-line" bottom [@bottom]="trigger"></div>
+
+<ng-template cdk-portal>
+  <div class="menu-button-wrapper"[@fadeIn] [@fadeOut]>
+    <ng-content></ng-content>
+  </div>
+</ng-template>

@@ -12,7 +12,7 @@ import {
 
 import { identity, merge, Observable, of, Subject, switchMap } from 'rxjs';
 
-import { UiOptionComponent } from './ui-option/ui-option.component';
+import { UiOptionComponent } from '@ui-components/kit/ui-option';
 
 type TODO_ANY = any;
 

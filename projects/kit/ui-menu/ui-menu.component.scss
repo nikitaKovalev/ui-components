@@ -1,0 +1,137 @@
+@import "ui-menu.mixin";
+
+$toggler-size: 18px !default;
+$primary: #526ed3;
+$accent: #3aa981;
+$warn: #dd4c1e;
+$error: #B33F40;
+$lighten-primary-amount: 30%;
+$lighten-bgc-amount: 56%;
+$darken-font-color-amount: 5%;
+
+.menu-button {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+
+  width: $toggler-size;
+  height: $toggler-size;
+
+  // Applies the current text color to the toggler
+  .menu-button-line { background-color: currentColor; }
+
+    &[color = 'primary'] {
+    color: darken($primary, $darken-font-color-amount);
+  }
+
+  &[color = 'accent'] {
+    color: darken($accent, $darken-font-color-amount);
+  }
+
+  &[color = 'warn'] {
+    color: darken($warn, $darken-font-color-amount);
+  }
+
+  &[color = 'error'] {
+    color: darken($error, $darken-font-color-amount);
+  }
+
+  // Style 'menu'
+  &[type='menu'] {
+
+    $element-size: 2px;
+
+    .menu-button-line {
+      position: absolute;
+      height: $element-size;
+      width: $toggler-size;
+      border-radius: calc($element-size / 2);
+
+      &[top]    { top: calc($toggler-size / 8) - calc($element-size / 2);}
+      &[middle] { top: calc(($toggler-size - $element-size) / 2);}
+      &[bottom] { bottom: calc($toggler-size / 8) - calc($element-size / 2);}
+    }
+  }
+
+  // Style 'more' vertical
+  &[type='more_vert'] {
+
+    $element-size: 4px;
+
+    .menu-button-line {
+      position: absolute;
+      height: $element-size;
+      width: $element-size;
+      left: calc(($toggler-size - $element-size) / 2);
+      border-radius: calc($element-size / 2);
+
+      &[top]    { top: 0;}
+      &[middle] { top: calc(($toggler-size - $element-size) / 2);}
+      &[bottom] { bottom: 0;}
+    }
+  }
+
+  // Style 'more' horizontal
+  &[type='more_horiz'] {
+
+    $element-size: 4px;
+
+    .menu-button-line {
+      position: absolute;
+      height: $element-size;
+      width: $element-size;
+      top: calc(($toggler-size - $element-size) / 2);
+      border-radius: calc($element-size / 2);
+
+      &[top]    { left: 0; }
+      &[middle] { left: calc(($toggler-size - $element-size) / 2); }
+      &[bottom] { right: 0; }
+    }
+  }
+}
+
+.menu-button-wrapper {
+  min-width: 112px;
+  width: inherit;
+
+  min-height: 36px;
+  max-height: 200px;
+  overflow: scroll;
+
+  background-color: var(--page-bg);
+  border-radius: var(--radius-l);
+  font: var(--font-text-m);
+
+  @include box-shadow(1);
+
+  * {
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: hsl(0deg 0% 0% / 0%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 16px !important;
+    text-align: left;
+    text-decoration: none;
+
+    transition: var(--duration);
+  }
+
+  *:hover {
+    background-color: var(--page-bg-secondary);
+  }
+}
+
+.menu-button-wrapper--left {
+  left: 0;
+}
+
+.menu-button-wrapper--right {
+  right: 0;
+}
