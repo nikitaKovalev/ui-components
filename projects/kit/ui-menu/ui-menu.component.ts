@@ -15,11 +15,12 @@ import {
 import { ConnectionPositionPair, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortalDirective } from '@angular/cdk/portal';
 
-import { fromEvent, merge, Observable, of, Subject, switchMap, takeUntil } from 'rxjs';
+import { filter, fromEvent, merge, Observable, of, Subject, switchMap, takeUntil } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { UiOptionComponent } from '@ui-components/kit/ui-option';
 import { Palette } from '@ui-components/core/types';
+import { watch } from '@ui-components/core/rxjs';
 
 import { BOTTOM_LEFT, BOTTOM_RIGHT, PositionType, ToggleType, TOP_LEFT, TOP_RIGHT } from './ui-menu.type';
 import { fadeIn, fadeOut } from './fade.animation';
@@ -61,7 +62,7 @@ export class UiMenuComponent
 
   public position: ConnectionPositionPair[] = [BOTTOM_LEFT, TOP_LEFT];
 
-  public trigger = '';
+  public trigger = 'close';
 
   private _overlayRef: OverlayRef = this._overlay.create();
 
@@ -86,11 +87,13 @@ export class UiMenuComponent
     fromEvent(this._elRef.nativeElement, 'click')
       .pipe(
         tap(() => {
-          this.trigger = this.type;
-
+          this.trigger = this.trigger === 'close' ? this.type : 'close';
+        }),
+        watch(this._cdRef),
+        filter(() => !!this.options.length),
+        tap(() => {
           this._overlayRef = this._overlay.create(this._overlayConfig);
           this._overlayRef.attach(this.contentTemplate);
-          this._cdRef.markForCheck();
         }),
         switchMap(() => this._getCloseEmitters$()),
         takeUntil(this._destroyed$),

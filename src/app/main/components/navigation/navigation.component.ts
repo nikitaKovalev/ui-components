@@ -17,6 +17,13 @@ export class NavigationComponent {
     { routerLink: 'dialog', title: 'Dialog' },
     { routerLink: 'message', title: 'Message' },
     { routerLink: 'table', title: 'Table' },
+    { routerLink: 'sidenav', title: 'Sidenav' },
   ];
+
+  public isOpened = true;
+
+  public toggle(): void {
+    this.isOpened = !this.isOpened;
+  }
 
 }

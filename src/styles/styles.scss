@@ -19,3 +19,8 @@ body {
   margin: 0;
   color: var(--text-secondary-color);
 }
+
+.ui-bgc {
+  &-primary { background-color: var(--primary); }
+  &-accent { background-color: var(--accent); }
+}

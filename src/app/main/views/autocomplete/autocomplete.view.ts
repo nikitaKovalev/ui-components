@@ -18,7 +18,6 @@ const USERS: User[] = [
 
 
 @Component({
-  selector: 'autocomplete-view',
   templateUrl: './autocomplete.view.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

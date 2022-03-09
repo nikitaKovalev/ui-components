@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'table-view',
   templateUrl: './table.view.html',
-  styleUrls: ['./table.view.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableView {

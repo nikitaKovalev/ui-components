@@ -7,3 +7,4 @@ export * from '@ui-components/kit/ui-infinite-scroll';
 export * from '@ui-components/kit/ui-menu';
 export * from '@ui-components/kit/ui-option';
 export * from '@ui-components/kit/ui-dialog';
+export * from '@ui-components/kit/ui-sidenav';

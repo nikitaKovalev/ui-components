@@ -9,11 +9,12 @@ import { UiAutocompleteModule } from '@ui-components/kit/ui-autocomplete';
 import { UiMenuModule } from '@ui-components/kit/ui-menu';
 import { UiOptionModule } from '@ui-components/kit/ui-option';
 import { UiDialogModule } from '@ui-components/kit/ui-dialog';
+import { UiSidenavModule } from '@ui-components/kit/ui-sidenav';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { NavigationComponent, TableComponent, TestDialogComponent } from './components';
-import { InputView, MenuButtonView, MessageView, TableView, AutocompleteView, DialogView } from './views';
+import { AutocompleteView, DialogView, InputView, MenuButtonView, MessageView, SidenavView, TableView } from './views';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { InputView, MenuButtonView, MessageView, TableView, AutocompleteView, Di
     UiMenuModule,
     UiOptionModule,
     UiDialogModule,
+    UiSidenavModule,
 
     MainRoutingModule,
   ],
@@ -44,6 +46,7 @@ import { InputView, MenuButtonView, MessageView, TableView, AutocompleteView, Di
     TableView,
     AutocompleteView,
     DialogView,
+    SidenavView,
   ],
 })
 export class MainModule {}

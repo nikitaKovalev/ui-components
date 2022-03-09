@@ -1,0 +1,18 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { UiSidenavComponent } from './ui-sidenav.component';
+
+
+@NgModule({
+  imports: [
+    CommonModule,
+  ],
+  exports: [
+    UiSidenavComponent,
+  ],
+  declarations: [
+    UiSidenavComponent,
+  ]
+})
+export class UiSidenavModule {}
