@@ -1,4 +1,8 @@
 <ng-content select="[ui-sidenav-header]"></ng-content>
-<ng-content select="[ui-sidenav-link]"></ng-content>
-<ng-content select="[ui-sidenav-content]"></ng-content>
+
+<div class="ui-sidenav-scrollable">
+  <ng-content select="[ui-sidenav-link]"></ng-content>
+  <ng-content select="[ui-sidenav-content]"></ng-content>
+</div>
+
 <ng-content select="[ui-sidenav-footer]"></ng-content>
