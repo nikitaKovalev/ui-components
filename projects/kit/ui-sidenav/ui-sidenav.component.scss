@@ -5,7 +5,7 @@ $transition: 1s ease-in-out;
 :host {
   width: 16.25rem;
   max-width: 16.25rem;
-  height: 100vh;
+  height: 100%;
 
   transition: $transition;
 
@@ -16,7 +16,8 @@ $transition: 1s ease-in-out;
   flex-direction: column;
 
   &::ng-deep {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     text-overflow: ellipsis;
     *[ui-sidenav-header],
     *[ui-sidenav-link],
@@ -28,6 +29,8 @@ $transition: 1s ease-in-out;
     }
 
     *[ui-sidenav-header] {
+      position: fixed;
+      background-color: var(--page-bg);
       display: flex;
       align-items: center;
     }
@@ -62,4 +65,9 @@ $transition: 1s ease-in-out;
   &[position = 'start'] { float: left; }
   &[position = 'end'] { float: right; }
 
+}
+
+.ui-sidenav-scrollable {
+  display: flex;
+  flex-direction: column;
 }

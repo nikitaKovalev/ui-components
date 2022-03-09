@@ -3,21 +3,12 @@
     <span class="text-truncate fw-bold">Start position</span>
   </div>
 
-  <a href="#" ui-sidenav-link>Test Link 1</a>
-  <a href="#" ui-sidenav-link>Test Link 2</a>
-  <a href="#" ui-sidenav-link>Test Link 3</a>
-
-  <div ui-sidenav-content>
-    <div>
-      <span class="d-flex flex-column w-100 mb-1 fw-bold">
-        Content
-      </span>
-
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam assumenda blanditiis, id molestiae molestias nam
-      quaerat quidem saepe soluta temporibus! Blanditiis eveniet harum nulla obcaecati velit voluptatibus! Eum, facilis
-      saepe.
-    </div>
-  </div>
+  <a
+    *ngFor="let link of links; let i = index"
+    ui-sidenav-link
+    href="#">
+    Test Link {{ i }}
+  </a>
 </ui-sidenav>
 
 <ui-sidenav position="end">
