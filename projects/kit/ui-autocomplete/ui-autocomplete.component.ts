@@ -10,11 +10,10 @@ import {
   ViewChild
 } from '@angular/core';
 
-import { identity, merge, Observable, of, Subject, switchMap } from 'rxjs';
+import { identity, merge, Observable, startWith, Subject, switchMap } from 'rxjs';
 
+import { TODO_ANY } from '@ui-components/core/types';
 import { UiOptionComponent } from '@ui-components/kit/ui-option';
-
-type TODO_ANY = any;
 
 @Component({
   selector: 'ui-autocomplete',
@@ -44,9 +43,10 @@ export class UiAutocompleteComponent
   }
 
   public getOptionSelected$(): Observable<TODO_ANY> {
-    return of(this.options.toArray())
+    return this.options.changes
       .pipe(
-        switchMap((options: TODO_ANY) => {
+        startWith(this.options.toArray()),
+        switchMap((options: UiOptionComponent[]) => {
           const click$ = options?.map((option: UiOptionComponent) => option.click$) || [];
 
           return merge(...click$);
