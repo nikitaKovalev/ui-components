@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { Subject, takeUntil } from 'rxjs';
+import { map, Observable, pipe, UnaryFunction } from 'rxjs';
 
-import { autocomplete, watch } from '@ui-components/core/rxjs';
+import { autocomplete } from '@ui-components/core/rxjs';
 
 type User = {
   id: number,
@@ -21,8 +21,7 @@ const USERS: User[] = [
   templateUrl: './autocomplete.view.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AutocompleteView
-  implements OnDestroy {
+export class AutocompleteView {
 
   public readonly userControl = new FormControl(null);
   public readonly userRegularControl = new FormControl(null);
@@ -30,38 +29,26 @@ export class AutocompleteView
   public readonly displayUser = (user: { id: number, name: string }) => user.name;
   public readonly trackBy = (index: number) => index;
 
-  public users: User[] = USERS;
+  public readonly users$: Observable<User[]> = this.userControl.valueChanges.pipe(
+    autocomplete(),
+    this._usersPipe(),
+  );
+
+  public readonly regularUsers$: Observable<User[]> = this.userRegularControl.valueChanges.pipe(
+    autocomplete(),
+    this._usersPipe(),
+  )
+
   private readonly _users: User[] = USERS;
 
-  private readonly _destroyed$ = new Subject<void>();
-
-  constructor(
-    private readonly _cdRef: ChangeDetectorRef,
-  ) {
-    this._subControlChanged(this.userControl);
-    this._subControlChanged(this.userRegularControl);
-
-    this.userControl?.patchValue(this.users[0]);
-    this.userRegularControl?.patchValue(this.users[1]);
-  }
-
-  public ngOnDestroy(): void {
-    this._destroyed$.next();
-    this._destroyed$.complete();
-  }
-
-  private _subControlChanged(control: FormControl): void {
-    control.valueChanges
-      .pipe(
-        autocomplete(),
-        watch(this._cdRef),
-        takeUntil(this._destroyed$)
-      )
-      .subscribe((value: string) => {
-        this.users = this._users.filter((user: User) => {
+  private _usersPipe(): UnaryFunction<Observable<string>, Observable<User[]>> {
+    return pipe(
+      map((value: string) => {
+        return this._users.filter((user: User) => {
           return user.name.toLowerCase().startsWith(value?.toLowerCase() ?? '');
         });
-      });
+      })
+    );
   }
 
 }
