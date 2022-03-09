@@ -23,8 +23,8 @@ const USERS: User[] = [
 })
 export class AutocompleteView {
 
-  public readonly userControl = new FormControl(null);
-  public readonly userRegularControl = new FormControl(null);
+  public readonly userControl = new FormControl(USERS[1]);
+  public readonly userRegularControl = new FormControl(USERS[2]);
 
   public readonly displayUser = (user: { id: number, name: string }) => user.name;
   public readonly trackBy = (index: number) => index;

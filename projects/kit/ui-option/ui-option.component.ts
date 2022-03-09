@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, HostListener, Input } from '@angula
 
 import { Observable, Subject } from 'rxjs';
 
-type TODO_ANY = any;
+import { TODO_ANY } from '@ui-components/core/types';
 
 @Component({
   selector: 'ui-option',
