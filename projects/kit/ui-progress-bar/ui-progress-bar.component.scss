@@ -1,0 +1,96 @@
+@mixin resetStyles {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+/* Used to style outer progress bar (container) */
+@mixin progressContainer($property, $value) {
+  #{$property}: $value; // IE | Edge | Mozilla
+
+  &::-webkit-progress-bar {
+    #{$property}: $value; // Chrome | Opera | Safari
+  }
+}
+
+/* used to style inner value bar */
+@mixin progressValue($property, $value) {
+  #{$property}: $value; // Edge
+
+  &::-webkit-progress-value {
+    #{$property}: $value; // Chrome | Opera | Safari
+  }
+
+  &::-moz-progress-bar {
+    #{$property}: $value; // Mozilla
+  }
+}
+
+/*
+* Edge and IE animate the progress bar right out of the box
+* Chrome | Opera | Safari animation is controlled by its mixins
+* No possibility for firefox animation (https://snook.ca/archives/html_and_css/animating-progress)
+*/
+@mixin progressAnimation() {
+  &::-webkit-progress-value {
+    transition: width var(--duration) linear;
+  }
+}
+
+@mixin progressValueColor($color) {
+  color: $color; // IE | Not Chromium Edge
+
+  &::-webkit-progress-value {
+    background: $color; // Chromium Edge | Chrome | Opera | Safari
+  }
+
+  &::-moz-progress-bar {
+    background: $color; // Mozilla
+  }
+}
+
+
+:host {
+  @include resetStyles;
+  @include progressAnimation;
+  @include progressValueColor(var(--primary, currentColor));
+  @include progressContainer(background-color, var(--block-bg));
+  display: block;
+  width: 100%;
+  color: var(--text-base-color);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+
+  &[data-size='large'] {
+    height: 1.5rem;
+  }
+
+  &[data-size='medium'] {
+    height: 0.5rem;
+  }
+
+  &[data-size='small'] {
+    height: 0.2rem;
+  }
+
+  &[data-color='primary'] {
+    @include progressValueColor(var(--primary));
+  }
+
+  &[data-color='accent'] {
+    @include progressValueColor(var(--accent));
+  }
+
+  &[data-color='warn'] {
+    @include progressValueColor(var(--warn));
+  }
+
+  &[data-color='error'] {
+    @include progressValueColor(var(--error));
+  }
+
+  // todo: add indeterminate styles
+  &[data-mode='indeterminate'] {}
+
+}

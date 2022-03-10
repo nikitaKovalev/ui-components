@@ -2,7 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './main.component';
-import { AutocompleteView, DialogView, InputView, MenuButtonView, MessageView, SidenavView, TableView } from './views';
+import {
+  AutocompleteView,
+  DialogView,
+  InputView,
+  MenuButtonView,
+  MessageView,
+  ProgressBarView,
+  SidenavView,
+  TableView
+} from './views';
 
 const routes: Routes = [
   {
@@ -36,6 +45,10 @@ const routes: Routes = [
       {
         path: 'sidenav',
         component: SidenavView,
+      },
+      {
+        path: 'progress-bar',
+        component: ProgressBarView,
       },
     ]
   },
