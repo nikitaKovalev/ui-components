@@ -10,11 +10,21 @@ import { UiMenuModule } from '@ui-components/kit/ui-menu';
 import { UiOptionModule } from '@ui-components/kit/ui-option';
 import { UiDialogModule } from '@ui-components/kit/ui-dialog';
 import { UiSidenavModule } from '@ui-components/kit/ui-sidenav';
+import { UiProgressBarModule } from '@ui-components/kit/ui-progress-bar';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { NavigationComponent, TableComponent, TestDialogComponent } from './components';
-import { AutocompleteView, DialogView, InputView, MenuButtonView, MessageView, SidenavView, TableView } from './views';
+import {
+  AutocompleteView,
+  DialogView,
+  InputView,
+  MenuButtonView,
+  MessageView,
+  ProgressBarView,
+  SidenavView,
+  TableView
+} from './views';
 
 
 @NgModule({
@@ -30,6 +40,7 @@ import { AutocompleteView, DialogView, InputView, MenuButtonView, MessageView, S
     UiOptionModule,
     UiDialogModule,
     UiSidenavModule,
+    UiProgressBarModule,
 
     MainRoutingModule,
   ],
@@ -47,6 +58,7 @@ import { AutocompleteView, DialogView, InputView, MenuButtonView, MessageView, S
     AutocompleteView,
     DialogView,
     SidenavView,
+    ProgressBarView,
   ],
 })
 export class MainModule {}

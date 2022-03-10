@@ -18,6 +18,7 @@ export class NavigationComponent {
     { routerLink: 'message', title: 'Message' },
     { routerLink: 'table', title: 'Table' },
     { routerLink: 'sidenav', title: 'Sidenav' },
+    { routerLink: 'progress-bar', title: 'Progress bar' },
   ];
 
   public isOpened = true;
