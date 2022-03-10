@@ -1,4 +1,4 @@
-@import "box-shadow-mixin";
+@import "ui-sidenav-mixin";
 
 $transition: 1s ease-in-out;
 
@@ -29,10 +29,12 @@ $transition: 1s ease-in-out;
     }
 
     *[ui-sidenav-header] {
-      position: fixed;
-      background-color: var(--page-bg);
       display: flex;
       align-items: center;
+
+      .ui-sidenav-scrollable {
+        @include ifHasAttribute(true);
+      }
     }
 
     *[ui-sidenav-link] {
@@ -70,4 +72,10 @@ $transition: 1s ease-in-out;
 .ui-sidenav-scrollable {
   display: flex;
   flex-direction: column;
+}
+
+.ui-sidenav-header {
+  position: fixed;
+  background-color: var(--page-bg);
+  width: inherit;
 }
