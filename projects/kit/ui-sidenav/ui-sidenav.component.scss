@@ -31,10 +31,6 @@ $transition: 1s ease-in-out;
     *[ui-sidenav-header] {
       display: flex;
       align-items: center;
-
-      .ui-sidenav-scrollable {
-        @include ifHasAttribute(true);
-      }
     }
 
     *[ui-sidenav-link] {
@@ -75,7 +71,8 @@ $transition: 1s ease-in-out;
 }
 
 .ui-sidenav-header {
-  position: fixed;
+  position: sticky;
+  top: 0;
   background-color: var(--page-bg);
   width: inherit;
 }
