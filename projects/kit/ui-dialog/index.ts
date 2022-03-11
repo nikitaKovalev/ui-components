@@ -4,6 +4,5 @@ export { UiDialogRef } from './ui-dialog-ref';
 export { UiDialogService } from './services';
 
 export * from './interfaces';
-export * from './types';
 
 

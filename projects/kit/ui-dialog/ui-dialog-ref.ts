@@ -4,8 +4,7 @@ import { OverlayRef } from '@angular/cdk/overlay';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { DialogCloseType } from './types';
-import { AfterClosed } from './interfaces';
+import { TODO_ANY } from '@ui-components/core/types';
 
 @Injectable({ providedIn: 'root' })
 export class UiDialogRef<T = any>
@@ -19,11 +18,11 @@ export class UiDialogRef<T = any>
     return this._data;
   }
 
-  public get afterClosed$(): Observable<any> {
+  public get afterClosed$(): Observable<TODO_ANY> {
     return this._afterClosed$.asObservable();
   }
 
-  private readonly _afterClosed$ = new Subject<AfterClosed<T>>();
+  private readonly _afterClosed$ = new Subject<TODO_ANY>();
   private readonly _destroyed$ = new Subject<void>();
 
   constructor(
@@ -31,7 +30,7 @@ export class UiDialogRef<T = any>
     @Inject('dialog component')
     private readonly _component: Type<any>,
     @Inject('dialog data')
-    private readonly _data: T,
+    private readonly _data: any,
   ) {
     this._subBackDropClick();
   }
@@ -41,21 +40,21 @@ export class UiDialogRef<T = any>
     this._destroyed$.complete();
   }
 
-  public close(data?: T): void {
-    this._close('close', data);
+  public close(data?: TODO_ANY): void {
+    this._close(data);
   }
 
-  private _close(type: DialogCloseType, data?: T | undefined | null): void {
+  private _close(data?: TODO_ANY): void {
     this._overlayRef.dispose();
 
-    this._afterClosed$.next({ type, data });
+    this._afterClosed$.next(data);
     this._afterClosed$.complete();
   }
 
   private _subBackDropClick(): void {
     this._overlayRef.backdropClick()
       .pipe(takeUntil(this._destroyed$))
-      .subscribe(() => this._close('backdropClick', null));
+      .subscribe(() => this._close(null));
   }
 
 }
