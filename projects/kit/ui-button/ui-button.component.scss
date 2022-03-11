@@ -1,0 +1,24 @@
+@import "ui-button.base";
+@import "ui-button.theme";
+
+:host {
+  transition: 200ms ease-in-out background-color;
+
+  &[uiButton] {
+    @include base;
+    @include theme-palette(background-color, true);
+  }
+
+  &[uiRaisedButton] {
+    @include raised-button;
+    @include theme-palette(background-color);
+    @include box-shadow(1);
+  }
+
+  &[uiIconButton] {
+    @include icon-button;
+    @include theme-palette(background-color);
+  }
+
+}
+

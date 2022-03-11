@@ -1,0 +1,17 @@
+@mixin theme-palette($element, $property) {
+  #{$element}[data-color='primary'] {
+    #{$property}: var(--primary);
+  }
+
+  #{$element}[data-color='accent'] {
+    #{$property}: var(--accent);
+  }
+
+  #{$element}[data-color='warn'] {
+    #{$property}: var(--warn);
+  }
+
+  #{$element}[data-color='error'] {
+    #{$property}: var(--error);
+  }
+}

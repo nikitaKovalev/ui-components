@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
 import {
   AutocompleteView,
+  ButtonView,
   DialogView,
   InputView,
   MenuButtonView,
@@ -49,6 +50,10 @@ const routes: Routes = [
       {
         path: 'progress-bar',
         component: ProgressBarView,
+      },
+      {
+        path: 'button',
+        component: ButtonView,
       },
     ]
   },

@@ -13,6 +13,7 @@ export class NavigationComponent {
   public readonly links: Link[] = [
     { routerLink: 'input', title: 'Input' },
     { routerLink: 'autocomplete', title: 'Autocomplete' },
+    { routerLink: 'button', title: 'Button' },
     { routerLink: 'menu', title: 'Menu' },
     { routerLink: 'dialog', title: 'Dialog' },
     { routerLink: 'message', title: 'Message' },
