@@ -17,7 +17,7 @@ export class TestDialogComponent {
   ) {}
 
   public close(): void {
-    this._uiDialogRef.close({ user: 'hello user' });
+    this._uiDialogRef.close({ message: 'dialog closed' });
   }
 
 }
