@@ -11,6 +11,8 @@ import { UiOptionModule } from '@ui-components/kit/ui-option';
 import { UiDialogModule } from '@ui-components/kit/ui-dialog';
 import { UiSidenavModule } from '@ui-components/kit/ui-sidenav';
 import { UiProgressBarModule } from '@ui-components/kit/ui-progress-bar';
+import { UiButtonModule } from '@ui-components/kit/ui-button';
+import { UI_ICONS, UiIconModule, UiIconService } from '@ui-components/kit/ui-icon';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
@@ -23,7 +25,8 @@ import {
   MessageView,
   ProgressBarView,
   SidenavView,
-  TableView
+  TableView,
+  ButtonView,
 } from './views';
 
 
@@ -41,6 +44,8 @@ import {
     UiDialogModule,
     UiSidenavModule,
     UiProgressBarModule,
+    UiButtonModule,
+    UiIconModule,
 
     MainRoutingModule,
   ],
@@ -59,6 +64,11 @@ import {
     DialogView,
     SidenavView,
     ProgressBarView,
+    ButtonView,
   ],
 })
-export class MainModule {}
+export class MainModule {
+  constructor(private readonly _uiIconSvc: UiIconService) {
+    this._uiIconSvc.registry(UI_ICONS);
+  }
+}

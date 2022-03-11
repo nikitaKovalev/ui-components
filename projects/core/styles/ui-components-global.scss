@@ -4,9 +4,10 @@
 @import "bootstrap";
 @import "theme-colors";
 @import "typography";
-@import "box-shadow";
 @import "variables";
 @import "dialog";
+@import "mixins/box-shadow.mixin";
+@import "mixins/theme-palette.mixin";
 
 body {
   font-family: var(--font-family);

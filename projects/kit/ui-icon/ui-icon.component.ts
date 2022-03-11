@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, OnInit, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 import { Palette } from '@ui-components/core/types';
@@ -13,7 +13,8 @@ const URL = 'http://www.w3.org/2000/svg';
   styleUrls: [ './ui-icon.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiIconComponent {
+export class UiIconComponent
+  implements OnInit {
 
   @Input()
   public color: Palette = 'primary';
@@ -26,7 +27,6 @@ export class UiIconComponent {
 
     const content = this._uiIconSvc.getIcon(name);
     this._icon = this._getSVG(content);
-    this._renderer.setAttribute(this._icon, 'color', this.color);
     this._elRef.nativeElement.appendChild(this._icon);
   }
 
@@ -39,6 +39,10 @@ export class UiIconComponent {
     private readonly _document: Document,
     private readonly _uiIconSvc: UiIconService,
   ) {}
+
+  public ngOnInit(): void {
+    this._renderer.setAttribute(this._icon, 'color', this.color);
+  }
 
   private _getSVG(content: string): SVGElement {
     const div = this._document.createElement('div');

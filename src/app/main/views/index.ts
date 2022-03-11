@@ -6,3 +6,4 @@ export { AutocompleteView } from './autocomplete/autocomplete.view';
 export { DialogView } from './dialog/dialog.view';
 export { SidenavView } from './sidenav/sidenav.view';
 export { ProgressBarView } from './progress-bar/progress-bar.view';
+export { ButtonView } from './button/button.view';

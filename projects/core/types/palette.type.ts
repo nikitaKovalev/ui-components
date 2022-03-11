@@ -1,1 +1,1 @@
-export type Palette = 'primary' | 'accent' | 'warn' | 'error';
+export type Palette = 'primary' | 'accent' | 'warn' | 'error' | 'default';

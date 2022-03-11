@@ -1,0 +1,93 @@
+@mixin reset() {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+
+  // The `outline: none` from above works on all browsers, however Firefox also
+  // adds a special `focus-inner` which we have to disable explicitly. See:
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+// Flat and raised button standards
+$padding: 0 16px !default;
+$min-width: 64px !default;
+$margin: 0 !default;
+$line-height: 36px !default;
+$border-radius: 4px !default;
+
+// Stroked button padding is 1px less horizontally than default/flat/raised
+// button's padding.
+$stroked-button-line-height: $line-height - 2;
+$stroked-button-padding: 0 15px;
+$stroked-button-border-width: 1px;
+
+// Icon Button standards
+$button-size: 40px !default;
+$button-border-radius: 50% !default;
+$button-line-height: 24px !default;
+
+// Fab standards
+$fab-border-radius: 50% !default;
+$fab-size: 56px !default;
+$fab-padding: 16px !default;
+
+$mini-fab-size: 40px !default;
+$mini-fab-padding: 8px !default;
+
+
+@mixin base() {
+  box-sizing: border-box;
+  position: relative;
+
+  // Reset browser <button> styles.
+  @include reset();
+
+  // Make anchors render like buttons.
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+
+  color: var(--text-base-color);
+
+  // Sizing.
+  margin: $margin;
+  min-width: $min-width;
+  line-height: $line-height;
+  padding: $padding;
+  border-radius: $border-radius;
+
+  // Explicitly set the default overflow to `visible`. It is already set
+  // on most browsers except on IE11 where it defaults to `hidden`.
+  overflow: visible;
+}
+
+@mixin raised-button() {
+  @include base;
+  transform: translate3d(0, 0, 0);
+
+  $swift-ease-out-duration: 400ms !default;
+  $swift-ease-out-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+  transition: background $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+@mixin icon-button() {
+  @include raised-button;
+
+  // Reset the min-width from the button base.
+  min-width: 0;
+
+  border-radius: $fab-border-radius;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  line-height: 15px;
+
+  flex-shrink: 0;
+}
+
