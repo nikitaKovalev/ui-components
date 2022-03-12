@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, OnInit, Renderer2 } from '@angular/core';
+import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  Renderer2
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 import { Palette } from '@ui-components/core/types';
@@ -14,21 +22,10 @@ const URL = 'http://www.w3.org/2000/svg';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiIconComponent
-  implements OnInit {
+  implements AfterContentInit {
 
   @Input()
   public color: Palette = 'primary';
-
-  @Input()
-  public set name(name: string) {
-    if (this._icon) {
-      this._elRef.nativeElement.removeChild(this._icon);
-    }
-
-    const content = this._uiIconSvc.getIcon(name);
-    this._icon = this._getSVG(content);
-    this._elRef.nativeElement.appendChild(this._icon);
-  }
 
   private _icon: SVGElement | null = null;
 
@@ -40,7 +37,21 @@ export class UiIconComponent
     private readonly _uiIconSvc: UiIconService,
   ) {}
 
-  public ngOnInit(): void {
+  public ngAfterContentInit(): void {
+    this._initIcon();
+  }
+
+  private _initIcon(): void {
+    if (this._icon) {
+      this._elRef.nativeElement.removeChild(this._icon);
+    }
+
+    const content = this._uiIconSvc.getIcon(this._elRef.nativeElement.innerText);
+    this._icon = this._getSVG(content);
+    // remove text from the element
+    this._elRef.nativeElement.innerText = '';
+
+    this._elRef.nativeElement.appendChild(this._icon);
     this._renderer.setAttribute(this._icon, 'color', this.color);
   }
 
