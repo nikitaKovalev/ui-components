@@ -1,10 +1,8 @@
 <div
   class="ui-message-wrapper d-flex justify-content-start align-items-center align-content-center py-2 px-3"
   [attr.color]="color">
-  <ui-icon
-    class="me-3"
-    [color]="color"
-    [name]="icon">
+  <ui-icon class="me-3" [color]="color">
+    {{ icon }}
   </ui-icon>
 
   <div class="ui-message-label d-flex flex-column">
