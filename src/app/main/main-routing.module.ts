@@ -11,7 +11,7 @@ import {
   MessageView,
   ProgressBarView,
   SidenavView,
-  TableView
+  TableView,
 } from './views';
 
 const routes: Routes = [
@@ -55,6 +55,10 @@ const routes: Routes = [
         path: 'button',
         component: ButtonView,
       },
+      {
+        path: '',
+        redirectTo: 'input',
+      }
     ]
   },
   {
