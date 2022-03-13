@@ -12,6 +12,7 @@ $darken-font-color-amount: 5%;
   max-width: 100%;
 
   box-sizing: border-box;
+  border-radius: var(--radius-m);
 
   &[color = 'primary'] {
     color: darken($primary, $darken-font-color-amount);
