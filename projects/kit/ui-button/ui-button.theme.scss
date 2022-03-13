@@ -51,7 +51,7 @@ $block-bg-hover: #d7d7d7;
   }
 
   &:focus-visible {
-    outline: 2px solid darken($primary-active, 5%);
+    outline: 2px solid $primary-active;
     @include box-shadow(0);
   }
 }
