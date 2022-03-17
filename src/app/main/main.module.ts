@@ -13,6 +13,7 @@ import { UiSidenavModule } from '@ui-components/kit/ui-sidenav';
 import { UiProgressBarModule } from '@ui-components/kit/ui-progress-bar';
 import { UiButtonModule } from '@ui-components/kit/ui-button';
 import { UI_ICONS, UiIconModule, UiIconService } from '@ui-components/kit/ui-icon';
+import { UiConstModule } from '@ui-components/kit/ui-const';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
@@ -27,6 +28,7 @@ import {
   SidenavView,
   TableView,
   ButtonView,
+  ConstView,
 } from './views';
 
 
@@ -46,6 +48,7 @@ import {
     UiProgressBarModule,
     UiButtonModule,
     UiIconModule,
+    UiConstModule,
 
     MainRoutingModule,
   ],
@@ -65,6 +68,7 @@ import {
     SidenavView,
     ProgressBarView,
     ButtonView,
+    ConstView,
   ],
 })
 export class MainModule {

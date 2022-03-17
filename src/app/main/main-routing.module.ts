@@ -12,6 +12,7 @@ import {
   ProgressBarView,
   SidenavView,
   TableView,
+  ConstView,
 } from './views';
 
 const routes: Routes = [
@@ -54,6 +55,10 @@ const routes: Routes = [
       {
         path: 'button',
         component: ButtonView,
+      },
+      {
+        path: 'const',
+        component: ConstView,
       },
       {
         path: '',
