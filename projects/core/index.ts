@@ -3,3 +3,4 @@ export * from '@ui-components/core/classes';
 export * from '@ui-components/core/rxjs';
 export * from '@ui-components/core/tokens';
 export * from '@ui-components/core/helpers';
+export * from '@ui-components/core/services';
