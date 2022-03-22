@@ -14,6 +14,7 @@ import { UiProgressBarModule } from '@ui-components/kit/ui-progress-bar';
 import { UiButtonModule } from '@ui-components/kit/ui-button';
 import { UI_ICONS, UiIconModule, UiIconService } from '@ui-components/kit/ui-icon';
 import { UiConstModule } from '@ui-components/kit/ui-const';
+import { UiTooltipModule } from '@ui-components/kit/ui-tooltip';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
@@ -29,6 +30,7 @@ import {
   TableView,
   ButtonView,
   ConstView,
+  TooltipView,
 } from './views';
 
 
@@ -49,6 +51,7 @@ import {
     UiButtonModule,
     UiIconModule,
     UiConstModule,
+    UiTooltipModule,
 
     MainRoutingModule,
   ],
@@ -69,6 +72,7 @@ import {
     ProgressBarView,
     ButtonView,
     ConstView,
+    TooltipView,
   ],
 })
 export class MainModule {

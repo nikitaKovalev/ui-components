@@ -1,0 +1,37 @@
+$default: #d7d7d7;
+
+:host.ui-tooltip {
+  background-color: darken($default, 50%);
+  font: var(--font-text-xs);
+  color: var(--block-bg);
+  padding: var(--padding-xs);
+  border-radius: var(--radius-xs);
+
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+  animation-name: tooltipFade;
+
+  &--primary {
+    background-color: var(--primary);
+  }
+
+  &--accent {
+    background-color: var(--accent);
+    color: var(--page-bg)
+  }
+
+  &--warn {
+    background-color: var(--warn);
+  }
+
+  &--error {
+    background-color: var(--error);
+  }
+
+  @keyframes tooltipFade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+}
+
