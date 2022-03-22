@@ -8,6 +8,7 @@ $darken-amount: 15%;
 :host::ng-deep svg {
   width: 24px;
   height: 24px;
+  fill: darken(#d7d7d7, 50%);
 
   &[color = 'primary'] {
     fill: darken($primary, $darken-amount);

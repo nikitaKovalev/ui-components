@@ -1,0 +1,44 @@
+<p>
+  Tooltips may have positions: 'start', 'end', 'top', 'bottom'.
+  Support Palette colors.
+</p>
+
+<button
+  class="me-3"
+  uiRaisedButton
+  uiTooltip="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, neque veniam. Ab amet aspernatur assumenda, autem cumque, dolore excepturi illum impedit, incidunt ipsum modi odio odit placeat quasi repellendus voluptatibus."
+  uiTooltipPosition="end">
+  Default, end
+</button>
+
+<button
+  uiRaisedButton
+  uiTooltip="Click the button!"
+  uiTooltipColor="accent"
+  uiTooltipPosition="start">
+  Accent, bottom
+</button>
+
+<button
+  class="ms-3"
+  uiRaisedButton
+  uiTooltip="Warning!"
+  uiTooltipColor="warn">
+  Warning, top
+</button>
+
+<button
+  class="ms-3"
+  uiRaisedButton
+  [uiTooltip]="icon"
+  uiTooltipColor="primary"
+  uiTooltipPosition="bottom">
+  Primary, with custom content
+</button>
+
+<ng-template #icon>
+  <div class="d-flex align-items-center justify-content-between p-1">
+    <ui-icon class="me-1" color="primary">info</ui-icon>
+    <span>Be careful here!</span>
+  </div>
+</ng-template>

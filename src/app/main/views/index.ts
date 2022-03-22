@@ -8,3 +8,4 @@ export { SidenavView } from './sidenav/sidenav.view';
 export { ProgressBarView } from './progress-bar/progress-bar.view';
 export { ButtonView } from './button/button.view';
 export { ConstView } from './const/const.view';
+export { TooltipView } from './tooltip/tooltip.view';

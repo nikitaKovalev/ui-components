@@ -5,6 +5,7 @@ import { MainComponent } from './main.component';
 import {
   AutocompleteView,
   ButtonView,
+  ConstView,
   DialogView,
   InputView,
   MenuButtonView,
@@ -12,7 +13,7 @@ import {
   ProgressBarView,
   SidenavView,
   TableView,
-  ConstView,
+  TooltipView,
 } from './views';
 
 const routes: Routes = [
@@ -59,6 +60,10 @@ const routes: Routes = [
       {
         path: 'const',
         component: ConstView,
+      },
+      {
+        path: 'tooltip',
+        component: TooltipView,
       },
       {
         path: '',

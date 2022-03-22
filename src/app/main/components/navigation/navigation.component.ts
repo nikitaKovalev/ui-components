@@ -21,6 +21,7 @@ export class NavigationComponent {
     { routerLink: 'sidenav', title: 'Sidenav' },
     { routerLink: 'progress-bar', title: 'Progress bar' },
     { routerLink: 'const', title: 'Const' },
+    { routerLink: 'tooltip', title: 'Tooltip' },
   ];
 
   public isOpened = true;

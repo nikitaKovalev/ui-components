@@ -25,7 +25,7 @@ export class UiIconComponent
   implements AfterContentInit {
 
   @Input()
-  public color: Palette = 'primary';
+  public color: Palette = 'default';
 
   private _icon: SVGElement | null = null;
 
