@@ -22,6 +22,7 @@ export class NavigationComponent {
     { routerLink: 'progress-bar', title: 'Progress bar' },
     { routerLink: 'const', title: 'Const' },
     { routerLink: 'tooltip', title: 'Tooltip' },
+    { routerLink: 'badge', title: 'Badge' },
   ];
 
   public isOpened = true;
