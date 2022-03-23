@@ -12,6 +12,8 @@
 /* import to apply table styles */
 @import "../../projects/core/styles/ui-components-global";
 @import "projects/kit/ui-table/ui-table";
+@import "projects/kit/ui-badge/badge.base";
+//@import "src/app/main/components/ui-badge/badge.base";
 
 body {
   font-family: var(--font-family);

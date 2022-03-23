@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
 import {
   AutocompleteView,
+  BadgeView,
   ButtonView,
   ConstView,
   DialogView,
@@ -64,6 +65,10 @@ const routes: Routes = [
       {
         path: 'tooltip',
         component: TooltipView,
+      },
+      {
+        path: 'badge',
+        component: BadgeView,
       },
       {
         path: '',

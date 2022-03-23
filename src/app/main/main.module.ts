@@ -15,6 +15,7 @@ import { UiButtonModule } from '@ui-components/kit/ui-button';
 import { UI_ICONS, UiIconModule, UiIconService } from '@ui-components/kit/ui-icon';
 import { UiConstModule } from '@ui-components/kit/ui-const';
 import { UiTooltipModule } from '@ui-components/kit/ui-tooltip';
+import { UiBadgeModule } from '@ui-components/kit/ui-badge';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
@@ -31,6 +32,7 @@ import {
   ButtonView,
   ConstView,
   TooltipView,
+  BadgeView,
 } from './views';
 
 
@@ -52,6 +54,7 @@ import {
     UiIconModule,
     UiConstModule,
     UiTooltipModule,
+    UiBadgeModule,
 
     MainRoutingModule,
   ],
@@ -73,6 +76,7 @@ import {
     ButtonView,
     ConstView,
     TooltipView,
+    BadgeView,
   ],
 })
 export class MainModule {

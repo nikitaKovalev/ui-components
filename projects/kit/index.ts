@@ -12,3 +12,4 @@ export * from '@ui-components/kit/ui-progress-bar';
 export * from '@ui-components/kit/ui-button';
 export * from '@ui-components/kit/ui-const';
 export * from '@ui-components/kit/ui-tooltip';
+export * from '@ui-components/kit/ui-badge';
