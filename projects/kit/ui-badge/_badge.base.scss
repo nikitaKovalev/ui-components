@@ -1,0 +1,184 @@
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+
+$font-size: 12px;
+$font-weight: 600;
+$font-family: "Manrope", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+$default-size: 22px !default;
+$small-size: $default-size - 6;
+$large-size: $default-size + 6;
+
+@mixin _badge-size($size) {
+  .ui-badge-content {
+    width: $size;
+    height: $size;
+    line-height: $size;
+  }
+
+  &.ui-badge-above {
+    .ui-badge-content {
+      top: math.div(-$size, 2);
+    }
+  }
+
+  &.ui-badge-below {
+    .ui-badge-content {
+      bottom: math.div(-$size, 2);
+    }
+  }
+
+  &.ui-badge-before {
+    .ui-badge-content {
+      left: -$size / 2;
+    }
+  }
+
+  [dir='rtl'] &.ui-badge-before {
+    .ui-badge-content {
+      left: auto;
+      right: -$size / 2;
+    }
+  }
+
+  &.ui-badge-after {
+    .ui-badge-content {
+      right: -$size / 2;
+    }
+  }
+
+  [dir='rtl'] &.ui-badge-after {
+    .ui-badge-content {
+      right: auto;
+      left: -$size / 2;
+    }
+  }
+
+  &.ui-badge-overlap {
+    &.ui-badge-before {
+      .ui-badge-content {
+        left: math.div(-$size, 2);
+      }
+    }
+
+    [dir='rtl'] &.ui-badge-before {
+      .ui-badge-content {
+        left: auto;
+        right: math.div(-$size, 2);
+      }
+    }
+
+    &.ui-badge-after {
+      .ui-badge-content {
+        right: math.div(-$size, 2);
+      }
+    }
+
+    [dir='rtl'] &.ui-badge-after {
+      .ui-badge-content {
+        right: auto;
+        left: math.div(-$size, 2);
+      }
+    }
+  }
+  // stylelint-enable
+}
+
+@mixin _badge-structure {
+  .ui-badge {
+    position: relative;
+  }
+
+  // The badge should make sure its host is overflow visible so that the badge content
+  // can be rendered outside of the element. Some components such as <mat-icon> explicitly
+  // style `overflow: hidden` so this requires extra specificity so that it does not
+  // depend on style load order.
+  .ui-badge.ui-badge {
+    overflow: visible;
+  }
+
+  .ui-badge-hidden {
+    .ui-badge-content {
+      display: none;
+    }
+  }
+
+  .ui-badge-content {
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    transition: transform 200ms ease-in-out;
+    transform: scale(.9);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    color: var(--page-bg-secondary);
+  }
+
+  .ui-badge-small {
+    @include _badge-size($small-size);
+  }
+
+  .ui-badge-medium {
+    @include _badge-size($default-size);
+  }
+
+  .ui-badge-large {
+    @include _badge-size($large-size);
+  }
+}
+
+@mixin typography() {
+  .ui-badge-content {
+    font-weight: $font-weight;
+    font-size: $font-size;
+    font-family: $font-family;
+  }
+
+  .ui-badge-small .ui-badge-content {
+    // Set the font size to 75% of the original.
+    font-size: $font-size * 0.75;
+  }
+
+  .ui-badge-large .ui-badge-content {
+    font-size: $font-size * 2;
+  }
+}
+
+@mixin color() {
+  $default: darken(#d7d7d7, 50%);
+  $primary: var(--primary);
+  $accent: var(--accent);
+  $warn: var(--warn);
+  $error: var(--error);
+
+  .ui-badge-default > .ui-badge-content {
+    background-color: $default;
+  }
+
+  .ui-badge-primary > .ui-badge-content {
+    background-color: $primary;
+  }
+
+  .ui-badge-accent > .ui-badge-content {
+    background-color: $accent;
+  }
+
+  .ui-badge-warn > .ui-badge-content {
+    background-color: $warn;
+  }
+
+  .ui-badge-error > .ui-badge-content {
+    background-color: $error;
+  }
+}
+
+
+:root {
+  @include _badge-structure;
+  @include typography;
+  @include color;
+}
