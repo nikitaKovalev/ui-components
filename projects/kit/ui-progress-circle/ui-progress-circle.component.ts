@@ -21,7 +21,7 @@ export class UiProgressCircleComponent {
   @Input()
   @HostBinding('attr.data-size')
   @HostBinding('style.--ui-progress-circle-size')
-  public size: 'small' | 'medium' | 'large'  = 'medium';
+  public size: 'xs' | 'small' | 'medium' | 'large'  = 'medium';
 
   @Input()
   @HostBinding('attr.data-mode')

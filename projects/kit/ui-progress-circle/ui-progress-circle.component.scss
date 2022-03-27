@@ -2,9 +2,9 @@
 @use "sass:math";
 @import "~bootstrap/scss/mixins/visually-hidden";
 
-$width: ("small": 2em, "medium": 4em, "large": 7em);
-$track-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
-$progress-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
+$width: ("xs": 1em, "small": 2em, "medium": 4em, "large": 7em);
+$track-stroke: ("xs": 0.3em, "small": 0.5em, "medium": 0.5em, "large": 0.7em);
+$progress-stroke: ("xs": 0.3em, "small": 0.5em, "medium": 0.5em, "large": 0.7em);
 
 @mixin circle-params($size) {
   width: map.get($width, $size);
@@ -32,6 +32,8 @@ $progress-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
     @return calc(1em - 0.5em / 2);
   } @else if($size == medium) {
     @return calc(2em - 0.5em / 2);
+  } @else if($size == xs) {
+    @return calc(.5em - 0.3em / 2);
   } @else {
     @return calc(3.5em - 0.7em / 2);
   }
@@ -95,8 +97,12 @@ $progress-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
   transform-origin: center;
   font-size: 1rem;
 
+  &[data-size='xs'] {
+    @include circle-params(xs);
+  }
+
   &[data-size='small'] {
-    @include circle-params(small)
+    @include circle-params(small);
   }
 
   &[data-size='medium'] {
@@ -105,6 +111,10 @@ $progress-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
 
   &[data-size='large'] {
     @include circle-params(large);
+  }
+
+  &[data-mode='indeterminate'][data-size='xs'] {
+    @include indeterminate(xs, indeterminate-xs);
   }
 
   &[data-mode='indeterminate'][data-size='small'] {
