@@ -6,6 +6,7 @@ export { AutocompleteView } from './autocomplete/autocomplete.view';
 export { DialogView } from './dialog/dialog.view';
 export { SidenavView } from './sidenav/sidenav.view';
 export { ProgressBarView } from './progress-bar/progress-bar.view';
+export { ProgressCircleView } from './progress-circle/progress-circle.view';
 export { ButtonView } from './button/button.view';
 export { ConstView } from './const/const.view';
 export { TooltipView } from './tooltip/tooltip.view';

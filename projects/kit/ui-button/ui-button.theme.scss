@@ -44,10 +44,10 @@ $block-bg-hover: #d7d7d7;
   }
 
   &:hover {
-    #{$property}: darken($color, 5%);
+    #{$property}: darken($color, 5%) !important;
   }
   &:active {
-    #{$property}: lighten($color, 5%);
+    #{$property}: lighten($color, 5%) !important;
   }
 
   &:focus-visible {
