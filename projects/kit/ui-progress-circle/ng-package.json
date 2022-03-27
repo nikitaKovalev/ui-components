@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/kit/ui-progress-circle",
+  "lib": {
+    "entryFile": "index.ts",
+    "styleIncludePaths": [
+      "../../core/styles"
+    ]
+  }
+}

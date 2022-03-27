@@ -20,6 +20,7 @@ export class NavigationComponent {
     { routerLink: 'table', title: 'Table' },
     { routerLink: 'sidenav', title: 'Sidenav' },
     { routerLink: 'progress-bar', title: 'Progress bar' },
+    { routerLink: 'progress-circle', title: 'Progress circle' },
     { routerLink: 'const', title: 'Const' },
     { routerLink: 'tooltip', title: 'Tooltip' },
     { routerLink: 'badge', title: 'Badge' },
