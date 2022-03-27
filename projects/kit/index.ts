@@ -9,6 +9,7 @@ export * from '@ui-components/kit/ui-option';
 export * from '@ui-components/kit/ui-dialog';
 export * from '@ui-components/kit/ui-sidenav';
 export * from '@ui-components/kit/ui-progress-bar';
+export * from '@ui-components/kit/ui-progress-circle';
 export * from '@ui-components/kit/ui-button';
 export * from '@ui-components/kit/ui-const';
 export * from '@ui-components/kit/ui-tooltip';

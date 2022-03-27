@@ -11,6 +11,7 @@ import { UiOptionModule } from '@ui-components/kit/ui-option';
 import { UiDialogModule } from '@ui-components/kit/ui-dialog';
 import { UiSidenavModule } from '@ui-components/kit/ui-sidenav';
 import { UiProgressBarModule } from '@ui-components/kit/ui-progress-bar';
+import { UiProgressCircleModule } from '@ui-components/kit/ui-progress-circle';
 import { UiButtonModule } from '@ui-components/kit/ui-button';
 import { UI_ICONS, UiIconModule, UiIconService } from '@ui-components/kit/ui-icon';
 import { UiConstModule } from '@ui-components/kit/ui-const';
@@ -22,17 +23,18 @@ import { MainRoutingModule } from './main-routing.module';
 import { NavigationComponent, TableComponent, TestDialogComponent } from './components';
 import {
   AutocompleteView,
+  BadgeView,
+  ButtonView,
+  ConstView,
   DialogView,
   InputView,
   MenuButtonView,
   MessageView,
   ProgressBarView,
+  ProgressCircleView,
   SidenavView,
   TableView,
-  ButtonView,
-  ConstView,
   TooltipView,
-  BadgeView,
 } from './views';
 
 
@@ -50,6 +52,7 @@ import {
     UiDialogModule,
     UiSidenavModule,
     UiProgressBarModule,
+    UiProgressCircleModule,
     UiButtonModule,
     UiIconModule,
     UiConstModule,
@@ -73,6 +76,7 @@ import {
     DialogView,
     SidenavView,
     ProgressBarView,
+    ProgressCircleView,
     ButtonView,
     ConstView,
     TooltipView,

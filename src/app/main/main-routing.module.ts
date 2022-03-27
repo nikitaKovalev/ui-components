@@ -12,6 +12,7 @@ import {
   MenuButtonView,
   MessageView,
   ProgressBarView,
+  ProgressCircleView,
   SidenavView,
   TableView,
   TooltipView,
@@ -53,6 +54,10 @@ const routes: Routes = [
       {
         path: 'progress-bar',
         component: ProgressBarView,
+      },
+      {
+        path: 'progress-circle',
+        component: ProgressCircleView,
       },
       {
         path: 'button',

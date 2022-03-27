@@ -10,7 +10,7 @@ export class ProgressBarView {
   public readonly value$ = timer(300, 50)
     .pipe(
       startWith(0),
-      takeWhile((value: number) => value !== 110),
+      takeWhile((value: number) => value <= 100),
       repeat(),
     );
 }

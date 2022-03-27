@@ -1,0 +1,123 @@
+@use "sass:map";
+@use "sass:math";
+@import "~bootstrap/scss/mixins/visually-hidden";
+
+$width: ("small": 2em, "medium": 4em, "large": 7em);
+$track-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
+$progress-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
+
+@mixin circle-params($size) {
+  width: map.get($width, $size);
+  height: map.get($width, $size);
+
+  .track {
+    r: math.div(map.get($width, $size) - map.get($track-stroke, $size), 2);
+    stroke-width: map.get($track-stroke, $size);
+  }
+
+  .progress {
+    $radius: math.div(map.get($width, $size) - map.get($progress-stroke, $size), 2);
+    $circumference: 2 * math.$pi * $radius;
+
+    r: $radius;
+    stroke-width: map.get($progress-stroke, $size);
+    stroke-dasharray: $circumference;
+    stroke-dashoffset: calc(#{$circumference} - var(--ui-progress-circle-percentage) * #{$circumference});
+  }
+}
+
+@mixin indeterminate {
+  $duration: calc(var(--duration) * 8);
+  $progress-duration: calc(var(--duration) * 24);
+
+  .svg {
+    animation: ui-progress-spinner-linear-rotate $duration linear infinite;
+
+    .progress {
+      transition-property: stroke;
+      animation: ui-progress-spinner-stroke-rotate-100 $progress-duration linear infinite;
+      stroke-dashoffset: 3000;
+    }
+
+    .track {
+      stroke: none;
+    }
+  }
+}
+
+:host {
+  display: block;
+  position: relative;
+  color: var(--primary);
+  transform: rotate(-90deg);
+  transform-origin: center;
+  font-size: 1rem;
+
+  &[data-size='small'] {
+    @include circle-params(small)
+  }
+
+  &[data-size='medium'] {
+    @include circle-params(medium);
+  }
+
+  &[data-size='large'] {
+    @include circle-params(large)
+  }
+
+  &[data-mode='indeterminate'] {
+    @include indeterminate;
+  }
+}
+
+.track {
+  fill: transparent;
+  stroke: var(--block-bg);
+}
+
+.progress {
+  fill: transparent;
+  stroke: var(--ui-progress-circle-color, currentColor);
+  transition: stroke-dashoffset var(--duration) linear;
+}
+
+.hidden-progress {
+  @include visually-hidden;
+}
+
+.svg {
+  overflow: unset;
+}
+
+@keyframes ui-progress-spinner-linear-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ui-progress-spinner-stroke-rotate-100 {
+  $_default-radius: 45px;
+  $_default-circumference: math.$pi * $_default-radius * 2;
+
+  $start: (1 - 0.05) * $_default-circumference; // start the animation at 2%
+  $end: (1 - 0.8) * $_default-circumference; // end the animation at 80%
+
+  0%        { stroke-dashoffset: $start; }
+  12.5%     { stroke-dashoffset: $end; }
+  12.5001%  { stroke-dashoffset: $end; }
+  25%       { stroke-dashoffset: $start; }
+
+  25.0001%   { stroke-dashoffset: $start; }
+  37.5%      { stroke-dashoffset: $end; }
+  37.5001%   { stroke-dashoffset: $end; }
+  50%        { stroke-dashoffset: $start; }
+
+  50.0001%  { stroke-dashoffset: $start; }
+  62.5%     { stroke-dashoffset: $end; }
+  62.5001%  { stroke-dashoffset: $end; }
+  75%       { stroke-dashoffset: $start; }
+
+  75.0001%  { stroke-dashoffset: $start; }
+  87.5%     { stroke-dashoffset: $end; }
+  87.5001%  { stroke-dashoffset: $end; }
+  100%      { stroke-dashoffset: $start; }
+}
