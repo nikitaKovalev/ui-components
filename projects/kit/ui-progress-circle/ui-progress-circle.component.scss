@@ -26,16 +26,58 @@ $progress-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
   }
 }
 
-@mixin indeterminate {
+// Indeterminate mode
+@function getSize($size) {
+  @if $size == small {
+    @return calc(1em - 0.5em / 2);
+  } @else if($size == medium) {
+    @return calc(2em - 0.5em / 2);
+  } @else {
+    @return calc(3.5em - 0.7em / 2);
+  }
+}
+
+@mixin indeterminate-animation($size, $name) {
+  $_default-radius: getSize($size);
+  $_default-circumference: math.$pi * $_default-radius * 2;
+
+  @keyframes #{$name} {
+    $start: (1 - 0.05) * $_default-circumference; // start the animation at 2%
+    $end: (1 - 0.9) * $_default-circumference; // end the animation at 90%
+
+    0%        { stroke-dashoffset: $start; }
+    12.5%     { stroke-dashoffset: $end; }
+    //12.5001%  { stroke-dashoffset: $end; }
+    25%       { stroke-dashoffset: $start; }
+
+    25.0001%   { stroke-dashoffset: $start; }
+    37.5%      { stroke-dashoffset: $end; }
+    //37.5001%   { stroke-dashoffset: $end; }
+    50%        { stroke-dashoffset: $start; }
+
+    50.0001%  { stroke-dashoffset: $start; }
+    62.5%     { stroke-dashoffset: $end; }
+    //62.5001%  { stroke-dashoffset: $end; }
+    75%       { stroke-dashoffset: $start; }
+
+    75.0001%  { stroke-dashoffset: $start; }
+    87.5%     { stroke-dashoffset: $end; }
+    //87.5001%  { stroke-dashoffset: $end; }
+    100%      { stroke-dashoffset: $start; }
+  }
+}
+
+@mixin indeterminate($size, $name) {
   $duration: calc(var(--duration) * 8);
   $progress-duration: calc(var(--duration) * 24);
+  @include indeterminate-animation($size, $name);
 
   .svg {
     animation: ui-progress-spinner-linear-rotate $duration linear infinite;
 
     .progress {
       transition-property: stroke;
-      animation: ui-progress-spinner-stroke-rotate-100 $progress-duration linear infinite;
+      animation: $name $progress-duration linear infinite;
       stroke-dashoffset: 3000;
     }
 
@@ -62,11 +104,19 @@ $progress-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
   }
 
   &[data-size='large'] {
-    @include circle-params(large)
+    @include circle-params(large);
   }
 
-  &[data-mode='indeterminate'] {
-    @include indeterminate;
+  &[data-mode='indeterminate'][data-size='small'] {
+    @include indeterminate(small, indeterminate-small);
+  }
+
+  &[data-mode='indeterminate'][data-size='medium'] {
+    @include indeterminate(medium, indeterminate-medium);
+  }
+
+  &[data-mode='indeterminate'][data-size='large'] {
+    @include indeterminate(large, indeterminate-large);
   }
 }
 
@@ -92,32 +142,4 @@ $progress-stroke: ("small": 0.5em, "medium": 0.5em, "large": 0.7em);
 @keyframes ui-progress-spinner-linear-rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-@keyframes ui-progress-spinner-stroke-rotate-100 {
-  $_default-radius: 45px;
-  $_default-circumference: math.$pi * $_default-radius * 2;
-
-  $start: (1 - 0.05) * $_default-circumference; // start the animation at 2%
-  $end: (1 - 0.8) * $_default-circumference; // end the animation at 80%
-
-  0%        { stroke-dashoffset: $start; }
-  12.5%     { stroke-dashoffset: $end; }
-  12.5001%  { stroke-dashoffset: $end; }
-  25%       { stroke-dashoffset: $start; }
-
-  25.0001%   { stroke-dashoffset: $start; }
-  37.5%      { stroke-dashoffset: $end; }
-  37.5001%   { stroke-dashoffset: $end; }
-  50%        { stroke-dashoffset: $start; }
-
-  50.0001%  { stroke-dashoffset: $start; }
-  62.5%     { stroke-dashoffset: $end; }
-  62.5001%  { stroke-dashoffset: $end; }
-  75%       { stroke-dashoffset: $start; }
-
-  75.0001%  { stroke-dashoffset: $start; }
-  87.5%     { stroke-dashoffset: $end; }
-  87.5001%  { stroke-dashoffset: $end; }
-  100%      { stroke-dashoffset: $start; }
 }
