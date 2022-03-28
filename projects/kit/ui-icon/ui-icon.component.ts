@@ -46,7 +46,7 @@ export class UiIconComponent
       this._elRef.nativeElement.removeChild(this._icon);
     }
 
-    const content = this._uiIconSvc.getIcon(this._elRef.nativeElement.innerText);
+    const content = this._uiIconSvc.getIcon(this._elRef.nativeElement.innerText?.trim());
     this._icon = this._getSVG(content);
     // remove text from the element
     this._elRef.nativeElement.innerText = '';
