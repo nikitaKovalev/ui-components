@@ -10,6 +10,7 @@ import {
   TemplateRef,
   ViewContainerRef
 } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { NgControl } from '@angular/forms';
 import {
   ConnectedPosition,
@@ -36,7 +37,7 @@ export class UiAutocompleteDirective
   implements OnInit, OnDestroy {
 
   @Input()
-  public uiAutocomplete: UiAutocompleteComponent = new UiAutocompleteComponent();
+  public uiAutocomplete!: UiAutocompleteComponent;
 
   private _overlayRef: OverlayRef = this._overlay.create({});
 
@@ -146,7 +147,7 @@ export class UiAutocompleteDirective
     this._overlayRef = this._overlay.create(overlayConfig);
 
     const template = new TemplatePortal(
-      this.uiAutocomplete.templateRef as TemplateRef<TODO_ANY>,
+      this.uiAutocomplete.templateRef as TemplateRef<NgTemplateOutlet>,
       this._viewCRef,
     );
     this._overlayRef.attach(template);
