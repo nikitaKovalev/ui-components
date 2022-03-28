@@ -8,4 +8,9 @@
   &:hover {
     background-color: var(--page-bg-secondary);
   }
+
+  &.--ui-option-active {
+    background-color: var(--page-bg-secondary);
+  }
+
 }
