@@ -1,0 +1,21 @@
+<div class="lt-input-wrapper">
+
+  <input
+    class="lt-input"
+    type="text"
+    [id]="id"
+    [placeholder]="placeholder"
+  >
+
+  <span class="lt-input-label-wrapper">
+    <label class="lt-input-label" [for]="id">
+      {{ label }}
+    </label>
+  </span>
+
+  <!-- todo: autocomplete -->
+  <ng-container *ngIf="autocomplete">
+    {{ autocomplete }}
+  </ng-container>
+
+</div>

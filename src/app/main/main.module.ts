@@ -36,6 +36,8 @@ import {
   TableView,
   TooltipView,
 } from './views';
+import { LtInputModule } from '../_common/lt-input/lt-input.module';
+import { LtInputView } from './views/lt-input/lt-input.view';
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import {
     UiTooltipModule,
     UiBadgeModule,
 
+    LtInputModule,
+
     MainRoutingModule,
   ],
   declarations: [
@@ -81,6 +85,8 @@ import {
     ConstView,
     TooltipView,
     BadgeView,
+
+    LtInputView,
   ],
 })
 export class MainModule {

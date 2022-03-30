@@ -1,0 +1,80 @@
+@import "lt-input.base";
+
+$primary: #526ed3;
+$accent: #3aa981;
+$warn: #dd4c1e;
+$error: #B33F40;
+$inactive: #1B1F3B66;
+$default: #1b1f3b;
+$bgc: #fff;
+
+$duration: 300ms;
+$transition: $duration ease-in-out;
+
+:host {
+  @include size(input);
+  @include size(label);
+  display: flex;
+  -webkit-font-smoothing: antialiased;
+}
+
+.lt-input-wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.lt-input {
+  @include box-shadow(1);
+
+  width: 100%;
+  background-color: $bgc;
+  border: none;
+
+  // ANIMATE OUTLINE ON FOCUS
+  transition: $transition;
+  outline: 0 solid $primary;
+  &:focus-within {
+    @include box-shadow(0);
+    outline-width: 2px;
+  }
+
+  // PLACEHOLDER
+  &::placeholder { visibility: hidden; }
+  &:focus-within::placeholder {
+    visibility: initial;
+    color: $inactive;
+  }
+
+}
+
+// LABEL
+.lt-input-label-wrapper {
+  box-sizing: border-box;
+
+  pointer-events: none;
+
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lt-input-label {
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  height: auto;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: inherit;
+
+  transition: $transition;
+}
+
+.lt-input-wrapper:focus-within .lt-input-label {
+  font-size: smaller;
+  color: $default;
+}

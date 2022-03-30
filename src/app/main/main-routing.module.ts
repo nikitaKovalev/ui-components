@@ -17,6 +17,7 @@ import {
   TableView,
   TooltipView,
 } from './views';
+import { LtInputView } from './views/lt-input/lt-input.view';
 
 const routes: Routes = [
   {
@@ -74,6 +75,10 @@ const routes: Routes = [
       {
         path: 'badge',
         component: BadgeView,
+      },
+      {
+        path: 'lt-input',
+        component: LtInputView,
       },
       {
         path: '',

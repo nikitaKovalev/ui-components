@@ -1,0 +1,49 @@
+$primary: #526ed3;
+$accent: #3aa981;
+$warn: #dd4c1e;
+$error: #B33F40;
+$inactive: #1B1F3B66;
+$default: #1b1f3b;
+$bgc: #fff;
+
+$duration: 200ms;
+$transition: $duration ease-in-out;
+
+@mixin size($element) {
+  $padding-ox: 1rem;
+  $padding-oy: 1.25rem;
+
+  &[data-size="small"]#{$element} {
+
+  }
+
+  &[data-size="medium"]#{$element} {
+
+  }
+
+  &[data-size="large"]#{$element} {
+
+  }
+
+}
+
+.lt-input {
+  @include size(input);
+  width: 100%;
+  background-color: $bgc;
+  border: 2px solid gray;
+
+  transition: $transition;
+  outline: 0 solid $primary;
+  &:focus-within {
+    //@include box-shadow(0);
+    outline-width: 2px;
+  }
+
+  // PLACEHOLDER
+  &::placeholder { visibility: hidden; }
+  &:focus-within::placeholder {
+    visibility: initial;
+    color: $inactive;
+  }
+}

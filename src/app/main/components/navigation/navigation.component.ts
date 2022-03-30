@@ -24,6 +24,7 @@ export class NavigationComponent {
     { routerLink: 'const', title: 'Const' },
     { routerLink: 'tooltip', title: 'Tooltip' },
     { routerLink: 'badge', title: 'Badge' },
+    { routerLink: 'lt-input', title: 'LT Input' },
   ];
 
   public isOpened = true;
