@@ -1,8 +1,9 @@
-@import "lt-input.base";
+@use "sass:map";
 
 $primary: #526ed3;
 $accent: #3aa981;
 $warn: #dd4c1e;
+$warn-secondary: #e38163;
 $error: #B33F40;
 $inactive: #1B1F3B66;
 $default: #1b1f3b;
@@ -10,18 +11,102 @@ $bgc: #fff;
 
 $duration: 300ms;
 $transition: $duration ease-in-out;
+$input-size: ("small": .2rem 1rem .3rem, "medium": 1.1rem 1rem .3rem, "large": 1.5rem 1rem .3rem);
+$label-size: ("small": 0 1rem .2rem, "medium": .6rem 1rem .3rem, "large": .85rem 1rem .3rem);
+$label-padding-top: ("small": 0, "medium": .2rem, "large": .4rem);
+$radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
+
+@mixin box-shadow($depth) {
+  @if $depth < 1 {
+    box-shadow: none;
+  } @else if $depth > 5 {
+    @warn "Invalid $depth `#{$depth}` for mixin `shadow`.";
+  } @else {
+    box-shadow: bottom-shadow($depth), top-shadow($depth);
+  }
+}
+
+@function top-shadow($depth) {
+  $primary-offset: nth(1.5 3 10 14 19, $depth) * 1px;
+  $blur: nth(1.5 3 10 14 19, $depth) * 4px;
+  $color: rgba(black, nth(.12 .16 .19 .25 .30, $depth));
+
+  @return 0 $primary-offset $blur $color;
+}
+
+@function bottom-shadow($depth) {
+  $primary-offset: nth(1.5 3 6 10 15, $depth) * 1px;
+  $blur: nth(1 3 3 5 6, $depth) * 4px;
+  $color: rgba(black, nth(.24 .23 .23 .22 .22, $depth));
+
+  @return 0 $primary-offset $blur $color;
+}
+
+@mixin size($size) {
+  .lt-input {
+    padding: map.get($input-size, $size);
+    border-radius: map.get($radius, $size);
+  }
+
+  .lt-input-label {
+    padding: map.get($label-size, $size);
+  }
+
+  .lt-input--filled .lt-input-label,
+  .lt-input-wrapper:focus-within .lt-input-label {
+    font-size: small;
+    color: $default;
+    padding-top: map.get($label-padding-top, $size);
+  }
+
+  @if $size == "small" {
+    .lt-input::placeholder {
+      visibility: visible;
+    }
+    .lt-input-label {
+      display: none;
+    }
+  }
+}
 
 :host {
-  @include size(input);
-  @include size(label);
   display: flex;
   -webkit-font-smoothing: antialiased;
+
+  &[data-size="small"] {
+    @include size(small);
+  }
+  &[data-size="medium"] {
+    @include size(medium);
+  }
+  &[data-size="large"] {
+    @include size(large);
+  }
 }
 
 .lt-input-wrapper {
   display: flex;
   width: 100%;
   position: relative;
+
+  // INVALID
+  &.lt-input--invalid {
+    .lt-input {
+      outline-width: 2px;
+      outline-color: $warn;
+
+      &:focus-within {
+        outline-color: $warn-secondary;
+      }
+
+      @include box-shadow(0);
+    }
+
+    .lt-input-label {
+      color: $warn !important;
+    }
+
+  }
 }
 
 .lt-input {
@@ -72,9 +157,4 @@ $transition: $duration ease-in-out;
   font-size: inherit;
 
   transition: $transition;
-}
-
-.lt-input-wrapper:focus-within .lt-input-label {
-  font-size: smaller;
-  color: $default;
 }

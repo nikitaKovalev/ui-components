@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
+import { LTControlValueAccessor } from './control-value-accessor.abstract';
+
 let _id: number = 0;
+type LTInputSize = 'small' | 'medium' | 'large';
+type LTInputType = 'text' | 'number' | 'password';
 
 @Component({
   selector: 'lt-input',
@@ -8,7 +12,8 @@ let _id: number = 0;
   styleUrls: ['./lt-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LtInputComponent {
+export class LtInputComponent
+  extends LTControlValueAccessor<string> {
 
   @Input()
   public id: number = _id++;
@@ -20,10 +25,17 @@ export class LtInputComponent {
   public placeholder: string = '';
 
   @Input()
-  public autocomplete: boolean = false;
+  public type: LTInputType = 'text';
 
   @Input()
   @HostBinding('attr.data-size')
-  public size: 'small' | 'medium' | 'large' = 'large';
+  public size: LTInputSize = 'large';
+
+  @Input()
+  public autocomplete: boolean = false;
+
+  protected _getOverrideValue(): string {
+    return '';
+  }
 
 }

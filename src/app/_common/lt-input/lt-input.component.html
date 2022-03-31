@@ -1,10 +1,16 @@
-<div class="lt-input-wrapper">
+<div
+  class="lt-input-wrapper"
+  [class.lt-input--filled]="!!value"
+  [class.lt-input--invalid]="hasError"
+>
 
   <input
     class="lt-input"
-    type="text"
     [id]="id"
+    [type]="type"
     [placeholder]="placeholder"
+    [(ngModel)]="value"
+    (ngModelChange)="onChange($event)"
   >
 
   <span class="lt-input-label-wrapper">
