@@ -1,17 +1,26 @@
 <p>Input v2</p>
 
 <lt-input
-  class="me-3 pb-3"
+  class="me-3 pb-5"
   label="Username"
   placeholder="Enter username"
   [formControl]="usernameControl"
-></lt-input>
+>
+  <lt-error>
+    This field is required!
+  </lt-error>
+
+  <lt-hint>Personal information</lt-hint>
+  <lt-hint align="end">ready!</lt-hint>
+</lt-input>
+
 <lt-input
   class="me-3 pb-3"
   label="Username"
   placeholder="Enter username"
   size="medium"
 ></lt-input>
+
 <lt-input
   class="me-3"
   label="Username"

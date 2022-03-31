@@ -11,8 +11,10 @@
     [placeholder]="placeholder"
     [(ngModel)]="value"
     (ngModelChange)="onChange($event)"
+    (blur)="onBlur()"
   >
 
+  <!-- Label -->
   <span class="lt-input-label-wrapper">
     <label class="lt-input-label" [for]="id">
       {{ label }}
@@ -23,5 +25,25 @@
   <ng-container *ngIf="autocomplete">
     {{ autocomplete }}
   </ng-container>
+
+  <div class="lt-messages-wrapper">
+    <!-- Error -->
+    <div
+      class="lt-error-wrapper"
+      *ngIf="hasError"
+      [@fadeInMessages]="'enter'">
+      <ng-content select="lt-error"></ng-content>
+    </div>
+
+    <!-- Hint -->
+    <div
+      class="lt-hint-wrapper"
+      *ngIf="!hasError"
+      [@fadeInMessages]="'enter'">
+      <ng-content select="lt-hint:not([align='end'])"></ng-content>
+      <div class="lt-hint-spacer"></div>
+      <ng-content select="lt-hint[align='end']"></ng-content>
+    </div>
+  </div>
 
 </div>

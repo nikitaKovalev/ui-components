@@ -73,13 +73,13 @@ $radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
   display: flex;
   -webkit-font-smoothing: antialiased;
 
-  &[data-size="small"] {
+  &[lt-input-size="small"] {
     @include size(small);
   }
-  &[data-size="medium"] {
+  &[lt-input-size="medium"] {
     @include size(medium);
   }
-  &[data-size="large"] {
+  &[lt-input-size="large"] {
     @include size(large);
   }
 }

@@ -36,6 +36,7 @@ import {
   TableView,
   TooltipView,
 } from './views';
+
 import { LtInputModule } from '../_common/lt-input/lt-input.module';
 import { LtInputView } from './views/lt-input/lt-input.view';
 

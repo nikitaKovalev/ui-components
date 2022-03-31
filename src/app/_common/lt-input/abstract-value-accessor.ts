@@ -4,27 +4,27 @@ import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms
 const EMPTY_FUNCTION = () => {};
 
 @Directive()
-export abstract class LTControlValueAccessor<T>
+export abstract class AbstractValueAccessor<T>
   implements ControlValueAccessor {
 
   public get invalid(): boolean {
-    return this._ngControl?.invalid ?? false;
+    return this._getNgControlProperty<boolean>('invalid');
   }
 
   public get valid(): boolean {
-    return this._ngControl?.valid ?? false;
+    return this._getNgControlProperty<boolean>('valid');
   }
 
   public get touched(): boolean {
-    return this._ngControl?.touched ?? false;
+    return this._getNgControlProperty<boolean>('touched');
   }
 
   public get dirty(): boolean {
-    return this._ngControl?.dirty ?? false;
+    return this._getNgControlProperty<boolean>('dirty');
   }
 
   public get control(): AbstractControl | null {
-    return this._ngControl?.control ?? null;
+    return this._getNgControlProperty<AbstractControl>('control');
   }
 
   public get hasError(): boolean {
@@ -34,7 +34,7 @@ export abstract class LTControlValueAccessor<T>
   }
 
   public get value(): T | unknown {
-    return this._value;
+    return this._value || this.control?.value;
   }
   public set value(value: T | unknown) {
     this._value = value;
@@ -43,8 +43,6 @@ export abstract class LTControlValueAccessor<T>
 
   private _onChange: Function = EMPTY_FUNCTION;
   private _onTouched: Function = EMPTY_FUNCTION;
-
-  protected _overrideValue = this._getOverrideValue();
 
   constructor(
     @Optional()
@@ -81,6 +79,14 @@ export abstract class LTControlValueAccessor<T>
     this._onChange(value);
   }
 
-  protected abstract _getOverrideValue(): T;
+  public onBlur(): void {
+    this.control ? this.control.markAsTouched() : null;
+  }
+
+  private _getNgControlProperty<T>(
+    property: keyof NgControl,
+  ): T {
+    return this._ngControl && this._ngControl[property];
+  }
 
 }
