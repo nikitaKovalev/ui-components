@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CdkTableModule } from '@angular/cdk/table';
 
-import { UiInputModule } from '@ui-components/kit/ui-input';
 import { UiMessageModule } from '@ui-components/kit/ui-message';
 import { UiAutocompleteModule } from '@ui-components/kit/ui-autocomplete';
 import { UiMenuModule } from '@ui-components/kit/ui-menu';
@@ -37,6 +36,8 @@ import {
   TooltipView,
 } from './views';
 
+import { UiTextFieldModule } from './components/text-field';
+
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import {
     ReactiveFormsModule,
     CdkTableModule,
 
-    UiInputModule,
+    UiTextFieldModule,
+
     UiMessageModule,
     UiAutocompleteModule,
     UiMenuModule,

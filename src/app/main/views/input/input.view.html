@@ -1,129 +1,21 @@
-<!-- Large -->
-<div class="row">
-  <div class="col-3">
-    <p>
-      Input size large
-    </p>
+<ui-text-field
+  class="py-3"
+  uiTextFieldLabel="User"
+  uiTextFieldPlaceholder="Select user from the dropdown"
+  uiTextFieldSize="large"
+>
+</ui-text-field>
 
-    <ui-input
-      label="User"
-      placeholder="Select user or enter username">
-    </ui-input>
-  </div>
+<ui-text-field
+  class="py-3"
+  uiTextFieldLabel="User"
+  uiTextFieldPlaceholder="Select user from the dropdown"
+>
+</ui-text-field>
 
-  <div class="col-3">
-    <p>
-      Form Control input
-    </p>
-
-    <ui-input
-      label="User"
-      placeholder="Select user or enter username"
-      [formControl]="userControl">
-    </ui-input>
-  </div>
-</div>
-
-<!-- Medium -->
-<div class="row">
-  <div class="col-3">
-    <p>
-      Input size medium
-    </p>
-
-    <ui-input
-      label="User"
-      size="medium"
-      placeholder="Select user or enter username">
-    </ui-input>
-  </div>
-
-  <div class="col-3">
-    <p>
-      Form Control input
-    </p>
-
-    <ui-input
-      label="User"
-      size="medium"
-      placeholder="Select user or enter username"
-      [formControl]="userControl">
-    </ui-input>
-  </div>
-</div>
-
-<!-- Small -->
-<div class="row">
-  <div class="col-3">
-    <p>
-      Input size small
-    </p>
-
-    <ui-input
-      label="User"
-      size="small"
-      placeholder="Select user or enter username">
-    </ui-input>
-  </div>
-
-  <div class="col-3">
-    <p>
-      Form Control input
-    </p>
-
-    <ui-input
-      label="User"
-      size="small"
-      placeholder="Select user or enter username"
-      [formControl]="userControl">
-    </ui-input>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div class="row align-items-center py-3" style="height: 400px">-->
-
-<!--  <div class="col-3">-->
-<!--    <ui-input-->
-<!--      label="User"-->
-<!--      placeholder="Select user or enter username">-->
-<!--    </ui-input>-->
-<!--  </div>-->
-
-<!--  <div class="col-3 ml-3">-->
-<!--    <ui-input-->
-<!--      label="Form Control input"-->
-<!--      placeholder="Test validations"-->
-<!--      [formControl]="userControl"-->
-<!--      [uiAutocomplete]="autoUser">-->
-<!--      <ui-autocomplete #autoUser="uiAutocomplete" [displayWith]="displayUser">-->
-<!--        <ui-option-->
-<!--          *ngFor="let user of users"-->
-<!--          [value]="user">-->
-<!--          {{ user.name }}-->
-<!--        </ui-option>-->
-<!--      </ui-autocomplete>-->
-<!--    </ui-input>-->
-<!--  </div>-->
-
-<!--</div>-->
+<ui-text-field
+  class="py-3"
+  uiTextFieldPlaceholder="Select user from the dropdown"
+  uiTextFieldSize="small"
+>
+</ui-text-field>
