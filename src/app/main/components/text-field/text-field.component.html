@@ -6,6 +6,8 @@
     [id]="controller.id"
     [type]="controller.type"
     [placeholder]="controller.placeholder"
+    [disabled]="controller.disabled"
+    [readonly]="controller.readOnly"
     [(ngModel)]="value"
     (ngModelChange)="onValueChange()"
   >

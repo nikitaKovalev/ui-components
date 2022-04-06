@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 
 import { TEXT_FIELD_CONTROLLER, TEXT_FIELD_PROVIDERS } from './text-field.providers';
 import { UiTextFieldController } from './text-field.controller';
@@ -11,18 +11,28 @@ import { UiTextFieldController } from './text-field.controller';
     'class': 'ui-text-field',
     '[class.--focused]': 'focused',
     '[class.--filled]': 'filled',
+    '[class.--invalid]': 'invalid',
+    '[class.--disabled]': 'controller.disabled',
     '[attr.ui-text-field-size]': 'controller.size',
     '(focusin)': 'focused = true',
-    '(focusout)': 'focused = false',
+    '(focusout)': 'focused = false; focusChange.emit()',
   },
   providers: TEXT_FIELD_PROVIDERS,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiTextFieldComponent {
 
-  @Output()
-  public readonly valueChanges = new EventEmitter<string>();
+  @Input()
   public value: string = '';
+
+  @Input()
+  public invalid: boolean = false;
+
+  @Output()
+  public readonly focusChange = new EventEmitter<void>();
+
+  @Output()
+  public readonly valueChange = new EventEmitter<string>();
 
   public focused: boolean = false;
 
@@ -36,7 +46,7 @@ export class UiTextFieldComponent {
   }
 
   public onValueChange(): void {
-    this.valueChanges.emit(this.value);
+    this.valueChange.emit(this.value);
   }
 
 }

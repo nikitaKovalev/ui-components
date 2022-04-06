@@ -1,4 +1,5 @@
 import { Directive, Input } from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 import { Controller } from './controller';
 import { TextFieldSize, TextFieldType } from './text-field';
@@ -12,6 +13,8 @@ let _id: number = 0;
   [uiTextFieldPlaceholder], 
   [uiTextFieldType], 
   [uiTextFieldSize],
+  [uiTextFieldDisabled],
+  ui-input[uiTextFieldReadonly],
   `,
 })
 export class UiTextFieldController
@@ -30,4 +33,22 @@ export class UiTextFieldController
 
   @Input('uiTextFieldSize')
   public size: TextFieldSize = 'medium';
+
+  @Input('uiTextFieldReadonly')
+  public get readOnly(): boolean {
+    return this._readOnly;
+  }
+  public set readOnly(readonly: boolean | string) {
+    this._readOnly = coerceBooleanProperty(readonly);
+  }
+  private _readOnly: boolean = false;
+
+  @Input('uiTextFieldDisabled')
+  public get disabled(): boolean {
+    return this._disabled;
+  }
+  public set disabled(disabled: boolean | string) {
+    this._disabled = coerceBooleanProperty(disabled);
+  }
+  private _disabled: boolean = false;
 }

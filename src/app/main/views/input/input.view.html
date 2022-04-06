@@ -1,21 +1,7 @@
-<ui-text-field
-  class="py-3"
+<ui-input
+  class="col-3 py-2"
   uiTextFieldLabel="User"
   uiTextFieldPlaceholder="Select user from the dropdown"
-  uiTextFieldSize="large"
+  [formControl]="userControl"
 >
-</ui-text-field>
-
-<ui-text-field
-  class="py-3"
-  uiTextFieldLabel="User"
-  uiTextFieldPlaceholder="Select user from the dropdown"
->
-</ui-text-field>
-
-<ui-text-field
-  class="py-3"
-  uiTextFieldPlaceholder="Select user from the dropdown"
-  uiTextFieldSize="small"
->
-</ui-text-field>
+</ui-input>

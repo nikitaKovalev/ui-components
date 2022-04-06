@@ -74,6 +74,31 @@ $radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
     @include size(large);
     @include label-float(large);
   }
+
+  &.--invalid {
+    .tf-input {
+      outline-width: 2px;
+      outline-color: $warn;
+      &:focus-within {
+        outline-color: $warn-secondary;
+      }
+      @include box-shadow(0);
+    }
+
+    .tf-label {
+      color: $warn !important;
+    }
+  }
+
+  &.--disabled {
+    opacity: 0.7;
+
+    .tf-input {
+      outline-width: 2px;
+      outline-color: $inactive;
+      @include box-shadow(0);
+    }
+  }
 }
 
 // wrapper

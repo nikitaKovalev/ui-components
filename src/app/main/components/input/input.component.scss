@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+
+  & > ui-text-field {
+    width: 100%;
+  }
+}
