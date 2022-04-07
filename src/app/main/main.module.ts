@@ -37,7 +37,9 @@ import {
 } from './views';
 
 import { UiTextFieldModule } from './components/text-field';
-import { UiInputModule } from './components/input/input.module';
+import { UiInputModule } from './components/input';
+import { UiHintModule } from './components/hint';
+import { UiErrorModule } from './components/error';
 
 
 @NgModule({
@@ -63,7 +65,10 @@ import { UiInputModule } from './components/input/input.module';
     UiBadgeModule,
 
     MainRoutingModule,
+
     UiInputModule,
+    UiHintModule,
+    UiErrorModule,
   ],
   declarations: [
     MainComponent,

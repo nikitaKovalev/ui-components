@@ -17,6 +17,6 @@ import { UiTextFieldController } from './text-field.controller';
   declarations: [
     UiTextFieldComponent,
     UiTextFieldController,
-  ]
+  ],
 })
 export class UiTextFieldModule {}

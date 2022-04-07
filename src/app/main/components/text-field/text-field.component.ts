@@ -2,17 +2,22 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output
 
 import { TEXT_FIELD_CONTROLLER, TEXT_FIELD_PROVIDERS } from './text-field.providers';
 import { UiTextFieldController } from './text-field.controller';
+import { fadeInMessages } from './text-field.animations';
 
 @Component({
   selector: 'ui-text-field',
   templateUrl: './text-field.component.html',
-  styleUrls: ['./text-field.component.scss'],
+  styleUrls: [
+    './text-field.component.scss',
+    './text-field.messages.scss',
+  ],
+  animations: [ fadeInMessages ],
   host: {
     'class': 'ui-text-field',
     '[class.--focused]': 'focused',
     '[class.--filled]': 'filled',
     '[class.--invalid]': 'invalid',
-    '[class.--disabled]': 'controller.disabled',
+    '[class.--disabled]': 'disabled',
     '[attr.ui-text-field-size]': 'controller.size',
     '(focusin)': 'focused = true',
     '(focusout)': 'focused = false; focusChange.emit()',
@@ -27,6 +32,9 @@ export class UiTextFieldComponent {
 
   @Input()
   public invalid: boolean = false;
+
+  @Input('disabled')
+  public _disabled: boolean = false;
 
   @Output()
   public readonly focusChange = new EventEmitter<void>();
@@ -43,6 +51,10 @@ export class UiTextFieldComponent {
 
   public get filled(): boolean {
     return !!this.value;
+  }
+
+  public get disabled(): boolean {
+    return this._disabled || this.controller.disabled;
   }
 
   public onValueChange(): void {

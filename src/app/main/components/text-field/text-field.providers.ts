@@ -7,8 +7,9 @@ import { UiDestroyedService } from '@ui-components/core/services';
 import { UiTextFieldController } from './text-field.controller';
 import { Controller } from './controller';
 
-export const TEXT_FIELD_CONTROLLER = new InjectionToken<any>(
-  'controller over base text field properties: [label], [placeholder], [type], [size], [id]',
+export const TEXT_FIELD_CONTROLLER = new InjectionToken<Controller>(
+  `controller over base text field properties: 
+  [label], [placeholder], [type], [size], [id], [readOnly], [disabled]`,
 );
 
 export const TEXT_FIELD_PROVIDERS: Provider[] = [

@@ -14,6 +14,6 @@ export class InputView {
         console.log(`value: ${v}`);
       })
 
-    this.userControl.setValue('asdada')
+    this.userControl.setValue('asdada');
   }
 }

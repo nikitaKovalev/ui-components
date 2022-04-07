@@ -2,6 +2,9 @@
   class="col-3 py-2"
   uiTextFieldLabel="User"
   uiTextFieldPlaceholder="Select user from the dropdown"
+  uiTextFieldSize="large"
   [formControl]="userControl"
 >
+  <ui-error>This field is required!</ui-error>
+  <ui-hint align="end">The hint is here!</ui-hint>
 </ui-input>

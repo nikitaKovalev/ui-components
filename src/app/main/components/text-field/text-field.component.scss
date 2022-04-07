@@ -1,6 +1,4 @@
-@use "sass:map";
-@use "sass:math";
-@import "text-field.mixins";
+@use "text-field.mixins" as mixin;
 
 $primary: #526ed3;
 $accent: #3aa981;
@@ -13,66 +11,26 @@ $bgc: #fff;
 
 $duration: 300ms;
 $transition: $duration ease-in-out;
-$input: ("small": 0.3rem, "medium": 1.1rem, "large": 1.5rem);
-$padding-x-bottom: 1rem .3rem;
-$label-padding-top: ("small": 0, "medium": .2rem, "large": .4rem);
-$radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
-
-@mixin size($size) {
-  $padding-y: map.get($input, $size);
-
-  .tf-input {
-    padding: $padding-y $padding-x-bottom;
-    border-radius: map.get($radius, $size);
-  }
-
-  .tf-label {
-    padding: math.div($padding-y, 2) $padding-x-bottom;
-  }
-}
-
-@mixin label-float($size) {
-  &.--filled .tf-label,
-  &.--focused .tf-label {
-    font-size: small;
-    color: $default;
-    padding-top: map.get($label-padding-top, $size);
-  }
-
-  @if $size == small {
-    .tf-label {
-      display: none;
-    }
-    .tf-input::placeholder {
-      visibility: visible;
-    }
-  }
-}
-
-@mixin inherit {
-  width: inherit;
-  height: inherit;
-  box-sizing: border-box;
-}
 
 // component
 :host {
   display: flex;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   &[ui-text-field-size="small"] {
-    @include size(small);
-    @include label-float(small);
+    @include mixin.size(small);
+    @include mixin.label-float(small);
   }
 
   &[ui-text-field-size="medium"] {
-    @include size(medium);
-    @include label-float(medium);
+    @include mixin.size(medium);
+    @include mixin.label-float(medium);
   }
 
   &[ui-text-field-size="large"] {
-    @include size(large);
-    @include label-float(large);
+    @include mixin.size(large);
+    @include mixin.label-float(large);
   }
 
   &.--invalid {
@@ -82,7 +40,7 @@ $radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
       &:focus-within {
         outline-color: $warn-secondary;
       }
-      @include box-shadow(0);
+      @include mixin.box-shadow(0);
     }
 
     .tf-label {
@@ -96,14 +54,14 @@ $radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
     .tf-input {
       outline-width: 2px;
       outline-color: $inactive;
-      @include box-shadow(0);
+      @include mixin.box-shadow(0);
     }
   }
 }
 
 // wrapper
 .tf-wrapper {
-  @include inherit;
+  @include mixin.inherit;
   display: flex;
   position: relative;
   height: 100%;
@@ -118,12 +76,12 @@ $radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
   transition: $transition;
 
   &:hover {
-    @include box-shadow(2);
+    @include mixin.box-shadow(2);
   }
 
   &:focus-within {
     outline-width: 2px;
-    @include box-shadow(0);
+    @include mixin.box-shadow(0);
   }
 
   // placeholder
@@ -134,8 +92,8 @@ $radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
     color: $inactive;
   }
 
-  @include box-shadow(1);
-  @include inherit;
+  @include mixin.box-shadow(1);
+  @include mixin.inherit;
 }
 
 // label wrapper + label
@@ -143,7 +101,7 @@ $radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
   position: absolute;
   left: 0;
   pointer-events: none;
-  @include inherit;
+  @include mixin.inherit;
 }
 
 .tf-label {
@@ -152,5 +110,5 @@ $radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
   overflow: hidden;
   text-overflow: ellipsis;
   transition: $transition;
-  @include inherit;
+  @include mixin.inherit;
 }
