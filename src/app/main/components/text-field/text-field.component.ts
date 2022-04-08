@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 
-import { TEXT_FIELD_CONTROLLER, TEXT_FIELD_PROVIDERS } from './text-field.providers';
-import { UiTextFieldController } from './text-field.controller';
+import { TEXTFIELD_CONTROLLER, TEXTFIELD_PROVIDERS } from '../../directives/textfield-controller/textfield.providers';
+import { UiTextfieldController } from '../../directives/textfield-controller';
+
 import { fadeInMessages } from './text-field.animations';
 
 @Component({
@@ -22,7 +23,7 @@ import { fadeInMessages } from './text-field.animations';
     '(focusin)': 'focused = true',
     '(focusout)': 'focused = false; focusChange.emit()',
   },
-  providers: TEXT_FIELD_PROVIDERS,
+  providers: TEXTFIELD_PROVIDERS,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiTextFieldComponent {
@@ -45,8 +46,8 @@ export class UiTextFieldComponent {
   public focused: boolean = false;
 
   constructor(
-    @Inject(TEXT_FIELD_CONTROLLER)
-    public readonly controller: UiTextFieldController,
+    @Inject(TEXTFIELD_CONTROLLER)
+    public readonly controller: UiTextfieldController,
   ) {}
 
   public get filled(): boolean {

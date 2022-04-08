@@ -1,8 +1,8 @@
 import { Directive, Input } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
-import { Controller } from './controller';
-import { TextFieldSize, TextFieldType } from './text-field';
+import { UiController } from '../../abstract';
+import { TextFieldSize, TextFieldType } from '../../components/text-field/text-field';
 
 let _id: number = 0;
 
@@ -14,11 +14,10 @@ let _id: number = 0;
   [uiTextFieldType], 
   [uiTextFieldSize],
   [uiTextFieldDisabled],
-  ui-input[uiTextFieldReadonly],
-  `,
+  ui-input[uiTextFieldReadonly],`
 })
-export class UiTextFieldController
-  extends Controller {
+export class UiTextfieldController
+  extends UiController {
   @Input('uiTextFieldId')
   public id: number = _id++;
 
