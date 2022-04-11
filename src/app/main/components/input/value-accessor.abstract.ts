@@ -1,5 +1,5 @@
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
-import { Directive, Inject, Optional, Self } from '@angular/core';
+import { ChangeDetectorRef, Directive, Inject, Optional, Self } from '@angular/core';
 
 import { identity } from 'rxjs';
 
@@ -42,6 +42,7 @@ export abstract class UiValueAccessor<T = any>
   }
   public set value(value: T | unknown) {
     this._value = value;
+    this._cdRef.detectChanges();
   }
   private _value: T | unknown = '';
 
@@ -53,6 +54,8 @@ export abstract class UiValueAccessor<T = any>
     @Self()
     @Inject(NgControl)
     private readonly _ngControl: NgControl,
+    @Inject(ChangeDetectorRef)
+    private readonly _cdRef: ChangeDetectorRef,
   ) {
     if (_ngControl) {
       _ngControl.valueAccessor = this;

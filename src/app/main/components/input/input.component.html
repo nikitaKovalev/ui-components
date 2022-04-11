@@ -1,21 +1,31 @@
-<ui-text-field
-  [value]="value"
-  [invalid]="hasError"
+<ui-dropdown-list
   [disabled]="disabled"
-  (valueChange)="onValueChange($event)"
-  (focusChange)="onFocusChange()"
+  [(value)]="value"
+  (controlValueChange)="controlValueChanged($event)"
 >
-  <!-- Error -->
-  <ng-container ngProjectAs="ui-error">
-    <ng-content select="ui-error"></ng-content>
-  </ng-container>
+  <ui-text-field
+    [value]="value"
+    [invalid]="hasError"
+    [disabled]="disabled"
+    (valueChange)="onValueChange($event)"
+    (focusChange)="onFocusChange()"
+  >
+    <!-- Error -->
+    <ng-container ngProjectAs="ui-error">
+      <ng-content select="ui-error"></ng-content>
+    </ng-container>
 
-  <!-- Hint -->
-  <ng-container ngProjectAs="ui-hint:not([align='end'])">
-    <ng-content select="ui-hint:not([align='end'])"></ng-content>
-  </ng-container>
-  <ng-container ngProjectAs="ui-hint[align='end']">
-    <ng-content select="ui-hint[align='end']"></ng-content>
-  </ng-container>
-</ui-text-field>
+    <!-- Hint -->
+    <ng-container ngProjectAs="ui-hint:not([align='end'])">
+      <ng-content select="ui-hint:not([align='end'])"></ng-content>
+    </ng-container>
+    <ng-container ngProjectAs="ui-hint[align='end']">
+      <ng-content select="ui-hint[align='end']"></ng-content>
+    </ng-container>
+  </ui-text-field>
 
+  <!-- Dropdown -->
+  <ng-container ngProjectAs="ui-dropdown-option">
+    <ng-content select="ui-dropdown-option"></ng-content>
+  </ng-container>
+</ui-dropdown-list>

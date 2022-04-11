@@ -9,4 +9,10 @@ import { UiValueAccessor } from './value-accessor.abstract';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiInputComponent
-  extends UiValueAccessor {}
+  extends UiValueAccessor {
+
+  public controlValueChanged(value: unknown): void {
+    this.control?.patchValue(value);
+  }
+
+}

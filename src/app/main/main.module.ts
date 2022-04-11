@@ -40,6 +40,7 @@ import { UiTextFieldModule } from './components/text-field';
 import { UiInputModule } from './components/input';
 import { UiHintModule } from './components/hint';
 import { UiErrorModule } from './components/error';
+import { UiDropdownOptionModule } from './components/dropdown-option';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { UiErrorModule } from './components/error';
     UiInputModule,
     UiHintModule,
     UiErrorModule,
+    UiDropdownOptionModule,
   ],
   declarations: [
     MainComponent,

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, InjectionToken, Provider } from '@angular/core';
+import { ChangeDetectorRef, InjectionToken, Optional, Provider } from '@angular/core';
 
 import { Observable, takeUntil } from 'rxjs';
 
@@ -16,7 +16,7 @@ export const TEXTFIELD_PROVIDERS: Provider[] = [
   UiDestroyedService,
   {
     provide: TEXTFIELD_CONTROLLER,
-    deps: [ UiTextfieldController, ChangeDetectorRef, UiDestroyedService ],
+    deps: [ [ new Optional(), UiTextfieldController ], ChangeDetectorRef, UiDestroyedService ],
     useFactory: textfieldBasPropertiesFactory,
   }
 ];
@@ -26,6 +26,10 @@ export function textfieldBasPropertiesFactory(
   cdRef: ChangeDetectorRef,
   destroyed$: Observable<void>,
 ): UiTextfieldController {
+  if (!controller) {
+    controller = new UiTextfieldController();
+  }
+
   controller.change$
     .pipe(takeUntil(destroyed$))
     .subscribe(() => cdRef.markForCheck());

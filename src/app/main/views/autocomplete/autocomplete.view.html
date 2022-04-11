@@ -1,0 +1,16 @@
+<ui-input
+  class="col-3 py-2"
+  uiTextFieldLabel="User"
+  uiTextFieldPlaceholder="Select user from the dropdown"
+  uiTextFieldSize="large"
+  uiDropdownEnabled="true"
+  [uiDropdownDisplayAs]="displayUser"
+  [formControl]="userControl"
+>
+  <ui-dropdown-option
+    *ngFor="let user of users$ | async"
+    [value]="user"
+  >
+    {{ user.name }}
+  </ui-dropdown-option>
+</ui-input>
