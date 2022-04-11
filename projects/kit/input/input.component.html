@@ -1,0 +1,31 @@
+<ui-dropdown-host
+  [disabled]="disabled"
+  [(value)]="value"
+  (controlValueChange)="controlValueChanged($event)"
+>
+  <ui-textbox
+    [value]="value"
+    [invalid]="hasError"
+    [disabled]="disabled"
+    (valueChange)="onValueChange($event)"
+    (focusChange)="onFocusChange()"
+  >
+    <!-- Error -->
+    <ng-container ngProjectAs="ui-error">
+      <ng-content select="ui-error"></ng-content>
+    </ng-container>
+
+    <!-- Hint -->
+    <ng-container ngProjectAs="ui-hint:not([align='end'])">
+      <ng-content select="ui-hint:not([align='end'])"></ng-content>
+    </ng-container>
+    <ng-container ngProjectAs="ui-hint[align='end']">
+      <ng-content select="ui-hint[align='end']"></ng-content>
+    </ng-container>
+  </ui-textbox>
+
+  <!-- Dropdown -->
+  <ng-container ngProjectAs="ui-option">
+    <ng-content select="ui-option"></ng-content>
+  </ng-container>
+</ui-dropdown-host>

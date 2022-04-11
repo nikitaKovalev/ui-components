@@ -1,0 +1,8 @@
+:host {
+  display: flex;
+  position: relative;
+
+  & > ui-textbox {
+    width: 100%;
+  }
+}

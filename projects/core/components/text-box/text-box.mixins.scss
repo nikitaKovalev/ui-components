@@ -1,0 +1,46 @@
+@use "sass:math";
+@use "sass:map";
+@import "../../styles/mixins/box-shadow.mixin";
+
+$default: #1b1f3b;
+$input: ("small": 0.3rem, "medium": 1.1rem, "large": 1.5rem);
+$padding-x-bottom: 1rem .3rem;
+$label-padding-top: ("small": 0, "medium": .2rem, "large": .4rem);
+$radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
+
+@mixin size($size) {
+  $padding-y: map.get($input, $size);
+
+  .textbox-input {
+    padding: $padding-y $padding-x-bottom;
+    border-radius: map.get($radius, $size);
+  }
+
+  .textbox-label {
+    padding: math.div($padding-y, 2) $padding-x-bottom;
+  }
+}
+
+@mixin label-float($size) {
+  &.--filled .textbox-label,
+  &.--focused .textbox-label {
+    font-size: small;
+    color: $default;
+    padding-top: map.get($label-padding-top, $size);
+  }
+
+  @if $size == small {
+    .textbox-label {
+      display: none;
+    }
+    .textbox-input::placeholder {
+      visibility: visible;
+    }
+  }
+}
+
+@mixin inherit {
+  width: inherit;
+  height: inherit;
+  box-sizing: border-box;
+}

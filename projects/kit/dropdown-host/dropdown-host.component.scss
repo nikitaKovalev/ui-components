@@ -24,8 +24,22 @@
   @return 0 $primary-offset $blur $color;
 }
 
+:host {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-@mixin size($padding, $radius) {
-  padding: var($padding);
-  border-radius: var($radius);
+.ui-dropdown-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: var(--page-bg);
+  border-radius: var(--radius-l);
+  overflow-y: scroll;
+
+  font: var(--font-text-m);
+
+  @include box-shadow(1);
 }

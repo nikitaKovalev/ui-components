@@ -1,46 +1,16 @@
-<div class="row">
-
-  <div class="col-4">
-    <p>
-      UI-Input autocomplete with Form Control
-    </p>
-
-    <ui-input
-      label="Form Control input"
-      placeholder="Test validations"
-      [formControl]="userControl"
-      [uiAutocomplete]="autoUser">
-      <ui-autocomplete #autoUser="uiAutocomplete" [displayWith]="displayUser">
-        <ui-option
-          *ngFor="let user of users$ | async"
-          [value]="user">
-          {{ user.name }}
-        </ui-option>
-      </ui-autocomplete>
-    </ui-input>
-  </div>
-
-
-</div>
-
-<div class="row">
-  <div class="col-3">
-    <p>
-      Regular input autocomplete
-    </p>
-
-    <input
-      type="text"
-      placeholder="Select user"
-      [formControl]="userRegularControl"
-      [uiAutocomplete]="autoRegularUser">
-
-    <ui-autocomplete #autoRegularUser="uiAutocomplete" [displayWith]="displayUser">
-      <ui-option
-        *ngFor="let user of regularUsers$ | async"
-        [value]="user">
-        {{ user.name }}
-      </ui-option>
-    </ui-autocomplete>
-  </div>
-</div>
+<ui-input
+  class="col-3 py-2"
+  uiTextboxLabel="User"
+  uiTextboxPlaceholder="Select user from the dropdown"
+  uiTextboxSize="large"
+  uiDropdownEnabled="true"
+  [uiDropdownDisplayAs]="displayUser"
+  [formControl]="userControl"
+>
+  <ui-option
+    *ngFor="let user of users$ | async"
+    [value]="user"
+  >
+    {{ user.name }}
+  </ui-option>
+</ui-input>

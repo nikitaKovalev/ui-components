@@ -1,4 +1,4 @@
-.ui-option {
+:host {
   cursor: pointer;
 
   transition: var(--duration);
@@ -9,8 +9,7 @@
     background-color: var(--page-bg-secondary);
   }
 
-  &.--ui-option-active {
+  &.--active {
     background-color: var(--page-bg-secondary);
   }
-
 }

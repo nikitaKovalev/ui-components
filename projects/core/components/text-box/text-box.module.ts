@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { UiInputComponent } from './ui-input.component';
-
+import { UiTextBoxComponent } from './text-box.component';
 
 @NgModule({
   imports: [
@@ -11,10 +10,10 @@ import { UiInputComponent } from './ui-input.component';
     FormsModule,
   ],
   exports: [
-    UiInputComponent,
+    UiTextBoxComponent,
   ],
   declarations: [
-    UiInputComponent,
+    UiTextBoxComponent,
   ],
 })
-export class UiInputModule {}
+export class UiTextBoxModule {}
