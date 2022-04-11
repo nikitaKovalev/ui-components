@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/core/directives/text-box-controller",
+  "lib": {
+    "entryFile": "index.ts"
+  }
+}

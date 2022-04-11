@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CdkTableModule } from '@angular/cdk/table';
 
+import { UiInputModule } from '@ui-components/kit/input';
 import { UiMessageModule } from '@ui-components/kit/ui-message';
-import { UiAutocompleteModule } from '@ui-components/kit/ui-autocomplete';
 import { UiMenuModule } from '@ui-components/kit/ui-menu';
 import { UiOptionModule } from '@ui-components/kit/ui-option';
 import { UiDialogModule } from '@ui-components/kit/ui-dialog';
@@ -16,6 +16,8 @@ import { UI_ICONS, UiIconModule, UiIconService } from '@ui-components/kit/ui-ico
 import { UiConstModule } from '@ui-components/kit/ui-const';
 import { UiTooltipModule } from '@ui-components/kit/ui-tooltip';
 import { UiBadgeModule } from '@ui-components/kit/ui-badge';
+import { UiHintModule } from '@ui-components/kit/hint';
+import { UiErrorModule } from '@ui-components/kit/error';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
@@ -36,12 +38,6 @@ import {
   TooltipView,
 } from './views';
 
-import { UiTextFieldModule } from './components/text-field';
-import { UiInputModule } from './components/input';
-import { UiHintModule } from './components/hint';
-import { UiErrorModule } from './components/error';
-import { UiDropdownOptionModule } from './components/dropdown-option';
-
 
 @NgModule({
   imports: [
@@ -49,10 +45,8 @@ import { UiDropdownOptionModule } from './components/dropdown-option';
     ReactiveFormsModule,
     CdkTableModule,
 
-    UiTextFieldModule,
-
+    UiInputModule,
     UiMessageModule,
-    UiAutocompleteModule,
     UiMenuModule,
     UiOptionModule,
     UiDialogModule,
@@ -64,13 +58,10 @@ import { UiDropdownOptionModule } from './components/dropdown-option';
     UiConstModule,
     UiTooltipModule,
     UiBadgeModule,
-
-    MainRoutingModule,
-
-    UiInputModule,
     UiHintModule,
     UiErrorModule,
-    UiDropdownOptionModule,
+
+    MainRoutingModule,
   ],
   declarations: [
     MainComponent,

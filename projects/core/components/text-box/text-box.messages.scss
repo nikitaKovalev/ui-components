@@ -1,0 +1,25 @@
+@use "text-box.mixins" as mixin;
+@use "text-box.component" as variable;
+
+.textbox-messages-wrapper {
+  @include mixin.inherit;
+  height: auto;
+  margin-top: 0.3rem;
+  padding: 0 1rem;
+  position: absolute;
+  top: 100%;
+  font-size: small;
+}
+
+.textbox-hint-wrapper {
+  display: flex;
+}
+
+.textbox-hint-spacer {
+  flex: 1 0 1rem;
+}
+
+.textbox-error-wrapper {
+  display: flex;
+  color: variable.$warn;
+}

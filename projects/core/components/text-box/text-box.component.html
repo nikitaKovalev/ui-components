@@ -1,0 +1,44 @@
+<div class="textbox-wrapper">
+
+  <input
+    class="textbox-input"
+    autocomplete="off"
+    [id]="controller.id"
+    [type]="controller.type"
+    [placeholder]="controller.placeholder"
+    [disabled]="disabled"
+    [readonly]="controller.readOnly"
+    [(ngModel)]="value"
+    (ngModelChange)="onValueChange()"
+  >
+
+  <!-- Label -->
+  <span class="textbox-label-wrapper">
+    <label class="textbox-label" [for]="controller.id">
+      {{ controller.label }}
+    </label>
+  </span>
+
+  <div class="textbox-messages-wrapper">
+    <!-- Error -->
+    <div
+      class="textbox-error-wrapper"
+      *ngIf="invalid"
+      @fadeIn
+    >
+      <ng-content select="ui-error"></ng-content>
+    </div>
+
+    <!-- Hint -->
+    <div
+      class="textbox-hint-wrapper"
+      *ngIf="!invalid"
+      @fadeIn
+    >
+      <ng-content select="ui-hint:not([align='end'])"></ng-content>
+      <div class="textbox-hint-spacer"></div>
+      <ng-content select="ui-hint[align='end']"></ng-content>
+    </div>
+  </div>
+
+</div>
