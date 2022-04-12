@@ -1,10 +1,41 @@
+<div class="d-flex pb-2">
+  <div class="col-3 me-3">
+    <p class="text-truncate">Large size</p>
+    <ui-input
+      uiTextboxLabel="Large"
+      uiTextboxPlaceholder="Large size input"
+      uiTextboxSize="large"
+    >
+    </ui-input>
+  </div>
+
+  <div class="col-3 me-3">
+    <p class="text-truncate">Form control, with truncated label</p>
+    <ui-input
+      uiTextboxLabel="Lorem ipsum dolor sit amet, consectetur"
+      uiTextboxPlaceholder="Select user from the dropdown"
+      uiTextboxSize="large"
+      [formControl]="userControl"
+    >
+      <ui-error>This field is required!</ui-error>
+      <ui-hint align="end">The hint is here!</ui-hint>
+    </ui-input>
+  </div>
+</div>
+
+<p>Medium size</p>
 <ui-input
-  class="col-3 py-2"
-  uiTextboxLabel="User"
-  uiTextboxPlaceholder="Select user from the dropdown"
-  uiTextboxSize="large"
-  [formControl]="userControl"
+  class="col-3 pb-2"
+  uiTextboxLabel="Medium"
+  uiTextboxPlaceholder="Medium size input"
 >
-  <ui-error>This field is required!</ui-error>
-  <ui-hint align="end">The hint is here!</ui-hint>
+</ui-input>
+
+<p>Small size</p>
+<ui-input
+  class="col-3 pb-2"
+  uiTextboxLabel="Medium"
+  uiTextboxPlaceholder="Medium size input"
+  uiTextboxSize="small"
+>
 </ui-input>
