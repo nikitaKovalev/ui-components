@@ -32,8 +32,6 @@ export abstract class UiValueAccessor<T = any>
   }
 
   public get hasError(): boolean {
-    console.log(this._ngControl && this._ngControl.invalid
-      && (this._ngControl.dirty || this._ngControl.touched));
     return (this._ngControl && this._ngControl.invalid
       && (this._ngControl.dirty || this._ngControl.touched))
       ?? false;
