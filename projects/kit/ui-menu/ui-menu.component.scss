@@ -45,11 +45,11 @@ $darken-font-color-amount: 5%;
       position: absolute;
       height: $element-size;
       width: $toggler-size;
-      border-radius: calc($element-size / 2);
+      border-radius: calc(#{$element-size} / 2);
 
-      &[top]    { top: calc($toggler-size / 8) - calc($element-size / 2);}
-      &[middle] { top: calc(($toggler-size - $element-size) / 2);}
-      &[bottom] { bottom: calc($toggler-size / 8) - calc($element-size / 2);}
+      &[top]    { top: calc(#{$toggler-size} / 8 - #{$element-size} / 2);}
+      &[middle] { top: calc((#{$toggler-size} - #{$element-size}) / 2);}
+      &[bottom] { bottom: calc(#{$toggler-size} / 8 - #{$element-size} / 2);}
     }
   }
 
@@ -62,11 +62,11 @@ $darken-font-color-amount: 5%;
       position: absolute;
       height: $element-size;
       width: $element-size;
-      left: calc(($toggler-size - $element-size) / 2);
-      border-radius: calc($element-size / 2);
+      left: calc((#{$toggler-size} - #{$element-size}) / 2);
+      border-radius: calc(#{$element-size} / 2);
 
       &[top]    { top: 0;}
-      &[middle] { top: calc(($toggler-size - $element-size) / 2);}
+      &[middle] { top: calc((#{$toggler-size} - #{$element-size}) / 2);}
       &[bottom] { bottom: 0;}
     }
   }
@@ -80,11 +80,11 @@ $darken-font-color-amount: 5%;
       position: absolute;
       height: $element-size;
       width: $element-size;
-      top: calc(($toggler-size - $element-size) / 2);
-      border-radius: calc($element-size / 2);
+      top: calc((#{$toggler-size} - #{$element-size}) / 2);
+      border-radius: calc(#{$element-size} / 2);
 
       &[top]    { left: 0; }
-      &[middle] { left: calc(($toggler-size - $element-size) / 2); }
+      &[middle] { left: calc((#{$toggler-size} - #{$element-size}) / 2); }
       &[bottom] { right: 0; }
     }
   }
