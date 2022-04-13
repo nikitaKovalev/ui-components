@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { map, Observable, pipe, tap, UnaryFunction } from 'rxjs';
+import { map, Observable, pipe, UnaryFunction } from 'rxjs';
 
 import { autocomplete } from '@ui-components/core/rxjs';
 

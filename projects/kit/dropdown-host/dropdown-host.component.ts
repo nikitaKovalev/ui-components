@@ -29,6 +29,7 @@ import { filter, fromEvent, merge, takeUntil, tap } from 'rxjs';
 
 import { fadeIn } from '@ui-components/core/animations';
 import { UiOptionComponent } from '@ui-components/kit/ui-option';
+import { OVERLAY_CONFIG } from '@ui-components/core/tokens';
 
 import { DROPDOWN_CONTROLLER, UiDropdownController } from './dropdown.controller';
 import { DROPDOWN_PROVIDERS } from './dropdown.providers';
@@ -64,7 +65,6 @@ export class UiDropdownHostComponent
 
   private _overlayRef: OverlayRef | null = null;
   private _hostedInput: ElementRef<HTMLInputElement> | null = null;
-  private readonly _defaultHeight = 120;
   private readonly _defaultOffsetY = 8;
 
   private _keyManager: ActiveDescendantKeyManager<UiOptionComponent>
@@ -80,6 +80,8 @@ export class UiDropdownHostComponent
     private readonly _overlay: Overlay,
     @Inject(DROPDOWN_CONTROLLER)
     private readonly _controller: UiDropdownController,
+    @Inject(OVERLAY_CONFIG)
+    private readonly _config: OverlayConfig,
   ) {}
 
   public ngAfterViewInit(): void {
@@ -172,11 +174,10 @@ export class UiDropdownHostComponent
 
   private _getOverlayConfig(): OverlayConfig {
     return <OverlayConfig> {
-      width: this._host.nativeElement.offsetWidth,
-      maxHeight: this._defaultHeight,
-      scrollStrategy: this._overlay.scrollStrategies.reposition(),
-      positionStrategy: this._getOverlayPosition(),
-      disposeOnNavigation: true,
+      ...this._config,
+      width: this._config.width || this._host.nativeElement.offsetWidth,
+      scrollStrategy: this._config.scrollStrategy || this._overlay.scrollStrategies.reposition(),
+      positionStrategy: this._config.positionStrategy || this._getOverlayPosition(),
     };
   }
 
