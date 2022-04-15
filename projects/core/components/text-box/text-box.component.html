@@ -1,23 +1,32 @@
 <div class="textbox-wrapper">
 
-  <input
-    class="textbox-input"
-    autocomplete="off"
-    [id]="controller.id"
-    [type]="controller.type"
-    [placeholder]="controller.placeholder"
-    [disabled]="disabled"
-    [readonly]="controller.readOnly"
-    [(ngModel)]="value"
-    (ngModelChange)="onValueChange()"
-  >
+  <!-- Prefix -->
+  <div class="textbox-prefix"></div>
 
-  <!-- Label -->
-  <span class="textbox-label-wrapper">
-    <label class="textbox-label" [for]="controller.id">
-      {{ controller.label }}
-    </label>
-  </span>
+  <div class="textbox-infix">
+    <input
+      #inputRef
+      class="textbox-input"
+      autocomplete="off"
+      [id]="controller.id"
+      [type]="controller.type"
+      [placeholder]="controller.placeholder"
+      [disabled]="disabled"
+      [readonly]="controller.readOnly"
+      [(ngModel)]="value"
+      (ngModelChange)="onValueChange()"
+    >
+
+    <!-- Label -->
+    <span class="textbox-label-wrapper">
+      <label class="textbox-label" [for]="controller.id">
+        {{ controller.label }}
+      </label>
+    </span>
+  </div>
+
+  <!-- Suffix -->
+  <div class="textbox-suffix"></div>
 
   <div class="textbox-messages-wrapper">
     <!-- Error -->

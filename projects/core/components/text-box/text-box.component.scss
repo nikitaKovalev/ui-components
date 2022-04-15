@@ -11,10 +11,21 @@ $bgc: #fff;
 
 $duration: 300ms;
 $transition: $duration ease-in-out;
+$default-width: 180px;
+$infix-padding: 0.75rem;
+$opacity: 0.7;
+
+//-0.25rem
 
 // component
 :host {
-  display: flex;
+  @include mixin.box-shadow(1);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  outline: 0 solid $primary;
+  transition: outline-width $transition, box-shadow $transition;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -33,14 +44,18 @@ $transition: $duration ease-in-out;
     @include mixin.label-float(large);
   }
 
+  &:hover {
+    @include mixin.box-shadow(2);
+  }
+
+  &.--focused {
+    @include mixin.host-interactive($primary);
+  }
+
   &.--invalid {
-    .textbox-input {
-      outline-width: 2px;
-      outline-color: $warn;
-      &:focus-within {
-        outline-color: $warn-secondary;
-      }
-      @include mixin.box-shadow(0);
+    @include mixin.host-interactive($warn);
+    &:focus-within {
+      @include mixin.host-interactive($warn-secondary);
     }
 
     .textbox-label {
@@ -49,40 +64,35 @@ $transition: $duration ease-in-out;
   }
 
   &.--disabled {
-    opacity: 0.7;
-
-    .textbox-input {
-      outline-width: 2px;
-      outline-color: $inactive;
-      @include mixin.box-shadow(0);
-    }
+    @include mixin.host-interactive($inactive);
+    opacity: $opacity;
   }
 }
 
 // wrapper
 .textbox-wrapper {
-  @include mixin.inherit;
+  width: inherit;
+  height: inherit;
   display: flex;
+  box-sizing: border-box;
+}
+
+.textbox-infix {
+  display: block;
   position: relative;
-  height: 100%;
-  width: 100%;
+  flex: 1 1 auto;
+  width: $default-width;
+  border-top: $infix-padding solid transparent;
 }
 
 // input
 .textbox-input {
-  border: none;
-  outline: 0 solid $primary;
-
-  transition: $transition;
-
-  &:hover {
-    @include mixin.box-shadow(2);
-  }
-
-  &:focus-within {
-    outline-width: 2px;
-    @include mixin.box-shadow(0);
-  }
+  @include mixin.reset-input;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: bottom;
+  text-align: inherit;
+  box-sizing: content-box;
 
   // placeholder
   &:not(:focus-within)::placeholder {
@@ -91,17 +101,19 @@ $transition: $duration ease-in-out;
   &:focus-within::placeholder {
     color: $inactive;
   }
-
-  @include mixin.box-shadow(1);
-  @include mixin.inherit;
 }
 
-// label wrapper + label
+// label
 .textbox-label-wrapper {
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
   position: absolute;
   left: 0;
-  pointer-events: none;
-  @include mixin.inherit;
+  top: -$infix-padding;
+  padding-top: $infix-padding;
 }
 
 .textbox-label {
@@ -109,6 +121,17 @@ $transition: $duration ease-in-out;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: $transition;
-  @include mixin.inherit;
+  pointer-events: none;
+
+  transition: transform $transition, scale $transition, color $transition;
+  transform: translate(0, 0) scale(1);
+  transform-origin: 0 0;
+}
+
+// suffix + prefix
+.textbox-prefix,
+.textbox-suffix {
+  white-space: nowrap;
+  flex: none;
+  position: relative;
 }
