@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
 
 import {
   UiTextBoxController,
@@ -26,6 +35,7 @@ import { fadeIn } from '@ui-components/core/animations';
     '[attr.ui-textbox-size]': 'controller.size',
     '(focusin)': 'focused = true',
     '(focusout)': 'focused = false; focusChange.emit()',
+    '(click)': '_onClick()',
   },
   providers: TEXTBOX_PROVIDERS,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -47,6 +57,9 @@ export class UiTextBoxComponent {
   @Output()
   public readonly valueChange = new EventEmitter<string>();
 
+  @ViewChild('inputRef', { static: true })
+  public readonly input!: ElementRef<HTMLInputElement>;
+
   public focused: boolean = false;
 
   constructor(
@@ -64,6 +77,10 @@ export class UiTextBoxComponent {
 
   public onValueChange(): void {
     this.valueChange.emit(this.value);
+  }
+
+  public _onClick(): void {
+    this.input.nativeElement.focus();
   }
 
 }

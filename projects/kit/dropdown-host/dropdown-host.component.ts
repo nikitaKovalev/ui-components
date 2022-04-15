@@ -135,10 +135,11 @@ export class UiDropdownHostComponent
       .pipe(
         filter(() => this._panelOpened),
         filter(({ target }: MouseEvent) => {
+          const notHost = !this._host.nativeElement.contains(target as Node);
           const notInput = target !== this._hostedInput!.nativeElement;
           const notAutocomplete = !this._overlayRef!.overlayElement.contains(target as Node);
 
-          return notInput && notAutocomplete;
+          return notInput && notAutocomplete && notHost;
         }),
         takeUntil(this._overlayRef!.detachments()),
       )

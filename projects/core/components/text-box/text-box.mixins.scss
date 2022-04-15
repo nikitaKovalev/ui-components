@@ -2,45 +2,59 @@
 @use "sass:map";
 @import "../../styles/mixins/box-shadow.mixin";
 
+@mixin reset-input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  line-height: inherit;
+  caret-color: currentColor;
+  outline: none;
+  appearance: none;
+  word-break: keep-all;
+  -webkit-text-fill-color: currentColor;
+}
+
 $default: #1b1f3b;
-$input: ("small": 0.3rem, "medium": 1.1rem, "large": 1.5rem);
-$padding-x-bottom: 1rem .3rem;
-$label-padding-top: ("small": 0, "medium": .2rem, "large": .4rem);
 $radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
+$infix-padding: ("small": 0.258rem, "medium": 0.352rem, "large": 0.445rem);
 
 @mixin size($size) {
-  $padding-y: map.get($input, $size);
+  $infix-padding-y: map.get($infix-padding, $size);
+  border-radius: map.get($radius, $size);
 
-  .textbox-input {
-    padding: $padding-y $padding-x-bottom;
-    border-radius: map.get($radius, $size);
+  $infix-padding-x: 1rem;
+  .textbox-wrapper {
+    padding: $infix-padding-y $infix-padding-x 0;
   }
 
-  .textbox-label {
-    padding: math.div($padding-y, 2) $padding-x-bottom;
+  $infix-padding-top: 0.25rem;
+  .textbox-infix {
+    padding: $infix-padding-top 0 $infix-padding-y;
+    border-top: $infix-padding-y solid transparent;
   }
+
+  .textbox-prefix,
+  .textbox-suffix {
+    padding-top: $infix-padding-y;
+  }
+}
+
+@mixin host-interactive($color) {
+  @include box-shadow(0);
+  outline-width: 2px;
+  outline-color: $color;
 }
 
 @mixin label-float($size) {
   &.--filled .textbox-label,
   &.--focused .textbox-label {
-    font-size: small;
+    $font-scale: 0.75;
+    $infix-padding-y: map.get($infix-padding, $size);
+
     color: $default;
-    padding-top: map.get($label-padding-top, $size);
+    transform: translateY(-$infix-padding-y) scale($font-scale);
+    width: math.div(100%, $font-scale)
   }
-
-  @if $size == small {
-    .textbox-label {
-      display: none;
-    }
-    .textbox-input::placeholder {
-      visibility: visible;
-    }
-  }
-}
-
-@mixin inherit {
-  width: inherit;
-  height: inherit;
-  box-sizing: border-box;
 }
