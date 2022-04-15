@@ -7,6 +7,7 @@ import {
   UiTextBoxControllerModule,
 } from '@ui-components/core/directives';
 import { UiDropdownController, UiDropdownHostModule } from '@ui-components/kit/dropdown-host';
+import { UI_ICONS, UiIconModule, UiIconService } from '@ui-components/kit/ui-icon';
 
 import { UiInputComponent } from './input.component';
 
@@ -18,6 +19,7 @@ import { UiInputComponent } from './input.component';
     UiTextBoxModule,
     UiTextBoxControllerModule,
     UiDropdownHostModule,
+    UiIconModule,
   ],
   exports: [
     UiInputComponent,
@@ -28,4 +30,8 @@ import { UiInputComponent } from './input.component';
     UiInputComponent,
   ],
 })
-export class UiInputModule {}
+export class UiInputModule {
+  constructor(private readonly _svc: UiIconService) {
+    this._svc.registry(UI_ICONS);
+  }
+}

@@ -1,7 +1,9 @@
 <div class="textbox-wrapper">
 
   <!-- Prefix -->
-  <div class="textbox-prefix"></div>
+  <div class="textbox-prefix">
+    <ng-content select="[uiPrefix]"></ng-content>
+  </div>
 
   <div class="textbox-infix">
     <input
@@ -26,7 +28,12 @@
   </div>
 
   <!-- Suffix -->
-  <div class="textbox-suffix"></div>
+  <div class="textbox-suffix">
+    <div class="cleaner">
+      <ng-content select="[cleaner]"></ng-content>
+    </div>
+    <ng-content select="[uiSuffix]"></ng-content>
+  </div>
 
   <div class="textbox-messages-wrapper">
     <!-- Error -->

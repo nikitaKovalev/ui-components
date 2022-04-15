@@ -136,3 +136,23 @@ $opacity: 0.7;
   flex: none;
   position: relative;
 }
+
+.textbox-prefix,
+.textbox-suffix {
+  color: currentColor;
+
+  ::ng-deep svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+  }
+
+  .cleaner::ng-deep svg {
+    pointer-events: auto;
+    cursor: pointer;
+    transition: fill $transition;
+    &:hover {
+      fill: $default;
+    }
+  }
+}

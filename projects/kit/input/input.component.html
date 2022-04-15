@@ -10,6 +10,19 @@
     (valueChange)="onValueChange($event)"
     (focusChange)="onFocusChange()"
   >
+    <!-- Cleaner -->
+    <ng-container ngProjectAs="[cleaner]">
+      <ui-icon>delete</ui-icon>
+    </ng-container>
+    <!-- Prefix -->
+    <ng-container ngProjectAs="[uiPrefix]">
+      <ng-content select="[uiPrefix]"></ng-content>
+    </ng-container>
+    <!-- Suffix -->
+    <ng-container ngProjectAs="[uiSuffix]">
+      <ng-content select="[uiSuffix]"></ng-content>
+    </ng-container>
+
     <!-- Error -->
     <ng-container ngProjectAs="ui-error">
       <ng-content select="ui-error"></ng-content>
