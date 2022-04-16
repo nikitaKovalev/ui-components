@@ -9,7 +9,13 @@ import {
   ViewChild
 } from '@angular/core';
 
-import { TEXTBOX_CONTROLLER, TEXTBOX_PROVIDERS, UiTextBoxController, } from '@ui-components/core/directives';
+import {
+  TEXTBOX_CONTROLLER,
+  TEXTBOX_PROVIDERS,
+  UiTextBoxCleanerDirective,
+  UiTextBoxController,
+} from '@ui-components/core/directives';
+import { CLEANER_CONTROLLER } from '@ui-components/core/directives/text-box-controller';
 
 import { fadeIn, fade } from '@ui-components/core/animations';
 
@@ -61,6 +67,8 @@ export class UiTextBoxComponent {
   constructor(
     @Inject(TEXTBOX_CONTROLLER)
     public readonly controller: UiTextBoxController,
+    @Inject(CLEANER_CONTROLLER)
+    private readonly _cleaner: UiTextBoxCleanerDirective,
   ) {}
 
   public get filled(): boolean {
@@ -72,7 +80,7 @@ export class UiTextBoxComponent {
   }
 
   public get hasCleaner(): boolean {
-    return this.filled && !this.disabled;
+    return this._cleaner.enabled && this.filled && !this.disabled;
   }
 
   public onClean(): void {

@@ -10,11 +10,12 @@
   </div>
 
   <div class="col-3 me-3">
-    <p class="text-truncate">Form control, with truncated label</p>
+    <p class="text-truncate">Form control, with truncated label, and cleaner</p>
     <ui-input
       uiTextboxLabel="Lorem ipsum dolor sit amet, consectetur"
       uiTextboxPlaceholder="Select user from the dropdown"
       uiTextboxSize="large"
+      uiTextboxCleaner="true"
       [formControl]="userControl"
     >
       <ui-error>This field is required!</ui-error>

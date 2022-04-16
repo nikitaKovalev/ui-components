@@ -6,9 +6,14 @@ import { TextBoxType, TextBoxSize } from '@ui-components/core/types';
 
 let _id: number = 0;
 
+export const BASE_CONTROLLER = new InjectionToken<UiTextBoxController>(
+  'base textbox controller',
+);
+
 export const TEXTBOX_CONTROLLER = new InjectionToken<UiTextBoxController>(
   `controller over base text field properties:
    [label], [placeholder], [type], [size], [id], [readOnly], [disabled]`,
+  { factory: () => new UiTextBoxController() },
 );
 
 @Directive({
