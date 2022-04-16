@@ -135,6 +135,7 @@ $opacity: 0.7;
   white-space: nowrap;
   flex: none;
   position: relative;
+  display: flex;
 }
 
 .textbox-prefix,
@@ -147,12 +148,18 @@ $opacity: 0.7;
     fill: currentColor;
   }
 
-  .cleaner::ng-deep svg {
+  .textbox-cleaner::ng-deep svg {
     pointer-events: auto;
     cursor: pointer;
     transition: fill $transition;
     &:hover {
       fill: $default;
     }
+  }
+
+  ::ng-deep *[uiPrefix],
+  ::ng-deep *[uiSuffix] {
+    display: flex;
+    align-self: flex-start;
   }
 }

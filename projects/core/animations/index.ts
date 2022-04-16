@@ -1,1 +1,1 @@
-export { fadeIn } from './fade-in.animation';
+export { fadeIn, fade } from './fade-in.animation';

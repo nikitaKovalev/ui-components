@@ -29,9 +29,16 @@
 
   <!-- Suffix -->
   <div class="textbox-suffix">
-    <div class="cleaner">
+    <!-- Cleaner -->
+    <div
+      class="textbox-cleaner"
+      *ngIf="hasCleaner"
+      @fade
+      (click)="onClean()"
+    >
       <ng-content select="[cleaner]"></ng-content>
     </div>
+
     <ng-content select="[uiSuffix]"></ng-content>
   </div>
 

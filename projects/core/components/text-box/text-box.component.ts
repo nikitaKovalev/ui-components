@@ -9,13 +9,9 @@ import {
   ViewChild
 } from '@angular/core';
 
-import {
-  UiTextBoxController,
-  TEXTBOX_PROVIDERS,
-  TEXTBOX_CONTROLLER,
-} from '@ui-components/core/directives';
+import { TEXTBOX_CONTROLLER, TEXTBOX_PROVIDERS, UiTextBoxController, } from '@ui-components/core/directives';
 
-import { fadeIn } from '@ui-components/core/animations';
+import { fadeIn, fade } from '@ui-components/core/animations';
 
 
 @Component({
@@ -25,7 +21,7 @@ import { fadeIn } from '@ui-components/core/animations';
     './text-box.component.scss',
     './text-box.messages.scss',
   ],
-  animations: [ fadeIn ],
+  animations: [ fadeIn, fade ],
   host: {
     'class': 'ui-textbox',
     '[class.--focused]': 'focused',
@@ -73,6 +69,15 @@ export class UiTextBoxComponent {
 
   public get disabled(): boolean {
     return this._disabled || this.controller.disabled;
+  }
+
+  public get hasCleaner(): boolean {
+    return this.filled && !this.disabled;
+  }
+
+  public onClean(): void {
+    this.value = '';
+    this.onValueChange();
   }
 
   public onValueChange(): void {

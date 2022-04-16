@@ -23,19 +23,44 @@
   </div>
 </div>
 
-<p>Medium size</p>
-<ui-input
-  class="col-3 pb-2"
-  uiTextboxLabel="Medium"
-  uiTextboxPlaceholder="Medium size input"
->
-</ui-input>
+<div class="d-flex pb-2">
+  <div class="col-3 me-3">
+    <p class="text-truncate">Medium size</p>
+    <ui-input
+      uiTextboxLabel="Medium"
+      uiTextboxPlaceholder="Medium size input"
+    >
+    </ui-input>
+  </div>
 
-<p>Small size</p>
-<ui-input
-  class="col-3 pb-2"
-  uiTextboxLabel="Medium"
-  uiTextboxPlaceholder="Medium size input"
-  uiTextboxSize="small"
->
-</ui-input>
+  <div class="col-3 me-3">
+    <p class="text-truncate">With prefix</p>
+    <ui-input
+      uiTextboxLabel="With prefix"
+      uiTextboxPlaceholder="Select user from the dropdown"
+    >
+      <ui-icon class="me-1" uiPrefix>info_o</ui-icon>
+    </ui-input>
+  </div>
+</div>
+
+<div class="d-flex pb-2">
+  <div class="col-3 me-3">
+    <p class="text-truncate">Small size</p>
+    <ui-input
+      uiTextboxLabel="Small"
+      uiTextboxPlaceholder="Small size input"
+    >
+    </ui-input>
+  </div>
+
+  <div class="col-3 me-3">
+    <p class="text-truncate">With suffix</p>
+    <ui-input
+      uiTextboxLabel="With suffix"
+      uiTextboxPlaceholder="Select user from the dropdown"
+    >
+      <span uiSuffix>px</span>
+    </ui-input>
+  </div>
+</div>
