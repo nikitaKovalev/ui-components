@@ -10,12 +10,14 @@ import {
 } from '@angular/core';
 
 import {
-  UiTextBoxController,
-  TEXTBOX_PROVIDERS,
   TEXTBOX_CONTROLLER,
+  TEXTBOX_PROVIDERS,
+  UiTextBoxCleanerDirective,
+  UiTextBoxController,
 } from '@ui-components/core/directives';
+import { CLEANER_CONTROLLER } from '@ui-components/core/directives/text-box-controller';
 
-import { fadeIn } from '@ui-components/core/animations';
+import { fadeIn, fade } from '@ui-components/core/animations';
 
 
 @Component({
@@ -25,7 +27,7 @@ import { fadeIn } from '@ui-components/core/animations';
     './text-box.component.scss',
     './text-box.messages.scss',
   ],
-  animations: [ fadeIn ],
+  animations: [ fadeIn, fade ],
   host: {
     'class': 'ui-textbox',
     '[class.--focused]': 'focused',
@@ -65,6 +67,8 @@ export class UiTextBoxComponent {
   constructor(
     @Inject(TEXTBOX_CONTROLLER)
     public readonly controller: UiTextBoxController,
+    @Inject(CLEANER_CONTROLLER)
+    private readonly _cleaner: UiTextBoxCleanerDirective,
   ) {}
 
   public get filled(): boolean {
@@ -73,6 +77,15 @@ export class UiTextBoxComponent {
 
   public get disabled(): boolean {
     return this._disabled || this.controller.disabled;
+  }
+
+  public get hasCleaner(): boolean {
+    return this._cleaner.enabled && this.filled && !this.disabled;
+  }
+
+  public onClean(): void {
+    this.value = '';
+    this.onValueChange();
   }
 
   public onValueChange(): void {

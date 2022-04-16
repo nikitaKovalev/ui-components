@@ -9,6 +9,8 @@
   top: 100%;
   left: 0;
   font-size: small;
+  box-sizing: border-box;
+  pointer-events: none;
 }
 
 .textbox-hint-wrapper {

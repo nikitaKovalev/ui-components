@@ -4,10 +4,16 @@ $warn: #dd4c1e;
 $error: #B33F40;
 
 $darken-amount: 15%;
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
 
 :host::ng-deep svg {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   fill: darken(#d7d7d7, 50%);
 
   &[color = 'primary'] {

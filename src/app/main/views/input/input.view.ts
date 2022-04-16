@@ -6,5 +6,5 @@ import { FormControl, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputView {
-  public readonly userControl = new FormControl(null, Validators.required);
+  public readonly userControl = new FormControl('Clean this!', Validators.required);
 }

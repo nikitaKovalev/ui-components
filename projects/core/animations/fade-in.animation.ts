@@ -7,3 +7,11 @@ export const fadeIn = trigger('fadeIn', [
   ]),
   state(':leave', style({ opacity: 1, transform: 'translateY(0%)' })),
 ]);
+
+export const fade = trigger('fade', [
+  transition(':enter', [
+    style({ opacity: 0 }),
+    animate('300ms ease-in-out'),
+  ]),
+  state(':leave', style({ opacity: 1 })),
+]);

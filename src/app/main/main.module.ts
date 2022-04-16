@@ -18,6 +18,7 @@ import { UiTooltipModule } from '@ui-components/kit/ui-tooltip';
 import { UiBadgeModule } from '@ui-components/kit/ui-badge';
 import { UiHintModule } from '@ui-components/kit/hint';
 import { UiErrorModule } from '@ui-components/kit/error';
+import { UiPrefixModule, UiSuffixModule } from '@ui-components/core/directives';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
@@ -60,6 +61,8 @@ import {
     UiBadgeModule,
     UiHintModule,
     UiErrorModule,
+    UiPrefixModule,
+    UiSuffixModule,
 
     MainRoutingModule,
   ],
