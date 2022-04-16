@@ -1,34 +1,16 @@
-import { ChangeDetectorRef, Optional, Provider } from '@angular/core';
-
-import { Observable, takeUntil } from 'rxjs';
+import { ChangeDetectorRef, Provider } from '@angular/core';
 
 import { UiDestroyedService } from '@ui-components/core/services';
+import { controllerFactory } from '@ui-components/core/factories';
 
-import { DROPDOWN_CONTROLLER, UiDropdownController } from './dropdown.controller';
+import { DROPDOWN, DROPDOWN_CONTROLLER } from './dropdown.controller';
 
+const DROPDOWN_FACTORY = controllerFactory;
 export const DROPDOWN_PROVIDERS: Provider[] = [
   UiDestroyedService,
   {
-    provide: DROPDOWN_CONTROLLER,
-    deps: [ [ new Optional(), UiDropdownController ], ChangeDetectorRef, UiDestroyedService ],
-    useFactory: dropdownFactory,
+    provide: DROPDOWN,
+    deps: [ DROPDOWN_CONTROLLER, ChangeDetectorRef, UiDestroyedService ],
+    useFactory: DROPDOWN_FACTORY,
   },
 ];
-
-export function dropdownFactory(
-  controller: UiDropdownController,
-  cdRef: ChangeDetectorRef,
-  destroyed$: Observable<void>,
-): UiDropdownController {
-  if (!controller) {
-    controller = new UiDropdownController();
-  }
-
-  controller.change$
-    .pipe(takeUntil(destroyed$))
-    .subscribe(() => {
-      cdRef.markForCheck();
-    });
-
-  return controller;
-}
