@@ -35,8 +35,8 @@ import { fadeIn, fade } from '@ui-components/core/animations';
     '[class.--invalid]': 'invalid',
     '[class.--disabled]': 'disabled',
     '[attr.ui-textbox-size]': 'controller.size',
-    '(focusin)': 'focused = true',
-    '(focusout)': 'focused = false; focusChange.emit()',
+    '(focusin)': '_onFocus(true)',
+    '(focusout)': '_onFocus(false)',
     '(click)': '_onClick()',
   },
   providers: TEXTBOX_PROVIDERS,
@@ -94,6 +94,11 @@ export class UiTextBoxComponent {
 
   public _onClick(): void {
     this.input.nativeElement.focus();
+  }
+
+  public _onFocus(focused: boolean): void {
+    this.focused = focused;
+    if (!this.focused) this.focusChange.emit();
   }
 
 }
