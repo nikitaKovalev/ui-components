@@ -7,8 +7,13 @@ import { identity, merge, NEVER, Observable, startWith, switchMap } from 'rxjs';
 import { UiController } from '@ui-components/core/classes';
 import { UiOptionComponent } from '@ui-components/kit/ui-option';
 
+export const DROPDOWN = new InjectionToken<UiDropdownController>(
+  'dropdown host UiDropdownController',
+);
+
 export const DROPDOWN_CONTROLLER = new InjectionToken<UiDropdownController>(
   'controller over dropdown',
+  { factory: () => new UiDropdownController() },
 );
 
 @Directive({
@@ -31,7 +36,7 @@ export class UiDropdownController
   }
   private _enabled = false;
 
-  @Input('uiTextFieldReadonly')
+  @Input('uiTextboxReadonly')
   public get readOnly(): boolean {
     return this._readOnly;
   }
