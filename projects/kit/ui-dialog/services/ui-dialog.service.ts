@@ -9,7 +9,7 @@ import { UiDialogComponent } from '../ui-dialog.component';
 @Injectable()
 export class UiDialogService {
 
-  private _overlayRef: OverlayRef = this._overlay.create();
+  private _overlayRef: OverlayRef | null = null;
 
   constructor(
     private readonly _overlay: Overlay,
@@ -37,13 +37,6 @@ export class UiDialogService {
     return new PortalInjector(injector, injectorTokens);
   }
 
-  private get _getPositionStrategy(): GlobalPositionStrategy {
-    return this._overlay.position()
-      .global()
-      .centerVertically()
-      .centerHorizontally();
-  }
-
   private _overlayConfig(config: DialogConfig): OverlayConfig {
     return new OverlayConfig({
       panelClass: ['ui-dialog'],
@@ -56,9 +49,18 @@ export class UiDialogService {
     });
   }
 
+  private get _getPositionStrategy(): GlobalPositionStrategy {
+    return this._overlay.position()
+      .global()
+      .centerVertically()
+      .centerHorizontally();
+  }
+
   private _closeAttachedOverlay(): void {
     if (this._overlayRef) {
+      this._overlayRef.dispose();
       this._overlayRef.detach();
+      this._overlayRef = null;
     }
   }
 

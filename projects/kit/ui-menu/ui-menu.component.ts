@@ -26,7 +26,7 @@ import { BOTTOM_LEFT, BOTTOM_RIGHT, PositionType, ToggleType, TOP_LEFT, TOP_RIGH
 import { fadeIn, fadeOut } from './fade.animation';
 import { toggle } from './ui-menu.animation';
 
-
+// todo: replace with uiButton + dropdown-host
 @Component({
   selector: 'ui-menu',
   templateUrl: './ui-menu.component.html',
@@ -64,7 +64,7 @@ export class UiMenuComponent
 
   public trigger = 'close';
 
-  private _overlayRef: OverlayRef = this._overlay.create();
+  private _overlayRef: OverlayRef | null = null;
 
   private readonly _destroyed$ = new Subject<void>();
 
@@ -101,7 +101,9 @@ export class UiMenuComponent
       .subscribe(() => {
         this.trigger = 'close';
 
-        this._overlayRef.detach();
+        this._overlayRef!.detach();
+        this._overlayRef!.dispose();
+        this._overlayRef = null;
         this._cdRef.markForCheck();
       });
   }
@@ -116,7 +118,7 @@ export class UiMenuComponent
         })
       );
 
-    return merge(clicked$, this._overlayRef.backdropClick());
+    return merge(clicked$, this._overlayRef!.backdropClick());
   }
 
   protected get _overlayConfig(): OverlayConfig {

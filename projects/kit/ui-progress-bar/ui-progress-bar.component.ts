@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
 
 @Component({
   selector: 'progress[uiProgressBar]',
-  template: '',
+  template: `<ng-content></ng-content>`,
   styleUrls: ['./ui-progress-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
