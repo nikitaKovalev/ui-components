@@ -17,6 +17,12 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "alwaysStrict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noStrictGenericChecks": false,
+    "allowUmdGlobalAccess": true,
+    "useDefineForClassFields": false,
     "target": "es2017",
     "module": "es2020",
     "lib": [
@@ -27,7 +33,7 @@
       "@ui-components/kit": ["projects/kit/index"],
       "@ui-components/kit/*": ["projects/kit/*"],
       "@ui-components/core": ["projects/core/index"],
-      "@ui-components/core/*": ["projects/core/*"],
+      "@ui-components/core/*": ["projects/core/*"]
     }
   },
   "angularCompilerOptions": {

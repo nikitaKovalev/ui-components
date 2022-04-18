@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  border: 1px solid var(--text-inactive-color);
+  background-color: var(--page-bg);
+  border-radius: var(--radius-l);
+}
