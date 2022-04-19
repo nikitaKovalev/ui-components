@@ -1,12 +1,12 @@
 <ui-dropdown-host
   [disabled]="disabled"
   [(value)]="value"
-  (controlValueChange)="controlValueChanged($event)"
+  (controlValueChange)="onValueChange($event)"
 >
   <ui-textbox
-    [value]="value"
     [invalid]="hasError"
     [disabled]="disabled"
+    [value]="value"
     (valueChange)="onValueChange($event)"
     (focusChange)="onFocusChange()"
   >

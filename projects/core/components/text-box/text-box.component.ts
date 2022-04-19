@@ -17,7 +17,7 @@ import {
 } from '@ui-components/core/directives';
 import { CLEANER_CONTROLLER } from '@ui-components/core/directives/text-box-controller';
 
-import { fadeIn, fade } from '@ui-components/core/animations';
+import { fade, fadeIn } from '@ui-components/core/animations';
 
 
 @Component({

@@ -12,7 +12,7 @@ export abstract class UiValueAccessor<T = any>
   }
 
   public get touched(): boolean {
-    return this._getNgControlProperty<boolean>('invalid');
+    return this._getNgControlProperty<boolean>('touched');
   }
 
   public get dirty(): boolean {
@@ -32,13 +32,14 @@ export abstract class UiValueAccessor<T = any>
   }
 
   public get hasError(): boolean {
-    return (this._ngControl && this._ngControl.invalid
-      && (this._ngControl.dirty || this._ngControl.touched))
+    return (this.control
+      && this.invalid
+      && (this.dirty || this.touched))
       ?? false;
   }
 
   public get value(): T {
-    return this._value || this.control?.value;
+    return this._value as T;
   }
   public set value(value: T | unknown) {
     this._value = value;
@@ -69,9 +70,7 @@ export abstract class UiValueAccessor<T = any>
 
   public writeValue(value: T | unknown) {
     this.value = value;
-    if (!!value) {
-      this._markAsTouched();
-    }
+    if (!!value) this._markAsTouched();
   }
 
   public registerOnChange(
@@ -87,7 +86,7 @@ export abstract class UiValueAccessor<T = any>
   }
 
   public onValueChange(value: T | unknown): void {
-    this._onChange(value)
+    this._onChange(value);
   }
 
   public onFocusChange(): void {
@@ -95,7 +94,7 @@ export abstract class UiValueAccessor<T = any>
   }
 
   private _markAsTouched(): void {
-    this.control ? this.control.markAsTouched() : null;
+    this.control ? this._onTouched() : null;
   }
 
   private _getNgControlProperty<Property>(

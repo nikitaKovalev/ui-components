@@ -26,7 +26,7 @@ export class AutocompleteView {
   public readonly userControl = new FormControl(USERS[0]);
   public readonly userRegularControl = new FormControl(USERS[1]);
 
-  public readonly displayUser = (user: { id: number, name: string }) => user.name;
+  public readonly displayUser = (user: { id: number, name: string }) => user?.name;
   public readonly trackBy = (index: number) => index;
 
   public readonly users$: Observable<User[]> = this.userControl.valueChanges.pipe(
