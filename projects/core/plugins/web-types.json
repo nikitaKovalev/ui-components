@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/v2-preview/web-types.json",
+  "name": "ng-event-plugins",
+  "framework": "angular",
+  "version": "0.0.1",
+  "description-markup": "markdown",
+  "contributions": {
+    "js": {
+      "ng-custom-events": [
+        {
+          "name": "Custom modifiers for declarative events handling",
+          "priority": "normal",
+          "pattern": {
+            "template": [
+              {
+                "items": {
+                  "path": "/js/events",
+                  "includeVirtual": false
+                }
+              },
+              {
+                "items": "ng-event-plugins",
+                "template": [
+                  ".",
+                  "#...",
+                  "#item:modifiers"
+                ],
+                "priority": "high",
+                "repeat": true,
+                "unique": true,
+                "required": false
+              }
+            ]
+          },
+          "ng-event-plugins": [
+            {
+              "name": "prevent",
+              "description": "Prevents default behaviour of the event"
+            },
+            {
+              "name": "stop",
+              "description": "Stops propagation of the event"
+            },
+            {
+              "name": "outside",
+              "description": "Run event handler outside NgZone to not trigger change detection"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

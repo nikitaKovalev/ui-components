@@ -1,6 +1,7 @@
 {
   "name": "ui-components",
   "version": "0.0.0",
+  "web-types": "./projects/core/plugins/web-types.json",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
