@@ -8,3 +8,4 @@ export * from '@ui-components/core/components';
 export * from '@ui-components/core/directives';
 export * from '@ui-components/core/animations';
 export * from '@ui-components/core/factories';
+export * from '@ui-components/core/plugins';
