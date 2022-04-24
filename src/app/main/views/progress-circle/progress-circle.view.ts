@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { interval, repeat, startWith, takeWhile, timer } from 'rxjs';
+import { repeat, startWith, takeWhile, timer } from 'rxjs';
 
 @Component({
   selector: 'progress-circle-view',
@@ -7,12 +7,9 @@ import { interval, repeat, startWith, takeWhile, timer } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressCircleView {
-
-  public readonly value$ = timer(300, 300)
-    .pipe(
-      startWith(0),
-      takeWhile((value: number) => value <= 100),
-      repeat(),
-    )
-
+  readonly value$ = timer(300, 300).pipe(
+    startWith(0),
+    takeWhile((value: number) => value <= 100),
+    repeat(),
+  );
 }

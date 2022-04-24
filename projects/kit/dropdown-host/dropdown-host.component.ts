@@ -1,3 +1,15 @@
+import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
+import { DOWN_ARROW, ENTER, TAB, UP_ARROW } from '@angular/cdk/keycodes';
+import {
+  ConnectedPosition,
+  ConnectionPositionPair,
+  FlexibleConnectedPositionStrategy,
+  Overlay,
+  OverlayConfig,
+  OverlayRef,
+} from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
+import { DOCUMENT, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -10,26 +22,12 @@ import {
   Output,
   TemplateRef,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
-import { DOCUMENT, NgTemplateOutlet } from '@angular/common';
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
-import { DOWN_ARROW, ENTER, TAB, UP_ARROW } from '@angular/cdk/keycodes';
-import { TemplatePortal } from '@angular/cdk/portal';
-import {
-  ConnectedPosition,
-  ConnectionPositionPair,
-  FlexibleConnectedPositionStrategy,
-  Overlay,
-  OverlayConfig,
-  OverlayRef
-} from '@angular/cdk/overlay';
-
-import { filter, fromEvent, merge, takeUntil, tap } from 'rxjs';
-
 import { fadeIn } from '@ui-components/core/animations';
-import { UiOptionComponent } from '@ui-components/kit/ui-option';
 import { OVERLAY_CONFIG } from '@ui-components/core/tokens';
+import { UiOptionComponent } from '@ui-components/kit/ui-option';
+import { filter, fromEvent, merge, takeUntil, tap } from 'rxjs';
 
 import { DROPDOWN_CONTROLLER, UiDropdownController } from './dropdown.controller';
 import { DROPDOWN_PROVIDERS } from './dropdown.providers';
@@ -38,37 +36,37 @@ import { DROPDOWN_PROVIDERS } from './dropdown.providers';
   selector: 'ui-dropdown-host',
   templateUrl: './dropdown-host.component.html',
   styleUrls: ['./dropdown-host.component.scss'],
-  animations: [ fadeIn ],
+  animations: [fadeIn],
   host: {
     '(focusin)': '_onFocus($event)',
   },
   providers: DROPDOWN_PROVIDERS,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiDropdownHostComponent
-  implements AfterViewInit {
-
-  @Input()
-  public disabled = false;
-
-  @Input()
-  public value: unknown = null;
-
-  @Output()
-  public readonly valueChange = new EventEmitter<string>();
-
-  @Output()
-  public readonly controlValueChange = new EventEmitter<unknown>();
-
-  @ViewChild('dropdownRef', { static: true })
-  public readonly dropdownRef!: TemplateRef<NgTemplateOutlet>;
-
+export class UiDropdownHostComponent implements AfterViewInit {
   private _overlayRef: OverlayRef | null = null;
+
   private _hostedInput: ElementRef<HTMLInputElement> | null = null;
+
   private readonly _defaultOffsetY = 8;
 
-  private _keyManager: ActiveDescendantKeyManager<UiOptionComponent>
-    = new ActiveDescendantKeyManager<UiOptionComponent>([]);
+  private _keyManager: ActiveDescendantKeyManager<UiOptionComponent> =
+    new ActiveDescendantKeyManager<UiOptionComponent>([]);
+
+  @Input()
+  disabled = false;
+
+  @Input()
+  value: unknown = null;
+
+  @Output()
+  readonly valueChange = new EventEmitter<string>();
+
+  @Output()
+  readonly controlValueChange = new EventEmitter<unknown>();
+
+  @ViewChild('dropdownRef', { static: true })
+  readonly dropdownRef!: TemplateRef<NgTemplateOutlet>;
 
   constructor(
     @Inject(DOCUMENT)
@@ -84,11 +82,11 @@ export class UiDropdownHostComponent
     private readonly _config: OverlayConfig,
   ) {}
 
-  public ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     this._updateInitialValue();
   }
 
-  public _onFocus({ target }: FocusEvent): void {
+  _onFocus({ target }: FocusEvent): void {
     if (this._canOpen && !this._panelOpened) {
       this._setInputReference(target as HTMLInputElement);
 
@@ -100,25 +98,24 @@ export class UiDropdownHostComponent
 
       this._keyManager = new ActiveDescendantKeyManager<UiOptionComponent>(
         this._controller.options,
-      )
-        .withWrap(true);
+      ).withWrap(true);
     }
   }
 
-  public _onKeydown(): void {
+  _onKeydown(): void {
     fromEvent<KeyboardEvent>(this._document, 'keydown')
       .pipe(
         tap(({ keyCode }: KeyboardEvent) => {
-          keyCode === TAB ? this._detachOverlay() : null
+          keyCode === TAB ? this._detachOverlay() : null;
         }),
         filter(({ keyCode }: KeyboardEvent) => {
-          return keyCode === ENTER || keyCode === DOWN_ARROW || keyCode === UP_ARROW
+          return keyCode === ENTER || keyCode === DOWN_ARROW || keyCode === UP_ARROW;
         }),
         takeUntil(this._overlayRef!.detachments()),
       )
       .subscribe((event: KeyboardEvent) => {
         if (event.keyCode === ENTER) {
-          this._keyManager.activeItem?.onClick()
+          this._keyManager.activeItem?.onClick();
         } else {
           this._keyManager.onKeydown(event);
           this._cdRef.markForCheck();
@@ -137,7 +134,9 @@ export class UiDropdownHostComponent
         filter(({ target }: MouseEvent) => {
           const notHost = !this._host.nativeElement.contains(target as Node);
           const notInput = target !== this._hostedInput!.nativeElement;
-          const notAutocomplete = !this._overlayRef!.overlayElement.contains(target as Node);
+          const notAutocomplete = !this._overlayRef!.overlayElement.contains(
+            target as Node,
+          );
 
           return notInput && notAutocomplete && notHost;
         }),
@@ -158,9 +157,11 @@ export class UiDropdownHostComponent
 
   private _createOverlay(): void {
     const overlayConfig: OverlayConfig = this._getOverlayConfig();
+
     this._overlayRef = this._overlay.create(overlayConfig);
 
     const template = new TemplatePortal(this.dropdownRef, this._viewCRef);
+
     this._overlayRef.attach(template);
   }
 
@@ -174,10 +175,11 @@ export class UiDropdownHostComponent
   }
 
   private _getOverlayConfig(): OverlayConfig {
-    return <OverlayConfig> {
+    return <OverlayConfig>{
       ...this._config,
       width: this._config.width || this._host.nativeElement.offsetWidth,
-      scrollStrategy: this._config.scrollStrategy || this._overlay.scrollStrategies.reposition(),
+      scrollStrategy:
+        this._config.scrollStrategy || this._overlay.scrollStrategies.reposition(),
       positionStrategy: this._config.positionStrategy || this._getOverlayPosition(),
     };
   }
@@ -187,12 +189,14 @@ export class UiDropdownHostComponent
       new ConnectionPositionPair(
         { originX: 'start', originY: 'bottom' },
         { overlayX: 'start', overlayY: 'top' },
-        0, this._defaultOffsetY
+        0,
+        this._defaultOffsetY,
       ),
       new ConnectionPositionPair(
         { originX: 'end', originY: 'top' },
         { overlayX: 'end', overlayY: 'bottom' },
-        0, -this._defaultOffsetY
+        0,
+        -this._defaultOffsetY,
       ),
     ];
 
@@ -223,5 +227,4 @@ export class UiDropdownHostComponent
       this.valueChange.emit(this._controller.displayAs(this.value));
     }
   }
-
 }

@@ -1,13 +1,12 @@
-import { ComponentRef, Directive, ElementRef, HostListener, Input } from '@angular/core';
 import {
   ConnectionPositionPair,
   FlexibleConnectedPositionStrategy,
   Overlay,
   OverlayConfig,
-  OverlayRef
+  OverlayRef,
 } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-
+import { ComponentRef, Directive, ElementRef, HostListener, Input } from '@angular/core';
 import { UiDestroyedService } from '@ui-components/core/services';
 import { Palette } from '@ui-components/core/types';
 
@@ -17,25 +16,21 @@ type TooltipPosition = 'start' | 'end' | 'top' | 'bottom';
 
 @Directive({
   selector: '[uiTooltip]',
-  providers: [ UiDestroyedService ],
+  providers: [UiDestroyedService],
 })
 export class UiTooltipDirective {
-
-  @Input()
-  public uiTooltip: any = null;
-
-  @Input('uiTooltipPosition')
-  public position: TooltipPosition = 'top';
-
-  @Input('uiTooltipColor')
-  public color: Palette = 'default';
-
   private _overlayRef: OverlayRef | null = null;
 
-  constructor(
-    private readonly _elRef: ElementRef,
-    private readonly _overlay: Overlay,
-  ) {}
+  @Input()
+  uiTooltip: any = null;
+
+  @Input('uiTooltipPosition')
+  position: TooltipPosition = 'top';
+
+  @Input('uiTooltipColor')
+  color: Palette = 'default';
+
+  constructor(private readonly _elRef: ElementRef, private readonly _overlay: Overlay) {}
 
   @HostListener('mouseover')
   private _create(): void {
@@ -46,6 +41,7 @@ export class UiTooltipDirective {
     const tooltipRef: ComponentRef<UiTooltipComponent> = this._overlayRef.attach(
       new ComponentPortal(UiTooltipComponent),
     );
+
     tooltipRef.instance.value = this.uiTooltip;
     tooltipRef.instance.color = this.color;
   }
@@ -65,7 +61,7 @@ export class UiTooltipDirective {
       positionStrategy: this._getPositionStrategy(),
       scrollStrategy: this._overlay.scrollStrategies.reposition(),
       disposeOnNavigation: true,
-    }
+    };
   }
 
   private _getPositionStrategy(): FlexibleConnectedPositionStrategy {
@@ -93,13 +89,13 @@ export class UiTooltipDirective {
       new ConnectionPositionPair(
         { originX: start, originY: 'center' },
         { overlayX: opposite, overlayY: 'center' },
-        start === 'start' ? -8 : 8
+        start === 'start' ? -8 : 8,
       ),
       new ConnectionPositionPair(
         { originX: opposite, originY: 'center' },
         { overlayX: start, overlayY: 'center' },
-        start === 'start' ? -8 : 8
-      )
+        start === 'start' ? -8 : 8,
+      ),
     ];
   }
 
@@ -111,14 +107,15 @@ export class UiTooltipDirective {
       new ConnectionPositionPair(
         { originX: 'start', originY: start },
         { overlayX: 'start', overlayY: opposite },
-        void 0, start === 'top' ? -8 : 8
+        void 0,
+        start === 'top' ? -8 : 8,
       ),
       new ConnectionPositionPair(
         { originX: 'start', originY: opposite },
         { overlayX: 'start', overlayY: start },
-        void 0, start === 'top' ? -8 : 8
-      )
+        void 0,
+        start === 'top' ? -8 : 8,
+      ),
     ];
   }
-
 }

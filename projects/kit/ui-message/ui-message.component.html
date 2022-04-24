@@ -1,16 +1,17 @@
 <div
   class="ui-message-wrapper d-flex justify-content-start align-items-center align-content-center py-2 px-3"
-  [attr.color]="color">
+  [attr.color]="color"
+>
   <ui-icon class="me-3" [color]="color">
     {{ icon }}
   </ui-icon>
 
   <div class="ui-message-label d-flex flex-column">
-    <div class="fw-bold ui-font-size-14" data-automation="message-label">
+    <div data-automation="message-label" class="fw-bold ui-font-size-14">
       {{ label }}
     </div>
 
-    <div class="ui-font-size-14" data-automation="message-subLabel">
+    <div data-automation="message-subLabel" class="ui-font-size-14">
       {{ subLabel }}
     </div>
 

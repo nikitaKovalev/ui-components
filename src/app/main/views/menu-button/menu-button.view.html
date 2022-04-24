@@ -1,41 +1,31 @@
 <div class="row">
   <div class="col-1 justify-content-center align-items-center">
-    <p>
-      More_vert
-    </p>
+    <p>More_vert</p>
 
     <ui-menu type="more_vert" position="bottom-right" color="primary">
-      <ui-option *ngFor="let option of options" (click)="showClicked(option)">
+      <ui-option *ngFor="let option of options" (click)="showClicked()">
         {{ option }}
       </ui-option>
     </ui-menu>
-
   </div>
 
   <div class="col-1 justify-content-center align-items-center">
-    <p>
-      More_horiz
-    </p>
+    <p>More_horiz</p>
 
     <ui-menu type="more_horiz" position="bottom-right" color="primary">
-      <ui-option *ngFor="let option of options" (click)="showClicked(option)">
+      <ui-option *ngFor="let option of options" (click)="showClicked()">
         {{ option }}
       </ui-option>
     </ui-menu>
-
   </div>
 
   <div class="col-1 justify-content-center align-items-center">
-    <p>
-    Menu
-    </p>
+    <p>Menu</p>
 
     <ui-menu type="menu" position="bottom-right" color="primary">
-      <ui-option *ngFor="let option of options" (click)="showClicked(option)">
+      <ui-option *ngFor="let option of options" (click)="showClicked()">
         {{ option }}
       </ui-option>
     </ui-menu>
-
   </div>
-
 </div>

@@ -1,35 +1,32 @@
 import { EventManager } from '@angular/platform-browser';
 
 type EventManagerArgs = ConstructorParameters<typeof EventManager>[0][0];
+
 type EventManagerPlugin = {
   [Key in keyof EventManagerArgs]: EventManagerArgs[Key];
 };
 
-export abstract class AbstractEventPlugin
-  implements EventManagerPlugin {
-
-  public readonly manager!: EventManager;
-
+export abstract class AbstractEventPlugin implements EventManagerPlugin {
   protected abstract readonly _name: string;
 
-  public supports(event: string): boolean {
-    return event.includes(this._name);
-  }
+  readonly manager!: EventManager;
 
-  public abstract addEventListener(
+  abstract addEventListener(
     element: HTMLElement,
     eventName: string,
     handler: Function,
   ): Function;
 
-  public addGlobalEventListener(
-    target: string,
-    eventName: string,
-    handler: Function,
+  addGlobalEventListener(
+    _target: string,
+    _eventName: string,
+    _handler: Function,
   ): Function {
-    throw new Error(
-      `Global event targets are not supported by ${ this._name } plugin`,
-    );
+    throw new Error(`Global event targets are not supported by ${this._name} plugin`);
+  }
+
+  supports(event: string): boolean {
+    return event.includes(this._name);
   }
 
   protected _unwrap(event: string): string {
@@ -38,6 +35,4 @@ export abstract class AbstractEventPlugin
       .filter((value: string) => !this._name.includes(value))
       .join('.');
   }
-
 }
-

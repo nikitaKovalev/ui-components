@@ -25,7 +25,7 @@ import { StopPropagationEventPlugin } from './stop.plugin';
   ],
 })
 export class UiPluginsModule {
-  public static initialized = false;
+  static initialized = false;
 
   constructor(@Inject(EVENT_MANAGER_PLUGINS) plugins: readonly unknown[]) {
     console.assert(

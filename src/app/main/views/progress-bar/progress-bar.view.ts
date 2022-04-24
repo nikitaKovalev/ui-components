@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
 import { repeat, startWith, takeWhile, timer } from 'rxjs';
 
 @Component({
@@ -7,10 +6,9 @@ import { repeat, startWith, takeWhile, timer } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressBarView {
-  public readonly value$ = timer(300, 50)
-    .pipe(
-      startWith(0),
-      takeWhile((value: number) => value <= 100),
-      repeat(),
-    );
+  readonly value$ = timer(300, 50).pipe(
+    startWith(0),
+    takeWhile((value: number) => value <= 100),
+    repeat(),
+  );
 }

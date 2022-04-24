@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Provider } from '@angular/core';
-
-import { UiDestroyedService } from '@ui-components/core/services';
 import { controllerFactory } from '@ui-components/core/factories';
+import { UiDestroyedService } from '@ui-components/core/services';
 
 import { DROPDOWN, DROPDOWN_CONTROLLER } from './dropdown.controller';
 
@@ -10,7 +9,7 @@ export const DROPDOWN_PROVIDERS: Provider[] = [
   UiDestroyedService,
   {
     provide: DROPDOWN,
-    deps: [ DROPDOWN_CONTROLLER, ChangeDetectorRef, UiDestroyedService ],
+    deps: [DROPDOWN_CONTROLLER, ChangeDetectorRef, UiDestroyedService],
     useFactory: DROPDOWN_FACTORY,
   },
 ];

@@ -4,12 +4,12 @@ import { UiDialogRef } from './ui-dialog-ref';
 
 @Component({
   selector: 'ui-dialog',
-  template: `<ng-container *ngComponentOutlet="dialogRef.component"></ng-container>`,
+  template: `
+    <ng-container *ngComponentOutlet="dialogRef.component"></ng-container>
+  `,
   styleUrls: ['ui-dialog.style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiDialogComponent {
-  constructor(
-    public readonly dialogRef: UiDialogRef,
-  ) {}
+  constructor(readonly dialogRef: UiDialogRef) {}
 }

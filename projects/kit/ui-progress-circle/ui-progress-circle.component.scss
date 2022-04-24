@@ -1,10 +1,26 @@
-@use "sass:map";
-@use "sass:math";
-@import "~bootstrap/scss/mixins/visually-hidden";
+@use 'sass:map';
+@use 'sass:math';
+/* stylelint-disable */
+@import '~bootstrap/scss/mixins/visually-hidden';
 
-$width: ("xs": 1em, "small": 2em, "medium": 4em, "large": 7em);
-$track-stroke: ("xs": 0.3em, "small": 0.5em, "medium": 0.5em, "large": 0.7em);
-$progress-stroke: ("xs": 0.3em, "small": 0.5em, "medium": 0.5em, "large": 0.7em);
+$width: (
+  'xs': 1em,
+  'small': 2em,
+  'medium': 4em,
+  'large': 7em,
+);
+$track-stroke: (
+  'xs': 0.3em,
+  'small': 0.5em,
+  'medium': 0.5em,
+  'large': 0.7em,
+);
+$progress-stroke: (
+  'xs': 0.3em,
+  'small': 0.5em,
+  'medium': 0.5em,
+  'large': 0.7em,
+);
 
 @mixin circle-params($size) {
   width: map.get($width, $size);
@@ -22,7 +38,9 @@ $progress-stroke: ("xs": 0.3em, "small": 0.5em, "medium": 0.5em, "large": 0.7em)
     r: $radius;
     stroke-width: map.get($progress-stroke, $size);
     stroke-dasharray: $circumference;
-    stroke-dashoffset: calc(#{$circumference} - var(--ui-progress-circle-percentage) * #{$circumference});
+    stroke-dashoffset: calc(
+      #{$circumference} - var(--ui-progress-circle-percentage) * #{$circumference}
+    );
   }
 }
 
@@ -33,7 +51,7 @@ $progress-stroke: ("xs": 0.3em, "small": 0.5em, "medium": 0.5em, "large": 0.7em)
   } @else if($size == medium) {
     @return calc(2em - 0.5em / 2);
   } @else if($size == xs) {
-    @return calc(.5em - 0.3em / 2);
+    @return calc(0.5em - 0.3em / 2);
   } @else {
     @return calc(3.5em - 0.7em / 2);
   }
@@ -47,32 +65,60 @@ $progress-stroke: ("xs": 0.3em, "small": 0.5em, "medium": 0.5em, "large": 0.7em)
     $start: (1 - 0.05) * $_default-circumference; // start the animation at 2%
     $end: (1 - 0.9) * $_default-circumference; // end the animation at 90%
 
-    0%        { stroke-dashoffset: $start; }
-    12.5%     { stroke-dashoffset: $end; }
+    0% {
+      stroke-dashoffset: $start;
+    }
+
+    12.5% {
+      stroke-dashoffset: $end;
+    }
     //12.5001%  { stroke-dashoffset: $end; }
-    25%       { stroke-dashoffset: $start; }
+    25% {
+      stroke-dashoffset: $start;
+    }
 
-    25.0001%   { stroke-dashoffset: $start; }
-    37.5%      { stroke-dashoffset: $end; }
+    25.0001% {
+      stroke-dashoffset: $start;
+    }
+
+    37.5% {
+      stroke-dashoffset: $end;
+    }
     //37.5001%   { stroke-dashoffset: $end; }
-    50%        { stroke-dashoffset: $start; }
+    50% {
+      stroke-dashoffset: $start;
+    }
 
-    50.0001%  { stroke-dashoffset: $start; }
-    62.5%     { stroke-dashoffset: $end; }
+    50.0001% {
+      stroke-dashoffset: $start;
+    }
+
+    62.5% {
+      stroke-dashoffset: $end;
+    }
     //62.5001%  { stroke-dashoffset: $end; }
-    75%       { stroke-dashoffset: $start; }
+    75% {
+      stroke-dashoffset: $start;
+    }
 
-    75.0001%  { stroke-dashoffset: $start; }
-    87.5%     { stroke-dashoffset: $end; }
+    75.0001% {
+      stroke-dashoffset: $start;
+    }
+
+    87.5% {
+      stroke-dashoffset: $end;
+    }
     //87.5001%  { stroke-dashoffset: $end; }
-    100%      { stroke-dashoffset: $start; }
+    100% {
+      stroke-dashoffset: $start;
+    }
   }
 }
 
 @mixin indeterminate($size, $name) {
+  @include indeterminate-animation($size, $name);
   $duration: calc(var(--duration) * 8);
   $progress-duration: calc(var(--duration) * 24);
-  @include indeterminate-animation($size, $name);
 
   .svg {
     animation: ui-progress-spinner-linear-rotate $duration linear infinite;
@@ -90,8 +136,8 @@ $progress-stroke: ("xs": 0.3em, "small": 0.5em, "medium": 0.5em, "large": 0.7em)
 }
 
 :host {
-  display: block;
   position: relative;
+  display: block;
   color: var(--primary);
   transform: rotate(-90deg);
   transform-origin: center;
@@ -150,6 +196,11 @@ $progress-stroke: ("xs": 0.3em, "small": 0.5em, "medium": 0.5em, "large": 0.7em)
 }
 
 @keyframes ui-progress-spinner-linear-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

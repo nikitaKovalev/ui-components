@@ -1,5 +1,5 @@
-@import "ui-button.base";
-@import "ui-button.theme";
+@import 'ui-button.base';
+@import 'ui-button.theme';
 
 :host {
   transition: 200ms ease-in-out background-color;
@@ -19,6 +19,4 @@
     @include icon-button;
     @include theme-palette(background-color);
   }
-
 }
-

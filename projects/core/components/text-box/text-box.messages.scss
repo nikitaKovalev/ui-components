@@ -1,13 +1,13 @@
-@use "text-box.component" as variable;
+@use 'text-box.component' as variable;
 
 .textbox-messages-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
   width: inherit;
   height: auto;
   margin-top: 0.3rem;
   padding: 0 1rem;
-  position: absolute;
-  top: 100%;
-  left: 0;
   font-size: small;
   box-sizing: border-box;
   pointer-events: none;

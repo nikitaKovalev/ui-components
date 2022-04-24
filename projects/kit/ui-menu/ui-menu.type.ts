@@ -7,26 +7,26 @@ export const TOP_LEFT: ConnectionPositionPair = {
   originX: 'start',
   originY: 'top',
   overlayX: 'end',
-  overlayY: 'bottom'
+  overlayY: 'bottom',
 };
 
 export const TOP_RIGHT: ConnectionPositionPair = {
   originX: 'end',
   originY: 'top',
   overlayX: 'start',
-  overlayY: 'bottom'
+  overlayY: 'bottom',
 };
 
 export const BOTTOM_LEFT: ConnectionPositionPair = {
   originX: 'start',
   originY: 'top',
   overlayX: 'end',
-  overlayY: 'top'
+  overlayY: 'top',
 };
 
 export const BOTTOM_RIGHT: ConnectionPositionPair = {
   originX: 'end',
   originY: 'top',
   overlayX: 'start',
-  overlayY: 'top'
+  overlayY: 'top',
 };

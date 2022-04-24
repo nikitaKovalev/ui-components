@@ -7,29 +7,27 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiProgressCircleComponent {
+  @Input()
+  value: number | null = 0;
 
   @Input()
-  public value: number | null = 0;
-
-  @Input()
-  public max = 1;
+  max = 1;
 
   @Input()
   @HostBinding('style.--ui-progress-circle-color')
-  public color: string | null = null;
+  color: string | null = null;
 
   @Input()
   @HostBinding('attr.data-size')
   @HostBinding('style.--ui-progress-circle-size')
-  public size: 'xs' | 'small' | 'medium' | 'large'  = 'medium';
+  size: 'xs' | 'small' | 'medium' | 'large' = 'medium';
 
   @Input()
   @HostBinding('attr.data-mode')
-  public mode: 'determinate' | 'indeterminate' = 'indeterminate';
+  mode: 'determinate' | 'indeterminate' = 'indeterminate';
 
   @HostBinding('style.--ui-progress-circle-percentage')
-  public get progressPercentage(): number {
+  get progressPercentage(): number {
     return <number>this.value / this.max;
   }
-
 }

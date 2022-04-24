@@ -1,4 +1,11 @@
 import {
+  ConnectionPositionPair,
+  Overlay,
+  OverlayConfig,
+  OverlayRef,
+} from '@angular/cdk/overlay';
+import { TemplatePortalDirective } from '@angular/cdk/portal';
+import {
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -10,75 +17,85 @@ import {
   OnDestroy,
   QueryList,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
-import { ConnectionPositionPair, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { TemplatePortalDirective } from '@angular/cdk/portal';
-
-import { filter, fromEvent, merge, Observable, of, Subject, switchMap, takeUntil } from 'rxjs';
+import { watch } from '@ui-components/core/rxjs';
+import { Palette } from '@ui-components/core/types';
+import { UiOptionComponent } from '@ui-components/kit/ui-option';
+import {
+  filter,
+  fromEvent,
+  merge,
+  Observable,
+  of,
+  Subject,
+  switchMap,
+  takeUntil,
+} from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { UiOptionComponent } from '@ui-components/kit/ui-option';
-import { Palette } from '@ui-components/core/types';
-import { watch } from '@ui-components/core/rxjs';
-
-import { BOTTOM_LEFT, BOTTOM_RIGHT, PositionType, ToggleType, TOP_LEFT, TOP_RIGHT } from './ui-menu.type';
 import { fadeIn, fadeOut } from './fade.animation';
 import { toggle } from './ui-menu.animation';
+import {
+  BOTTOM_LEFT,
+  BOTTOM_RIGHT,
+  PositionType,
+  ToggleType,
+  TOP_LEFT,
+  TOP_RIGHT,
+} from './ui-menu.type';
 
 // todo: replace with uiButton + dropdown-host
 @Component({
   selector: 'ui-menu',
   templateUrl: './ui-menu.component.html',
   styleUrls: ['./ui-menu.component.scss'],
-  animations: [ toggle, fadeIn, fadeOut ],
+  animations: [toggle, fadeIn, fadeOut],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiMenuComponent
-  implements AfterViewInit, OnDestroy {
+export class UiMenuComponent implements AfterViewInit, OnDestroy {
+  private _overlayRef: OverlayRef | null = null;
+
+  private readonly _destroyed$ = new Subject<void>();
 
   @HostBinding('attr.type')
   @Input()
-  public type: ToggleType = 'more_vert';
+  type: ToggleType = 'more_vert';
 
   @HostBinding('attr.color')
   @Input()
-  public color: Palette = 'primary';
+  color: Palette = 'primary';
 
   @Input('position')
-  public set overlayPosition(position: PositionType) {
+  set overlayPosition(position: PositionType) {
     this.position = this._getPosition(position);
   }
 
   @HostBinding('class.menu-button')
-  public readonly class = true;
+  readonly class = true;
 
   @ViewChild(TemplatePortalDirective)
-  public contentTemplate: TemplatePortalDirective | null = null;
+  contentTemplate: TemplatePortalDirective | null = null;
 
   @ContentChildren(UiOptionComponent)
-  public readonly options: QueryList<UiOptionComponent> = new QueryList<UiOptionComponent>();
+  readonly options: QueryList<UiOptionComponent> = new QueryList<UiOptionComponent>();
 
-  public position: ConnectionPositionPair[] = [BOTTOM_LEFT, TOP_LEFT];
+  position: ConnectionPositionPair[] = [BOTTOM_LEFT, TOP_LEFT];
 
-  public trigger = 'close';
-
-  private _overlayRef: OverlayRef | null = null;
-
-  private readonly _destroyed$ = new Subject<void>();
+  trigger = 'close';
 
   constructor(
     private readonly _elRef: ElementRef,
     private readonly _overlay: Overlay,
     private readonly _cdRef: ChangeDetectorRef,
-  ){}
+  ) {}
 
-  public ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     this._subContainerClicked();
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this._destroyed$.next();
     this._destroyed$.complete();
   }
@@ -109,14 +126,13 @@ export class UiMenuComponent
   }
 
   private _getCloseEmitters$(): Observable<unknown | MouseEvent> {
-    const clicked$ = of(this.options.toArray())
-      .pipe(
-        switchMap((options: UiOptionComponent[]) => {
-          const click$ = options?.map((option: UiOptionComponent) => option.click$) || [];
+    const clicked$ = of(this.options.toArray()).pipe(
+      switchMap((options: UiOptionComponent[]) => {
+        const click$ = options?.map((option: UiOptionComponent) => option.click$) || [];
 
-          return merge(...click$);
-        })
-      );
+        return merge(...click$);
+      }),
+    );
 
     return merge(clicked$, this._overlayRef!.backdropClick());
   }
@@ -150,5 +166,4 @@ export class UiMenuComponent
         return [TOP_RIGHT, BOTTOM_RIGHT];
     }
   }
-
 }

@@ -1,8 +1,6 @@
 import { Directive, forwardRef, InjectionToken } from '@angular/core';
 
-export const UI_PREFIX = new InjectionToken<void>(
-  'uiPrefix directive',
-);
+export const UI_PREFIX = new InjectionToken<void>('uiPrefix directive');
 
 @Directive({
   selector: 'span[uiPrefix], ui-icon[uiPrefix]',

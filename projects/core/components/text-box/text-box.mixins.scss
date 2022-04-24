@@ -1,6 +1,7 @@
-@use "sass:math";
-@use "sass:map";
-@import "../../styles/mixins/box-shadow.mixin";
+@use 'sass:math';
+@use 'sass:map';
+/* stylelint-disable */
+@import '../../styles/mixins/box-shadow.mixin';
 
 @mixin reset-input {
   padding: 0;
@@ -17,19 +18,30 @@
 }
 
 $default: #1b1f3b;
-$radius: ("small": 0.5rem, "medium": 0.625rem, "large": 0.625rem);
-$infix-padding: ("small": 0.258rem, "medium": 0.352rem, "large": 0.445rem);
+$radius: (
+  'small': 0.5rem,
+  'medium': 0.625rem,
+  'large': 0.625rem,
+);
+$infix-padding: (
+  'small': 0.258rem,
+  'medium': 0.352rem,
+  'large': 0.445rem,
+);
 
 @mixin size($size) {
   $infix-padding-y: map.get($infix-padding, $size);
-  border-radius: map.get($radius, $size);
 
   $infix-padding-x: 1rem;
+
+  $infix-padding-top: 0.25rem;
+
+  border-radius: map.get($radius, $size);
+
   .textbox-wrapper {
     padding: $infix-padding-y $infix-padding-x 0;
   }
 
-  $infix-padding-top: 0.25rem;
   .textbox-infix {
     padding: $infix-padding-top 0 $infix-padding-y;
     border-top: $infix-padding-y solid transparent;
@@ -43,6 +55,7 @@ $infix-padding: ("small": 0.258rem, "medium": 0.352rem, "large": 0.445rem);
 
 @mixin host-interactive($color) {
   @include box-shadow(0);
+
   outline-width: 2px;
   outline-color: $color;
 }
@@ -55,6 +68,6 @@ $infix-padding: ("small": 0.258rem, "medium": 0.352rem, "large": 0.445rem);
 
     color: $default;
     transform: translateY(-$infix-padding-y) scale($font-scale);
-    width: math.div(100%, $font-scale)
+    width: math.div(100%, $font-scale);
   }
 }

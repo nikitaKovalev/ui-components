@@ -3,12 +3,27 @@
 @use 'sass:meta';
 @use 'sass:math';
 
-$font-size: 12px;
+$font-size: 0.75rem;
 $font-weight: 600;
-$font-family: "Manrope", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
-$default-size: 22px !default;
+$font-family: 'Manrope', -apple-system, 'BlinkMacSystemFont', system-ui, 'Roboto',
+  'Segoe UI', 'Helvetica Neue', sans-serif;
+$default-size: 1.375rem !default;
 $small-size: $default-size - 6;
 $large-size: $default-size + 6;
+
+.ui-badge-content {
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  transition: transform 200ms ease-in-out;
+  transform: scale(0.9);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  color: var(--page-bg-secondary);
+}
 
 @mixin _badge-size($size) {
   .ui-badge-content {
@@ -35,15 +50,15 @@ $large-size: $default-size + 6;
     }
   }
 
-  [dir='rtl'] &.ui-badge-before {
+  &.ui-badge-after {
     .ui-badge-content {
-      left: auto;
       right: -$size / 2;
     }
   }
 
-  &.ui-badge-after {
+  [dir='rtl'] &.ui-badge-before {
     .ui-badge-content {
+      left: auto;
       right: -$size / 2;
     }
   }
@@ -62,15 +77,15 @@ $large-size: $default-size + 6;
       }
     }
 
-    [dir='rtl'] &.ui-badge-before {
+    &.ui-badge-after {
       .ui-badge-content {
-        left: auto;
         right: math.div(-$size, 2);
       }
     }
 
-    &.ui-badge-after {
+    [dir='rtl'] &.ui-badge-before {
       .ui-badge-content {
+        left: auto;
         right: math.div(-$size, 2);
       }
     }
@@ -82,7 +97,6 @@ $large-size: $default-size + 6;
       }
     }
   }
-  // stylelint-enable
 }
 
 @mixin _badge-structure {
@@ -102,20 +116,6 @@ $large-size: $default-size + 6;
     .ui-badge-content {
       display: none;
     }
-  }
-
-  .ui-badge-content {
-    position: absolute;
-    text-align: center;
-    display: inline-block;
-    border-radius: 50%;
-    transition: transform 200ms ease-in-out;
-    transform: scale(.9);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    pointer-events: none;
-    color: var(--page-bg-secondary);
   }
 
   .ui-badge-small {
@@ -175,7 +175,6 @@ $large-size: $default-size + 6;
     background-color: $error;
   }
 }
-
 
 :root {
   @include _badge-structure;

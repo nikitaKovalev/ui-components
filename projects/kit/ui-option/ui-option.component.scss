@@ -1,8 +1,6 @@
 :host {
   cursor: pointer;
-
   transition: var(--duration);
-
   padding: var(--radius-s) var(--padding-l);
 
   &:hover {

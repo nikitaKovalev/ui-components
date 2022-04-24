@@ -1,24 +1,20 @@
-import { Inject, Injectable, OnDestroy, Type } from '@angular/core';
 import { OverlayRef } from '@angular/cdk/overlay';
-
+import { Inject, Injectable, OnDestroy, Type } from '@angular/core';
+import { TODO_ANY } from '@ui-components/core/types';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { TODO_ANY } from '@ui-components/core/types';
-
 @Injectable({ providedIn: 'root' })
-export class UiDialogRef<T = any>
-  implements OnDestroy {
-
-  public get component(): Type<any> {
+export class UiDialogRef<T = any> implements OnDestroy {
+  get component(): Type<any> {
     return this._component;
   }
 
-  public get data(): T {
+  get data(): T {
     return this._data;
   }
 
-  public get afterClosed$(): Observable<TODO_ANY> {
+  get afterClosed$(): Observable<TODO_ANY> {
     return this._afterClosed$.asObservable();
   }
 
@@ -35,12 +31,12 @@ export class UiDialogRef<T = any>
     this._subBackDropClick();
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this._destroyed$.next();
     this._destroyed$.complete();
   }
 
-  public close(data?: TODO_ANY): void {
+  close(data?: TODO_ANY): void {
     this._close(data);
   }
 
@@ -52,9 +48,9 @@ export class UiDialogRef<T = any>
   }
 
   private _subBackDropClick(): void {
-    this._overlayRef.backdropClick()
+    this._overlayRef
+      .backdropClick()
       .pipe(takeUntil(this._destroyed$))
       .subscribe(() => this._close(null));
   }
-
 }

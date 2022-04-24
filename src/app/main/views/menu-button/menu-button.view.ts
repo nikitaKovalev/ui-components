@@ -5,8 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuButtonView {
-
-  public options: string[] = [
+  options: string[] = [
     'Option 1',
     'Option 2',
     'Option 3',
@@ -17,10 +16,7 @@ export class MenuButtonView {
     'Option 8',
     'Option 9',
     'Option 10',
-  ]
+  ];
 
-  public showClicked(option: string): void {
-    console.log(option);
-  }
-
+  showClicked(): void {}
 }

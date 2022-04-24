@@ -1,14 +1,22 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-let _id: number = 0;
+let _id = 0;
 
 @Component({
   selector: 'ui-error',
-  template: `<ng-content></ng-content>`,
-  styles: [`:host { color: var(--warn); }`],
+  template: `
+    <ng-content></ng-content>
+  `,
+  styles: [
+    `
+      :host {
+        color: var(--warn);
+      }
+    `,
+  ],
   host: {
-    'class': 'ui-error',
-    'attr.ui-error-id': `${ _id++ }`,
+    class: 'ui-error',
+    'attr.ui-error-id': `${_id++}`,
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

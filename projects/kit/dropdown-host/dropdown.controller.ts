@@ -1,11 +1,16 @@
-import { ContentChildren, Directive, forwardRef, InjectionToken, Input, QueryList } from '@angular/core';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Highlightable } from '@angular/cdk/a11y';
-
-import { identity, merge, NEVER, Observable, startWith, switchMap } from 'rxjs';
-
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import {
+  ContentChildren,
+  Directive,
+  forwardRef,
+  InjectionToken,
+  Input,
+  QueryList,
+} from '@angular/core';
 import { UiController } from '@ui-components/core/classes';
 import { UiOptionComponent } from '@ui-components/kit/ui-option';
+import { identity, merge, NEVER, Observable, startWith, switchMap } from 'rxjs';
 
 export const DROPDOWN = new InjectionToken<UiDropdownController>(
   'dropdown host UiDropdownController',
@@ -25,34 +30,38 @@ export const DROPDOWN_CONTROLLER = new InjectionToken<UiDropdownController>(
     },
   ],
 })
-export class UiDropdownController
-  extends UiController {
-  @Input('uiDropdownEnabled')
-  public get enabled(): boolean {
-    return this._enabled;
-  }
-  public set enabled(enabled: boolean | string) {
-    this._enabled = coerceBooleanProperty(enabled);
-  }
+export class UiDropdownController extends UiController {
   private _enabled = false;
 
+  private _readOnly = false;
+
+  @Input('uiDropdownEnabled')
+  get enabled(): boolean {
+    return this._enabled;
+  }
+
+  set enabled(enabled: boolean | string) {
+    this._enabled = coerceBooleanProperty(enabled);
+  }
+
   @Input('uiTextboxReadonly')
-  public get readOnly(): boolean {
+  get readOnly(): boolean {
     return this._readOnly;
   }
-  public set readOnly(readonly: boolean | string) {
+
+  set readOnly(readonly: boolean | string) {
     this._readOnly = coerceBooleanProperty(readonly);
   }
-  private _readOnly: boolean = false;
 
   @Input('uiDropdownDisplayAs')
-  public displayAs: Function = identity;
+  displayAs: Function = identity;
 
   @ContentChildren(UiOptionComponent)
-  public readonly options: QueryList<UiOptionComponent & Highlightable>
-    = new QueryList<UiOptionComponent & Highlightable>();
+  readonly options: QueryList<UiOptionComponent & Highlightable> = new QueryList<
+    UiOptionComponent & Highlightable
+  >();
 
-  public get optionSelected$(): Observable<unknown> {
+  get optionSelected$(): Observable<unknown> {
     return this.options.changes.pipe(
       startWith(this.options.toArray()),
       switchMap((options: UiOptionComponent[]) => {
@@ -62,5 +71,4 @@ export class UiDropdownController
       }),
     );
   }
-
 }

@@ -1,47 +1,45 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Highlightable } from '@angular/cdk/a11y';
-
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'ui-option',
-  template: `<ng-content></ng-content>`,
-  styleUrls: [ './ui-option.component.scss' ],
+  template: `
+    <ng-content></ng-content>
+  `,
+  styleUrls: ['./ui-option.component.scss'],
   host: {
-    'class': 'ui-option',
+    class: 'ui-option',
     '[class.--active]': 'active',
     '(click)': 'onClick()',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiOptionComponent
-  implements Highlightable {
+export class UiOptionComponent implements Highlightable {
+  private readonly _click$ = new Subject<unknown>();
 
   @Input()
-  public value: unknown = null;
+  value: unknown = null;
 
-  public active = false;
+  active = false;
 
-  public get click$(): Observable<unknown> {
+  get click$(): Observable<unknown> {
     return this._click$.asObservable();
   }
 
-  public onClick(): void {
+  onClick(): void {
     this._click$.next(this.value);
   }
 
-  private readonly _click$ = new Subject<unknown>();
-
-  public setActiveStyles(): void {
+  setActiveStyles(): void {
     this.active = true;
   }
 
-  public setInactiveStyles(): void {
+  setInactiveStyles(): void {
     this.active = false;
   }
 
-  public getLabel(): string {
+  getLabel(): string {
     return '';
   }
-
 }

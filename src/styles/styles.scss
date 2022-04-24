@@ -1,18 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
 // CDK Overlay styles
-@import "~@angular/cdk/overlay-prebuilt.css";
+@import '~@angular/cdk/overlay-prebuilt.css';
 
 // Local imports
-@import "bootstrap";
-@import "theme-colors";
-@import "typography";
-@import "box-shadow";
-@import "variables";
+@import 'bootstrap';
+@import 'theme-colors';
+@import 'typography';
+@import 'box-shadow';
+@import 'variables';
+
 /* import to apply table styles */
-@import "../../projects/core/styles/ui-components-global";
-@import "projects/kit/ui-table/ui-table";
-@import "projects/kit/ui-badge/badge.base";
+@import '../../projects/core/styles/ui-components-global';
+@import 'projects/kit/ui-table/ui-table';
+@import 'projects/kit/ui-badge/badge.base';
 //@import "src/app/main/components/ui-badge/badge.base";
 
 body {
@@ -23,8 +24,13 @@ body {
 }
 
 .ui-bgc {
-  &-primary { background-color: var(--primary); }
-  &-accent { background-color: var(--accent); }
+  &-primary {
+    background-color: var(--primary);
+  }
+
+  &-accent {
+    background-color: var(--accent);
+  }
 }
 
 .main-wrapper {

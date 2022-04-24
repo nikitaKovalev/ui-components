@@ -1,41 +1,43 @@
-<p>
-  Badge supports sizes, positions, palette.
-</p>
+<p>Badge supports sizes, positions, palette.</p>
 
 <button
-  class="me-3"
   uiRaisedButton
   uiBadge="10"
   uiBadgePosition="above before"
-  uiBadgeColor="primary">
+  uiBadgeColor="primary"
+  class="me-3"
+>
   Above, before
 </button>
 
 <button
-  class="me-3"
   uiRaisedButton
   uiBadge="10"
   uiBadgePosition="below before"
-  uiBadgeColor="accent">
+  uiBadgeColor="accent"
+  class="me-3"
+>
   Below, before
 </button>
 
 <button
-  class="me-3"
   uiRaisedButton
-  [uiBadge]="counter$ | async"
   uiBadgePosition="above after"
-  uiBadgeColor="warn">
+  uiBadgeColor="warn"
+  class="me-3"
+  [uiBadge]="counter$ | async"
+>
   Async value
 </button>
 
 <button
-  class="me-3"
   uiRaisedButton
   uiBadge="10"
   uiBadgePosition="below after"
   uiBadgeColor="error"
+  class="me-3"
   [uiBadgeHidden]="hidden"
-  (click)="toggle()">
+  (click)="toggle()"
+>
   Toggle visibility
 </button>

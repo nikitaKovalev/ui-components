@@ -1,30 +1,25 @@
-@import "../../../../styles/box-shadow";
+@import '../../../../styles/box-shadow';
 
 $transition: 1s ease-in-out;
 
 // wrapper
 .navigation-wrapper {
+  @include box-shadow(1);
+
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-
   width: 16.25rem;
-
   background-color: var(--page-bg);
-
   transition: $transition;
-
-  @include box-shadow(1);
 }
 
 // list item
 .navigation-item {
   display: block;
   text-decoration: none;
-
   color: var(--text-secondary-color);
-
   padding-left: 1.5rem;
   line-height: 2.25rem;
 }
@@ -40,4 +35,3 @@ $transition: 1s ease-in-out;
   background-color: var(--page-bg-secondary);
   color: var(--text-base-color);
 }
-

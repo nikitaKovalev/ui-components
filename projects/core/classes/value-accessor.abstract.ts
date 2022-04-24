@@ -1,54 +1,50 @@
-import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { ChangeDetectorRef, Directive, Inject, Optional, Self } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 
-import { identity } from 'rxjs';
+export const EMPTY_FUNCTION: Function = () => {};
 
 @Directive()
-export abstract class UiValueAccessor<T = any>
-  implements ControlValueAccessor {
-
-  public get invalid(): boolean {
+export abstract class UiValueAccessor<T = any> implements ControlValueAccessor {
+  get invalid(): boolean {
     return this._getNgControlProperty<boolean>('invalid');
   }
 
-  public get touched(): boolean {
+  get touched(): boolean {
     return this._getNgControlProperty<boolean>('touched');
   }
 
-  public get dirty(): boolean {
+  get dirty(): boolean {
     return this._getNgControlProperty<boolean>('dirty');
   }
 
-  public get valid(): boolean {
+  get valid(): boolean {
     return this._getNgControlProperty<boolean>('valid');
   }
 
-  public get disabled(): boolean {
+  get disabled(): boolean {
     return this._getNgControlProperty<boolean>('disabled');
   }
 
-  public get control(): AbstractControl {
+  get control(): AbstractControl {
     return this._getNgControlProperty<AbstractControl>('control');
   }
 
-  public get hasError(): boolean {
-    return (this.control
-      && this.invalid
-      && (this.dirty || this.touched))
-      ?? false;
+  get hasError(): boolean {
+    return (this.control && this.invalid && (this.dirty || this.touched)) ?? false;
   }
 
-  public get value(): T {
+  get value(): T {
     return this._value as T;
   }
-  public set value(value: T | unknown) {
+
+  set value(value: T | unknown) {
     this._value = value;
     this._cdRef.detectChanges();
   }
-  private _value: T | unknown = '';
 
-  private _onChange: Function = identity;
-  private _onTouched: Function = () => {};
+  private _value: T | unknown = '';
+  private _onChange = EMPTY_FUNCTION;
+  private _onTouched = EMPTY_FUNCTION;
 
   constructor(
     @Optional()
@@ -62,34 +58,30 @@ export abstract class UiValueAccessor<T = any>
       _ngControl.valueAccessor = this;
     } else {
       console.info(
-        `If you want to use ${ this.constructor.name } as a Control:
-       then add [formControl] or formControlName or [(ngModel)].`
+        `If you want to use ${this.constructor.name} as a Control:
+       then add [formControl] or formControlName or [(ngModel)].`,
       );
     }
   }
 
-  public writeValue(value: T | unknown) {
+  writeValue(value: T | unknown) {
     this.value = value;
-    if (!!value) this._markAsTouched();
+    if (value) this._markAsTouched();
   }
 
-  public registerOnChange(
-    onChange: (value: T | unknown) => {},
-  ): void {
+  registerOnChange(onChange: (value: T | unknown) => {}): void {
     this._onChange = (value: T | unknown) => onChange(value);
   }
 
-  public registerOnTouched(
-    onTouched: () => void,
-  ): void {
+  registerOnTouched(onTouched: () => void): void {
     this._onTouched = onTouched;
   }
 
-  public onValueChange(value: T | unknown): void {
+  onValueChange(value: T | unknown): void {
     this._onChange(value);
   }
 
-  public onFocusChange(): void {
+  onFocusChange(): void {
     this._markAsTouched();
   }
 
@@ -97,10 +89,7 @@ export abstract class UiValueAccessor<T = any>
     this.control ? this._onTouched() : null;
   }
 
-  private _getNgControlProperty<Property>(
-    property: keyof NgControl,
-  ): Property {
+  private _getNgControlProperty<Property>(property: keyof NgControl): Property {
     return this._ngControl && this._ngControl[property];
   }
-
 }

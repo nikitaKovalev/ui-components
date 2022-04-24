@@ -1,15 +1,18 @@
 {
   "name": "ui-components",
   "version": "0.0.0",
-  "web-types": "./projects/core/plugins/web-types.json",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prettier": "prettier '**/*.{js,ts,html,md,scss,less,json}' --write",
+    "stylelint": "stylelint '**/*.scss'",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~13.0.0",
     "@angular/cdk": "^13.0.2",
@@ -29,8 +32,13 @@
     "@angular-devkit/build-angular": "~13.0.1",
     "@angular/cli": "~13.0.1",
     "@angular/compiler-cli": "~13.0.0",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@lightech-llc/eslint-config-angular": "^1.0.1",
+    "@lightech-llc/prettier-config": "^1.0.0",
+    "@lightech-llc/stylelint-config": "^1.0.1",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "husky": "^7.0.4",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -38,6 +46,8 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^13.0.0",
+    "postcss": "^8.4.12",
     "typescript": "~4.4.3"
-  }
+  },
+  "web-types": "./projects/core/plugins/web-types.json"
 }

@@ -6,7 +6,6 @@ $default: #d7d7d7;
   color: var(--block-bg);
   padding: var(--padding-xs);
   border-radius: var(--radius-xs);
-
   animation-duration: 300ms;
   animation-fill-mode: both;
   animation-name: tooltipFade;
@@ -17,7 +16,7 @@ $default: #d7d7d7;
 
   &--accent {
     background-color: var(--accent);
-    color: var(--page-bg)
+    color: var(--page-bg);
   }
 
   &--warn {
@@ -29,9 +28,12 @@ $default: #d7d7d7;
   }
 
   @keyframes tooltipFade {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
-
 }
-

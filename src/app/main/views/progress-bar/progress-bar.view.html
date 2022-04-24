@@ -1,21 +1,20 @@
 <p>Progress bar size large</p>
-<progress uiProgressBar [value]="value$ | async" max="100"></progress>
+<progress uiProgressBar max="100" [value]="value$ | async"></progress>
 
 <p>Progress bar size medium</p>
 <progress
   uiProgressBar
   size="medium"
   color="accent"
+  max="100"
   [value]="value$ | async"
-  max="100">
-</progress>
+></progress>
 
 <p>Progress bar size small</p>
 <progress
   uiProgressBar
   size="small"
   color="error"
+  max="100"
   [value]="value$ | async"
-  max="100">
-</progress>
-
+></progress>

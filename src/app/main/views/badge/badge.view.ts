@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
 import { startWith, takeWhile, timer } from 'rxjs';
 
 @Component({
@@ -7,16 +6,14 @@ import { startWith, takeWhile, timer } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeView {
-
-  public counter$ = timer(120, 500).pipe(
+  counter$ = timer(120, 500).pipe(
     startWith(0),
     takeWhile((count: number) => count <= 50),
-  )
+  );
 
-  public hidden = false;
+  hidden = false;
 
-  public toggle(): void {
+  toggle(): void {
     this.hidden = !this.hidden;
   }
-
 }

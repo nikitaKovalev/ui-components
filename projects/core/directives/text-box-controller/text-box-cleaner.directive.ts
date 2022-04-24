@@ -1,6 +1,5 @@
-import { Directive, forwardRef, InjectionToken, Input } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-
+import { Directive, forwardRef, InjectionToken, Input } from '@angular/core';
 import { UiController } from '@ui-components/core/classes';
 
 export const TEXTBOX_CLEANER_CONTROLLER = new InjectionToken(
@@ -21,14 +20,15 @@ export const CLEANER_CONTROLLER = new InjectionToken<UiTextBoxCleanerDirective>(
     },
   ],
 })
-export class UiTextBoxCleanerDirective
-  extends UiController {
+export class UiTextBoxCleanerDirective extends UiController {
   @Input('uiTextboxCleaner')
-  public get enabled(): boolean {
+  get enabled(): boolean {
     return this._enabled;
   }
-  public set enabled(hasCleaner: boolean | string) {
+
+  set enabled(hasCleaner: boolean | string) {
     this._enabled = coerceBooleanProperty(hasCleaner);
   }
+
   private _enabled = false;
 }

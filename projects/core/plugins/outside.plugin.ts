@@ -11,29 +11,26 @@ import { AbstractEventPlugin } from './abstract.plugin';
  * </button>
  **/
 @Injectable()
-export class OutsideEventPlugin
-  extends AbstractEventPlugin {
-
+export class OutsideEventPlugin extends AbstractEventPlugin {
   protected _name = '.outside';
 
-  public addEventListener(
-    element: HTMLElement,
-    eventName: string,
-    handler: Function,
-  ): Function {
-    return this.manager.getZone().runOutsideAngular(() =>
-      this.manager.addEventListener(element, this._unwrap(eventName), handler)
-    );
+  addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
+    return this.manager
+      .getZone()
+      .runOutsideAngular(() =>
+        this.manager.addEventListener(element, this._unwrap(eventName), handler),
+      );
   }
 
-  public override addGlobalEventListener(
+  override addGlobalEventListener(
     target: string,
     eventName: string,
     handler: Function,
   ): Function {
-    return this.manager.getZone().runOutsideAngular(() =>
-      this.manager.addGlobalEventListener(target, this._unwrap(eventName), handler)
-    );
+    return this.manager
+      .getZone()
+      .runOutsideAngular(() =>
+        this.manager.addGlobalEventListener(target, this._unwrap(eventName), handler),
+      );
   }
-
 }

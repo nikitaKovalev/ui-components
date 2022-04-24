@@ -50,12 +50,12 @@
   }
 }
 
-
 :host {
   @include resetStyles;
   @include progressAnimation;
   @include progressValueColor(var(--primary, currentColor));
   @include progressContainer(background-color, var(--block-bg));
+
   display: block;
   width: 100%;
   color: var(--text-base-color);
@@ -91,6 +91,4 @@
   }
 
   // todo: add indeterminate styles
-  &[data-mode='indeterminate'] {}
-
 }

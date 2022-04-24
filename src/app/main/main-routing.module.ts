@@ -78,17 +78,17 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'input',
-      }
-    ]
+      },
+    ],
   },
   {
     path: '**',
     redirectTo: 'input',
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {}
