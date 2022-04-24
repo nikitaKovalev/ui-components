@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
 import { interval, Observable, startWith, takeWhile } from 'rxjs';
 
 @Component({
@@ -7,10 +6,8 @@ import { interval, Observable, startWith, takeWhile } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConstView {
-
-  public readonly value$: Observable<number> = interval(300).pipe(
+  readonly value$: Observable<number> = interval(300).pipe(
     startWith(0),
     takeWhile((interval: number) => interval <= 100),
   );
-
 }

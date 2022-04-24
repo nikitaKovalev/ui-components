@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -5,10 +6,8 @@ import {
   ElementRef,
   Inject,
   Input,
-  Renderer2
+  Renderer2,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-
 import { Palette } from '@ui-components/core/types';
 
 import { UiIconService } from './ui-icon.service';
@@ -17,17 +16,17 @@ const URL = 'http://www.w3.org/2000/svg';
 
 @Component({
   selector: 'ui-icon',
-  template: `<ng-content></ng-content>`,
-  styleUrls: [ './ui-icon.component.scss' ],
+  template: `
+    <ng-content></ng-content>
+  `,
+  styleUrls: ['./ui-icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiIconComponent
-  implements AfterContentInit {
+export class UiIconComponent implements AfterContentInit {
+  private _icon: SVGElement | null = null;
 
   @Input()
-  public color: Palette = 'default';
-
-  private _icon: SVGElement | null = null;
+  color: Palette = 'default';
 
   constructor(
     private readonly _elRef: ElementRef,
@@ -37,7 +36,7 @@ export class UiIconComponent
     private readonly _uiIconSvc: UiIconService,
   ) {}
 
-  public ngAfterContentInit(): void {
+  ngAfterContentInit(): void {
     this._initIcon();
   }
 
@@ -47,6 +46,7 @@ export class UiIconComponent
     }
 
     const content = this._uiIconSvc.getIcon(this._elRef.nativeElement.innerText?.trim());
+
     this._icon = this._getSVG(content);
     // remove text from the element
     this._elRef.nativeElement.innerText = '';
@@ -57,9 +57,9 @@ export class UiIconComponent
 
   private _getSVG(content: string): SVGElement {
     const div = this._document.createElement('div');
+
     div.innerHTML = content;
 
     return div.querySelector('svg') || this._document.createElementNS(URL, 'path');
   }
-
 }

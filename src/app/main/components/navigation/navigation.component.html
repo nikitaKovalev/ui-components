@@ -1,19 +1,16 @@
 <ui-sidenav [opened]="isOpened">
   <div ui-sidenav-header>
-    <ui-menu
-      class="me-2"
-      type="menu"
-      (click)="toggle()">
-    </ui-menu>
+    <ui-menu type="menu" class="me-2" (click)="toggle()"></ui-menu>
 
     <span class="text-truncate">UI Kit</span>
   </div>
 
   <a
     *ngFor="let link of links"
-     ui-sidenav-link
-     routerLinkActive="ui-sidenav-link--active"
-     [routerLink]="link.routerLink">
+    ui-sidenav-link
+    routerLinkActive="ui-sidenav-link--active"
+    [routerLink]="link.routerLink"
+  >
     {{ link.title }}
   </a>
 </ui-sidenav>

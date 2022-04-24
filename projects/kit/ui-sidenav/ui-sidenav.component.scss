@@ -1,24 +1,23 @@
-@import "ui-sidenav-mixin";
+@import 'ui-sidenav-mixin';
 
 $transition: 1s ease-in-out;
 
 :host {
-  width: 16.25rem;
-  max-width: 16.25rem;
-  height: 100%;
-
-  transition: $transition;
-
-  background-color: var(--page-bg);
   @include box-shadow(1);
 
   display: flex;
+  width: 16.25rem;
+  max-width: 16.25rem;
+  height: 100%;
+  transition: $transition;
+  background-color: var(--page-bg);
   flex-direction: column;
 
   &::ng-deep {
     overflow-x: hidden;
     overflow-y: scroll;
     text-overflow: ellipsis;
+
     *[ui-sidenav-header],
     *[ui-sidenav-link],
     *[ui-sidenav-content] > *,
@@ -39,11 +38,9 @@ $transition: 1s ease-in-out;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-
       line-height: 2.25rem;
       text-decoration: none;
       color: var(--text-secondary-color);
-
       margin: 0 !important;
 
       &:hover:not(.ui-sidenav-link--active) {
@@ -57,13 +54,15 @@ $transition: 1s ease-in-out;
         color: var(--primary);
       }
     }
-
-    *[ui-sidenav-footer] {}
   }
 
-  &[position = 'start'] { float: left; }
-  &[position = 'end'] { float: right; }
+  &[position='start'] {
+    float: left;
+  }
 
+  &[position='end'] {
+    float: right;
+  }
 }
 
 .ui-sidenav-scrollable {

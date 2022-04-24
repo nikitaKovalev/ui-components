@@ -6,15 +6,20 @@
   --accent: #3aa981;
   --warn: #dd4c1e;
   --warn-secondary: #e38163;
-  --error: #B33F40;
+  --error: #b33f40;
 
   // Font
   --text-base-color: #1b1f3b; // Primary text and headings
   --text-secondary-color: rgba(27, 31, 59, 0.65); // Secondary text and descriptions
-  --text-inactive-color: rgba(27, 31, 59, 0.4); // Inactive and additional points, minor information and helpers
+  --text-inactive-color: rgba(
+    27,
+    31,
+    59,
+    0.4
+  ); // Inactive and additional points, minor information and helpers
+
   --link-color: #526ed3; // Buttons and Links
   --link-hover-color: #6c86e2; // Buttons and Links hover
-
   --page-bg: #fff;
   --page-bg-secondary: #f6f6f6;
   --block-bg: #ededed; // Table borders, islands and blocks

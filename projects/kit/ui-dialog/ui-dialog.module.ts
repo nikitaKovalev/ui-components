@@ -1,24 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { UiDialogComponent } from './ui-dialog.component';
 import { UiDialogService } from './services';
-
+import { UiDialogComponent } from './ui-dialog.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    OverlayModule,
-  ],
-  exports: [
-    UiDialogComponent,
-  ],
-  declarations: [
-    UiDialogComponent,
-  ],
-  providers: [
-    UiDialogService,
-  ]
+  imports: [CommonModule, OverlayModule],
+  exports: [UiDialogComponent],
+  declarations: [UiDialogComponent],
+  providers: [UiDialogService],
 })
-export class UiDialogModule { }
+export class UiDialogModule {}

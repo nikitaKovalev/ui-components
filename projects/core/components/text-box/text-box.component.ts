@@ -6,9 +6,9 @@ import {
   Inject,
   Input,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
-
+import { fade, fadeIn } from '@ui-components/core/animations';
 import {
   TEXTBOX_CONTROLLER,
   TEXTBOX_PROVIDERS,
@@ -17,19 +17,13 @@ import {
 } from '@ui-components/core/directives';
 import { CLEANER_CONTROLLER } from '@ui-components/core/directives/text-box-controller';
 
-import { fade, fadeIn } from '@ui-components/core/animations';
-
-
 @Component({
   selector: 'ui-textbox',
   templateUrl: './text-box.component.html',
-  styleUrls: [
-    './text-box.component.scss',
-    './text-box.messages.scss',
-  ],
-  animations: [ fadeIn, fade ],
+  styleUrls: ['./text-box.component.scss', './text-box.messages.scss'],
+  animations: [fadeIn, fade],
   host: {
-    'class': 'ui-textbox',
+    class: 'ui-textbox',
     '[class.--focused]': 'focused',
     '[class.--filled]': 'filled',
     '[class.--invalid]': 'invalid',
@@ -43,62 +37,60 @@ import { fade, fadeIn } from '@ui-components/core/animations';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiTextBoxComponent {
+  @Input()
+  value = '';
 
   @Input()
-  public value: string = '';
-
-  @Input()
-  public invalid: boolean = false;
+  invalid = false;
 
   @Input('disabled')
-  public _disabled: boolean = false;
+  _disabled = false;
 
   @Output()
-  public readonly focusChange = new EventEmitter<void>();
+  readonly focusChange = new EventEmitter<void>();
 
   @Output()
-  public readonly valueChange = new EventEmitter<string>();
+  readonly valueChange = new EventEmitter<string>();
 
   @ViewChild('inputRef', { static: true })
-  public readonly input!: ElementRef<HTMLInputElement>;
+  readonly input!: ElementRef<HTMLInputElement>;
 
-  public focused: boolean = false;
+  focused = false;
 
   constructor(
     @Inject(TEXTBOX_CONTROLLER)
-    public readonly controller: UiTextBoxController,
+    readonly controller: UiTextBoxController,
     @Inject(CLEANER_CONTROLLER)
     private readonly _cleaner: UiTextBoxCleanerDirective,
   ) {}
 
-  public get filled(): boolean {
+  get filled(): boolean {
     return !!this.value;
   }
 
-  public get disabled(): boolean {
+  get disabled(): boolean {
     return this._disabled || this.controller.disabled;
   }
 
-  public get hasCleaner(): boolean {
+  get hasCleaner(): boolean {
     return this._cleaner.enabled && this.filled && !this.disabled;
   }
 
-  public onClean(): void {
+  onClean(): void {
     this.value = '';
     this.onValueChange();
   }
 
-  public onValueChange(): void {
+  onValueChange(): void {
     this.valueChange.emit(this.value);
   }
 
-  public _onClick(): void {
+  _onClick(): void {
     this.input.nativeElement.focus();
   }
 
-  public _onFocus(focused: boolean): void {
+  _onFocus(focused: boolean): void {
     this.focused = focused;
     if (!this.focused) this.focusChange.emit();
   }
-
 }

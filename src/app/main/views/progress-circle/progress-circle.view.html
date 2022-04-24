@@ -1,29 +1,30 @@
-<p>
-  Determinate mode: large, medium, small, xs sizes.
-</p>
-<div class="d-flex flex-row align-items-center" *uiConst="value$ | async as value">
+<p>Determinate mode: large, medium, small, xs sizes.</p>
+<div
+  *uiConst="value$ | async as value"
+  class="d-flex flex-row align-items-center"
+>
   <ui-progress-circle
     mode="determinate"
     size="large"
     [value]="value"
-    [max]="100">
-  </ui-progress-circle>
+    [max]="100"
+  ></ui-progress-circle>
 
   <ui-progress-circle
     mode="determinate"
     size="medium"
     color="#3aa981"
     [value]="value"
-    [max]="100">
-  </ui-progress-circle>
+    [max]="100"
+  ></ui-progress-circle>
 
   <ui-progress-circle
     mode="determinate"
     size="small"
     color="#B33F40"
     [value]="value"
-    [max]="100">
-  </ui-progress-circle>
+    [max]="100"
+  ></ui-progress-circle>
 </div>
 
 <p>Indeterminate mode</p>

@@ -1,5 +1,7 @@
-export { UiTextBoxControllerModule } from './text-box-controller.module';
-export { UiTextBoxController, TEXTBOX_CONTROLLER } from './text-box.controller';
+export { TEXTBOX_CONTROLLER, UiTextBoxController } from './text-box.controller';
 export { TEXTBOX_PROVIDERS } from './text-box.providers';
-
-export { UiTextBoxCleanerDirective, CLEANER_CONTROLLER } from './text-box-cleaner.directive';
+export {
+  CLEANER_CONTROLLER,
+  UiTextBoxCleanerDirective,
+} from './text-box-cleaner.directive';
+export { UiTextBoxControllerModule } from './text-box-controller.module';

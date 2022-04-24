@@ -1,5 +1,4 @@
 <div class="textbox-wrapper">
-
   <!-- Prefix -->
   <div class="textbox-prefix">
     <div></div>
@@ -9,8 +8,8 @@
   <div class="textbox-infix">
     <input
       #inputRef
-      class="textbox-input"
       autocomplete="off"
+      class="textbox-input"
       [id]="controller.id"
       [type]="controller.type"
       [placeholder]="controller.placeholder"
@@ -18,7 +17,7 @@
       [readonly]="controller.readOnly"
       [(ngModel)]="value"
       (ngModelChange)="onValueChange()"
-    >
+    />
 
     <!-- Label -->
     <span class="textbox-label-wrapper">
@@ -31,12 +30,7 @@
   <!-- Suffix -->
   <div class="textbox-suffix">
     <!-- Cleaner -->
-    <div
-      class="textbox-cleaner"
-      *ngIf="hasCleaner"
-      @fade
-      (click)="onClean()"
-    >
+    <div *ngIf="hasCleaner" class="textbox-cleaner" @fade (click)="onClean()">
       <ng-content select="[cleaner]"></ng-content>
     </div>
 
@@ -45,24 +39,15 @@
 
   <div class="textbox-messages-wrapper">
     <!-- Error -->
-    <div
-      class="textbox-error-wrapper"
-      *ngIf="invalid"
-      @fadeIn
-    >
+    <div *ngIf="invalid" class="textbox-error-wrapper" @fadeIn>
       <ng-content select="ui-error"></ng-content>
     </div>
 
     <!-- Hint -->
-    <div
-      class="textbox-hint-wrapper"
-      *ngIf="!invalid"
-      @fadeIn
-    >
+    <div *ngIf="!invalid" class="textbox-hint-wrapper" @fadeIn>
       <ng-content select="ui-hint:not([align='end'])"></ng-content>
       <div class="textbox-hint-spacer"></div>
       <ng-content select="ui-hint[align='end']"></ng-content>
     </div>
   </div>
-
 </div>

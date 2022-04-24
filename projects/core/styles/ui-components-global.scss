@@ -1,12 +1,12 @@
-@import "~@angular/cdk/overlay-prebuilt.css";
+@import '~@angular/cdk/overlay-prebuilt.css';
 
 // Local imports
-@import "bootstrap";
-@import "theme-colors";
-@import "typography";
-@import "variables";
-@import "mixins/box-shadow.mixin";
-@import "mixins/theme-palette.mixin";
+@import 'bootstrap';
+@import 'theme-colors';
+@import 'typography';
+@import 'variables';
+@import 'mixins/box-shadow.mixin';
+@import 'mixins/theme-palette.mixin';
 
 body {
   font-family: var(--font-family);

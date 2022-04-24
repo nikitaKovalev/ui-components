@@ -1,5 +1,5 @@
-export { UiPluginsModule } from './plugins.module';
 export { AbstractEventPlugin } from './abstract.plugin';
 export { OutsideEventPlugin } from './outside.plugin';
-export { StopPropagationEventPlugin } from './stop.plugin';
+export { UiPluginsModule } from './plugins.module';
 export { PreventDefaultEventPlugin } from './prevent.plugin';
+export { StopPropagationEventPlugin } from './stop.plugin';

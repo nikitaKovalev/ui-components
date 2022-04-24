@@ -1,16 +1,16 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "allowedNonPeerDependencies": [
+    "@angular/cdk",
+    "rxjs",
+    "bootstrap"
+  ],
   "dest": "../../dist/kit",
+  "inlineStyleLanguage": "scss",
   "lib": {
     "entryFile": "index.ts",
     "styleIncludePaths": [
       "../core/styles"
     ]
-  },
-  "inlineStyleLanguage": "scss",
-  "allowedNonPeerDependencies": [
-    "@angular/cdk",
-    "rxjs",
-    "bootstrap"
-  ]
+  }
 }

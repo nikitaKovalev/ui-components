@@ -11,16 +11,10 @@ import { AbstractEventPlugin } from './abstract.plugin';
  * </button>
  **/
 @Injectable()
-export class PreventDefaultEventPlugin
-  extends AbstractEventPlugin {
-
+export class PreventDefaultEventPlugin extends AbstractEventPlugin {
   protected _name = '.prevent';
 
-  public addEventListener(
-    element: HTMLElement,
-    eventName: string,
-    handler: Function,
-  ): Function {
+  addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
     const preventDefault = (event: Event) => {
       event.preventDefault();
       handler(event);
@@ -33,7 +27,7 @@ export class PreventDefaultEventPlugin
     );
   }
 
-  public override addGlobalEventListener(
+  override addGlobalEventListener(
     target: string,
     eventName: string,
     handler: Function,
@@ -49,6 +43,4 @@ export class PreventDefaultEventPlugin
       preventDefault,
     );
   }
-
-
 }

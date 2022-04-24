@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Palette } from '@ui-components/core/types';
 
 import { Icon } from './ui-message.type';
@@ -22,20 +27,18 @@ import { Icon } from './ui-message.type';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiMessageComponent {
+  @Input()
+  color: Palette = 'primary';
 
   @Input()
-  public color: Palette = 'primary';
+  icon: Icon = 'info_o';
 
   @Input()
-  public icon: Icon = 'info_o';
+  label = '';
 
   @Input()
-  public label = '';
-
-  @Input()
-  public subLabel = '';
+  subLabel = '';
 
   @Output()
-  public triggerEvent = new EventEmitter<void>();
-
+  triggerEvent = new EventEmitter<void>();
 }

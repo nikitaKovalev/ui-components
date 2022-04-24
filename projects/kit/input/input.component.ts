@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
 import { UiValueAccessor } from '@ui-components/core/classes';
 
 @Component({
@@ -8,5 +7,4 @@ import { UiValueAccessor } from '@ui-components/core/classes';
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiInputComponent
-  extends UiValueAccessor {}
+export class UiInputComponent extends UiValueAccessor {}

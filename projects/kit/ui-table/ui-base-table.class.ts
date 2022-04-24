@@ -6,20 +6,18 @@ type TrackBy = (index: number) => number;
 
 @Directive()
 export abstract class UiBaseTable<T> {
-
   @Input('dataSource')
-  public set initDataSource(data: T[]) {
+  set initDataSource(data: T[]) {
     this.dataSource.data = data;
   }
 
   @HostBinding('class.ui-table')
-  public readonly class = true;
+  readonly class = true;
 
-  public readonly dataSource: UiDataSource<T> = new UiDataSource<T>([]);
-  public readonly trackBy: TrackBy = (index: number) => index;
+  readonly dataSource: UiDataSource<T> = new UiDataSource<T>([]);
+  readonly trackBy: TrackBy = (index: number) => index;
 
-  public pageChanged(): void {}
+  pageChanged(): void {}
 
-  public sortChanged(): void {}
-
+  sortChanged(): void {}
 }

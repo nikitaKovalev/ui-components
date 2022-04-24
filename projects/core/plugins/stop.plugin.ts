@@ -11,16 +11,10 @@ import { AbstractEventPlugin } from './abstract.plugin';
  * </button>
  **/
 @Injectable()
-export class StopPropagationEventPlugin
-  extends AbstractEventPlugin {
-
+export class StopPropagationEventPlugin extends AbstractEventPlugin {
   protected _name = '.stop';
 
-  public addEventListener(
-    element: HTMLElement,
-    eventName: string,
-    handler: Function,
-  ): Function {
+  addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
     const stopPropagation = (event: Event) => {
       event.stopPropagation();
       handler(event);
@@ -33,7 +27,7 @@ export class StopPropagationEventPlugin
     );
   }
 
-  public override addGlobalEventListener(
+  override addGlobalEventListener(
     target: string,
     eventName: string,
     handler: Function,
@@ -49,5 +43,4 @@ export class StopPropagationEventPlugin
       stopPropagation,
     );
   }
-
 }

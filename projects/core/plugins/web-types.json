@@ -20,11 +20,7 @@
               },
               {
                 "items": "ng-event-plugins",
-                "template": [
-                  ".",
-                  "#...",
-                  "#item:modifiers"
-                ],
+                "template": [".", "#...", "#item:modifiers"],
                 "priority": "high",
                 "repeat": true,
                 "unique": true,

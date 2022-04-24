@@ -1,22 +1,23 @@
-import { Injectable, Injector, Type } from '@angular/core';
-import { GlobalPositionStrategy, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import {
+  GlobalPositionStrategy,
+  Overlay,
+  OverlayConfig,
+  OverlayRef,
+} from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
+import { Injectable, Injector, Type } from '@angular/core';
 
 import { DialogConfig } from '../interfaces';
-import { UiDialogRef } from '../ui-dialog-ref';
 import { UiDialogComponent } from '../ui-dialog.component';
+import { UiDialogRef } from '../ui-dialog-ref';
 
 @Injectable()
 export class UiDialogService {
-
   private _overlayRef: OverlayRef | null = null;
 
-  constructor(
-    private readonly _overlay: Overlay,
-    private readonly _injector: Injector,
-  ) {}
+  constructor(private readonly _overlay: Overlay, private readonly _injector: Injector) {}
 
-  public open<T>(component: Type<T>, config: DialogConfig): UiDialogRef<T> {
+  open<T>(component: Type<T>, config: DialogConfig): UiDialogRef<T> {
     const overlayConfig = this._overlayConfig(config);
 
     this._closeAttachedOverlay();
@@ -34,6 +35,7 @@ export class UiDialogService {
 
   private _createInjector(dialogRef: UiDialogRef, injector: Injector): PortalInjector {
     const injectorTokens = new WeakMap([[UiDialogRef, dialogRef]]);
+
     return new PortalInjector(injector, injectorTokens);
   }
 
@@ -50,10 +52,7 @@ export class UiDialogService {
   }
 
   private get _getPositionStrategy(): GlobalPositionStrategy {
-    return this._overlay.position()
-      .global()
-      .centerVertically()
-      .centerHorizontally();
+    return this._overlay.position().global().centerVertically().centerHorizontally();
   }
 
   private _closeAttachedOverlay(): void {
@@ -63,5 +62,4 @@ export class UiDialogService {
       this._overlayRef = null;
     }
   }
-
 }

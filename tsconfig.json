@@ -1,7 +1,7 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
-  "include": ["projects/**/*"],
+  "include": ["projects/**/*", "src"],
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -26,10 +26,7 @@
     "useDefineForClassFields": false,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "paths": {
       "@ui-components/kit": ["projects/kit/index"],
       "@ui-components/kit/*": ["projects/kit/*"],

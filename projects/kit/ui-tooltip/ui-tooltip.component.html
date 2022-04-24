@@ -1,4 +1,4 @@
-<ng-container *ngIf="!!templateRef then tmp else str"></ng-container>
+<ng-container *ngIf="!!templateRef; then tmp; else str"></ng-container>
 
 <ng-template #tmp>
   <ng-container *ngTemplateOutlet="templateRef"></ng-container>

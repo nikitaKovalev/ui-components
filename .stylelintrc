@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "../stylelint-config/scss",
+    "../stylelint-config/angular"
+  ],
+  "ignoreFiles": [
+    "**/dist/**",
+    "**/coverage/**",
+    "**/node_modules/**",
+    "**/.angular/**"
+  ]
+}

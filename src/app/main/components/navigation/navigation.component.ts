@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-interface Link { routerLink: string; title: string; }
+interface Link {
+  routerLink: string;
+  title: string;
+}
 
 @Component({
   selector: 'navigation',
@@ -9,8 +12,7 @@ interface Link { routerLink: string; title: string; }
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
-
-  public readonly links: Link[] = [
+  readonly links: Link[] = [
     { routerLink: 'input', title: 'Input' },
     { routerLink: 'autocomplete', title: 'Autocomplete' },
     { routerLink: 'button', title: 'Button' },
@@ -26,10 +28,9 @@ export class NavigationComponent {
     { routerLink: 'badge', title: 'Badge' },
   ];
 
-  public isOpened = true;
+  isOpened = true;
 
-  public toggle(): void {
+  toggle(): void {
     this.isOpened = !this.isOpened;
   }
-
 }

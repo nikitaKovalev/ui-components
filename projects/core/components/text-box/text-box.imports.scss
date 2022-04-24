@@ -1,5 +1,4 @@
-@import "text-box.mixins";
-@forward "text-box.mixins" as mixin-*;
-
-@import "text-box.component";
-@forward "text-box.component" as variable-*;
+@import 'text-box.mixins';
+@import 'text-box.component';
+@forward 'text-box.mixins' as mixin-*;
+@forward 'text-box.component' as variable-*;

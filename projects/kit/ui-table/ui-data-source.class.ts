@@ -1,15 +1,13 @@
 import { DataSource } from '@angular/cdk/collections';
-
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export class UiDataSource<T> extends DataSource<T> {
-
   /** Stream of data that is provided to the table. */
-  public get data(): T[] {
+  get data(): T[] {
     return this._data$.value;
   }
 
-  public set data(data: T[]) {
+  set data(data: T[]) {
     this._data$.next(data);
   }
 
@@ -21,12 +19,11 @@ export class UiDataSource<T> extends DataSource<T> {
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
-  public connect(): Observable<T[]> {
+  connect(): Observable<T[]> {
     return this._data$;
   }
 
-  public disconnect(): void {
+  disconnect(): void {
     this._data$.next([]);
   }
-
 }

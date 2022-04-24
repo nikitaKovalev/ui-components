@@ -1,4 +1,5 @@
-export type Icon = 'info'
+export type Icon =
+  | 'info'
   | 'info_o'
   | 'warning'
   | 'warning_o'

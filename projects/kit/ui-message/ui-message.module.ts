@@ -1,22 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { UiIconModule, UiIconService, UI_ICONS } from '@ui-components/kit/ui-icon';
+import { NgModule } from '@angular/core';
+import { UI_ICONS, UiIconModule, UiIconService } from '@ui-components/kit/ui-icon';
 
 import { UiMessageComponent } from './ui-message.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-
-    UiIconModule,
-  ],
-  exports: [
-    UiMessageComponent,
-  ],
-  declarations: [
-    UiMessageComponent,
-  ]
+  imports: [CommonModule, UiIconModule],
+  exports: [UiMessageComponent],
+  declarations: [UiMessageComponent],
 })
 export class UiMessageModule {
   constructor(private readonly _uiIconSvc: UiIconService) {

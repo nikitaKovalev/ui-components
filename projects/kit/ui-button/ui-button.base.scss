@@ -13,46 +13,44 @@
 }
 
 // Flat and raised button standards
-$padding: 0 16px !default;
-$min-width: 64px !default;
+$padding: 0 1rem !default;
+$min-width: 4rem !default;
 $margin: 0 !default;
-$line-height: 36px !default;
-$border-radius: 4px !default;
+$line-height: 2.25rem !default;
+$border-radius: 0.25rem !default;
 
 // Stroked button padding is 1px less horizontally than default/flat/raised
 // button's padding.
 $stroked-button-line-height: $line-height - 2;
-$stroked-button-padding: 0 15px;
+$stroked-button-padding: 0 0.938rem;
 $stroked-button-border-width: 1px;
 
 // Icon Button standards
-$button-size: 40px !default;
+$button-size: 2.5rem !default;
 $button-border-radius: 50% !default;
-$button-line-height: 24px !default;
+$button-line-height: 1.5rem !default;
 
 // Fab standards
 $fab-border-radius: 50% !default;
-$fab-size: 56px !default;
-$fab-padding: 16px !default;
+$fab-size: 3.5rem !default;
+$fab-padding: 1rem !default;
 
-$mini-fab-size: 40px !default;
-$mini-fab-padding: 8px !default;
-
+$mini-fab-size: 2.5rem !default;
+$mini-fab-padding: 0.5rem !default;
 
 @mixin base() {
-  box-sizing: border-box;
-  position: relative;
-
   // Reset browser <button> styles.
   @include reset();
 
+  position: relative;
+
   // Make anchors render like buttons.
   display: inline-block;
+  box-sizing: border-box;
   white-space: nowrap;
   text-decoration: none;
   vertical-align: baseline;
   text-align: center;
-
   color: var(--text-base-color);
 
   // Sizing.
@@ -69,10 +67,11 @@ $mini-fab-padding: 8px !default;
 
 @mixin raised-button() {
   @include base;
-  transform: translate3d(0, 0, 0);
 
   $swift-ease-out-duration: 400ms !default;
   $swift-ease-out-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+
+  transform: translate3d(0, 0, 0);
   transition: background $swift-ease-out-duration $swift-ease-out-timing-function;
 }
 
@@ -81,14 +80,11 @@ $mini-fab-padding: 8px !default;
 
   // Reset the min-width from the button base.
   min-width: 0;
-
   border-radius: $fab-border-radius;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
-  line-height: 15px;
+  line-height: 0.938rem;
   background-color: inherit !important;
-
   flex-shrink: 0;
 }
-

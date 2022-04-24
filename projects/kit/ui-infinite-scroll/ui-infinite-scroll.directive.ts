@@ -1,41 +1,46 @@
-import { Directive, EventEmitter, Input, NgZone, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-
+import {
+  Directive,
+  EventEmitter,
+  Input,
+  NgZone,
+  OnChanges,
+  OnDestroy,
+  Output,
+} from '@angular/core';
 import { map, Subject, takeUntil } from 'rxjs';
 import { filter, pairwise, tap, throttleTime } from 'rxjs/operators';
 
 @Directive({
-  selector: '[uiInfiniteScroll]'
+  selector: '[uiInfiniteScroll]',
 })
-export class UiInfiniteScrollDirective
-  implements OnChanges, OnDestroy {
-
+export class UiInfiniteScrollDirective implements OnChanges, OnDestroy {
   /**
    * Default count of items displayed in dropdown.
    * @private
    */
   @Input('items')
-  private _items = 1;
+  private readonly _items = 1;
 
   /**
    * Default height of menu item in px.
    * @private
    */
   @Input('itemHeight')
-  private _itemHeight = 68;
+  private readonly _itemHeight = 68;
 
   /**
    * Default items of count for prevent additional loading.
    * @private
    */
   @Input('totalItems')
-  private _totalItems = 0;
-
-  @Output()
-  public scrollEvent = new EventEmitter<number>();
+  private readonly _totalItems = 0;
 
   private readonly _elRefStyle = this._scroll.elementRef.nativeElement.style;
   private readonly _destroyed$ = new Subject<void>();
+
+  @Output()
+  scrollEvent = new EventEmitter<number>();
 
   constructor(
     private readonly _ngZone: NgZone,
@@ -44,11 +49,11 @@ export class UiInfiniteScrollDirective
     this._runOutside();
   }
 
-  public ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this._calculateViewHeight();
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this._destroyed$.next();
     this._destroyed$.complete();
   }
@@ -79,18 +84,19 @@ export class UiInfiniteScrollDirective
    * throttleTime() operator, so that we don’t get repeated scroll events and just one in 1000 ms
    * **/
   private _subScrollChanged(): void {
-    this._scroll.elementScrolled()
+    this._scroll
+      .elementScrolled()
       .pipe(
         map(() => this._scroll.measureScrollOffset('bottom')),
         pairwise(),
-        filter(([y1, y2]) => (y2 < y1 && y2 < 140)),
+        filter(([y1, y2]) => y2 < y1 && y2 < 140),
         throttleTime(1000),
         tap(() => {
           if (this._items < this._totalItems) {
             this._runInside();
           }
         }),
-        takeUntil(this._destroyed$)
+        takeUntil(this._destroyed$),
       )
       .subscribe();
   }
@@ -102,5 +108,4 @@ export class UiInfiniteScrollDirective
       this._elRefStyle.height = `${this._items * this._itemHeight}px`;
     }
   }
-
 }

@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, TemplateRef } from '@angular/core';
-
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  TemplateRef,
+} from '@angular/core';
 import { Palette } from '@ui-components/core/types';
 
 @Component({
@@ -8,28 +13,26 @@ import { Palette } from '@ui-components/core/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiTooltipComponent {
-
-  @Input()
-  public set value(value: any) {
-    value instanceof TemplateRef
-      ? this.templateRef = value
-      : this.stringRef = value;
-  }
+  private _color: Palette = 'default';
 
   @HostBinding('class.ui-tooltip')
-  public applyClass = true;
+  applyClass = true;
+
+  templateRef: TemplateRef<any> | null = null;
+  stringRef = '';
+
+  @Input()
+  set value(value: any) {
+    value instanceof TemplateRef ? (this.templateRef = value) : (this.stringRef = value);
+  }
 
   @Input()
   @HostBinding('class')
-  public get color(): Palette {
+  get color(): Palette {
     return `ui-tooltip--${this._color}` as Palette;
   }
-  public set color(color: Palette) {
+
+  set color(color: Palette) {
     this._color = color;
   }
-  private _color: Palette = 'default';
-
-  public templateRef: TemplateRef<any> | null = null;
-  public stringRef = '';
-
 }
