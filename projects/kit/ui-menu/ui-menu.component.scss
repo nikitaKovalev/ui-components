@@ -1,3 +1,5 @@
+@use 'sass:math';
+/*stylelint-disable*/
 @import 'ui-menu.mixin';
 
 $toggler-size: 1.125rem !default;
@@ -130,7 +132,7 @@ $darken-font-color-amount: 5%;
     cursor: pointer;
     outline: none;
     border: none;
-    -webkit-tap-highlight-color: hsl(0deg, 0%, 0% / 0);
+    -webkit-tap-highlight-color: hsl(0deg, 0%, math.div(0%, 0));
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
