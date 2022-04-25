@@ -1,7 +1,7 @@
 {
   "extends": [
-    "../stylelint-config/scss",
-    "../stylelint-config/angular"
+    "@lightech-llc/stylelint-config/scss",
+    "@lightech-llc/stylelint-config/angular"
   ],
   "ignoreFiles": [
     "**/dist/**",

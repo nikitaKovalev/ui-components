@@ -10,6 +10,7 @@ module.exports = {
     'src/**/test.ts',
     'src/**/main.ts',
     'src/**/polyfills.ts',
+    'out-tsc',
     '*.js',
     '*.json',
     '*.scss',
