@@ -8,7 +8,7 @@ export const TEXTBOX_CLEANER_CONTROLLER = new InjectionToken(
 
 export const CLEANER_CONTROLLER = new InjectionToken<UiTextBoxCleanerDirective>(
   'Textbox cleaner',
-  { factory: () => new UiTextBoxCleanerDirective() },
+  { factory: (): UiTextBoxCleanerDirective => new UiTextBoxCleanerDirective() },
 );
 
 @Directive({

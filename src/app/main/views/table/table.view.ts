@@ -5,7 +5,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableView {
-  readonly elements: any[] = [
+  readonly elements: Array<{
+    position: number;
+    name: string;
+    weight: number;
+    symbol: string;
+  }> = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
     { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
     { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },

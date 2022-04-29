@@ -15,7 +15,7 @@ export class PreventDefaultEventPlugin extends AbstractEventPlugin {
   protected _name = '.prevent';
 
   addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
-    const preventDefault = (event: Event) => {
+    const preventDefault = (event: Event): void => {
       event.preventDefault();
       handler(event);
     };
@@ -32,7 +32,7 @@ export class PreventDefaultEventPlugin extends AbstractEventPlugin {
     eventName: string,
     handler: Function,
   ): Function {
-    const preventDefault = (event: Event) => {
+    const preventDefault = (event: Event): void => {
       event.stopPropagation();
       handler(event);
     };

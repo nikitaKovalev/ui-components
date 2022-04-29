@@ -2,8 +2,8 @@ import { NgZone } from '@angular/core';
 import { MonoTypeOperatorFunction, Observable } from 'rxjs';
 
 export function zoneOut<T>(ngZone: NgZone): MonoTypeOperatorFunction<T> {
-  return source =>
+  return source$ =>
     new Observable(subscriber =>
-      ngZone.runOutsideAngular(() => source.subscribe(subscriber)),
+      ngZone.runOutsideAngular(() => source$.subscribe(subscriber)),
     );
 }

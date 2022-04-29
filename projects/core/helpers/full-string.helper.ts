@@ -11,7 +11,7 @@
  */
 type FullStringType = string | number;
 
-export function FullStringHelper(
+export function fullStringHelper(
   array: FullStringType[] = [],
   separator: string = ' ',
 ): string {

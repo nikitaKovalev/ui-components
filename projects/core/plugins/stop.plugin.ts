@@ -15,7 +15,7 @@ export class StopPropagationEventPlugin extends AbstractEventPlugin {
   protected _name = '.stop';
 
   addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
-    const stopPropagation = (event: Event) => {
+    const stopPropagation = (event: Event): void => {
       event.stopPropagation();
       handler(event);
     };
@@ -32,7 +32,7 @@ export class StopPropagationEventPlugin extends AbstractEventPlugin {
     eventName: string,
     handler: Function,
   ): Function {
-    const stopPropagation = (event: Event) => {
+    const stopPropagation = (event: Event): void => {
       event.stopPropagation();
       handler(event);
     };

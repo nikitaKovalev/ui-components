@@ -5,7 +5,7 @@ export const WINDOW = new InjectionToken<Window>(
   'An abstraction over global window object',
   {
     providedIn: 'root',
-    factory: () => {
+    factory: (): Window => {
       const { defaultView } = inject(DOCUMENT);
 
       if (!defaultView) {

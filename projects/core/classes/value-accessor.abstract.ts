@@ -4,7 +4,7 @@ import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms
 export const EMPTY_FUNCTION: Function = () => {};
 
 @Directive()
-export abstract class UiValueAccessor<T = any> implements ControlValueAccessor {
+export abstract class UiValueAccessor<T = never> implements ControlValueAccessor {
   get invalid(): boolean {
     return this._getNgControlProperty<boolean>('invalid');
   }
@@ -64,13 +64,13 @@ export abstract class UiValueAccessor<T = any> implements ControlValueAccessor {
     }
   }
 
-  writeValue(value: T | unknown) {
+  writeValue(value: T | unknown): void {
     this.value = value;
     if (value) this._markAsTouched();
   }
 
-  registerOnChange(onChange: (value: T | unknown) => {}): void {
-    this._onChange = (value: T | unknown) => onChange(value);
+  registerOnChange(onChange: (value: T | unknown) => void): void {
+    this._onChange = onChange;
   }
 
   registerOnTouched(onTouched: () => void): void {

@@ -16,10 +16,10 @@
  * @param sortBy
  * @constructor
  */
-export function SortArrayObjectHelper<T>(array: T[] = [], sortBy: string = 'id'): T[] {
-  return array.sort((item1: Record<string, any>, item2: Record<string, any>): number => {
-    const first = item1?.[sortBy]?.toUpperCase() ?? '';
-    const second = item2?.[sortBy]?.toUpperCase() ?? '';
+export function sortArrayObjectHelper<T>(array: T[] = [], sortBy: keyof T): T[] {
+  return array.sort((a: T, b: T): number => {
+    const first = String(a[sortBy]).toUpperCase() ?? '';
+    const second = String(b[sortBy]).toUpperCase() ?? '';
 
     if (first < second) {
       return -1;

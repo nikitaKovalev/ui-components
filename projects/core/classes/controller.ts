@@ -1,11 +1,15 @@
 import { Directive, OnChanges } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Directive()
 export class UiController implements OnChanges {
-  readonly change$ = new Subject<void>();
+  private readonly _change$ = new Subject<void>();
+
+  get change$(): Observable<void> {
+    return this._change$.asObservable();
+  }
 
   ngOnChanges(): void {
-    this.change$.next();
+    this._change$.next();
   }
 }

@@ -18,7 +18,7 @@ export const DROPDOWN = new InjectionToken<UiDropdownController>(
 
 export const DROPDOWN_CONTROLLER = new InjectionToken<UiDropdownController>(
   'controller over dropdown',
-  { factory: () => new UiDropdownController() },
+  { factory: (): UiDropdownController => new UiDropdownController() },
 );
 
 @Directive({

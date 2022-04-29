@@ -17,7 +17,11 @@ export abstract class UiBaseTable<T> {
   readonly dataSource: UiDataSource<T> = new UiDataSource<T>([]);
   readonly trackBy: TrackBy = (index: number) => index;
 
-  pageChanged(): void {}
+  pageChanged(): void {
+    // todo: add paginator handler
+  }
 
-  sortChanged(): void {}
+  sortChanged(): void {
+    // todo: add sort handler
+  }
 }

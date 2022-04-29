@@ -33,7 +33,7 @@
     "@angular/cli": "~13.0.1",
     "@angular/compiler-cli": "~13.0.0",
     "@commitlint/config-conventional": "^16.2.1",
-    "@lightech-llc/eslint-config-angular": "^1.0.1",
+    "@lightech-llc/eslint-config-angular": "^1.0.4",
     "@lightech-llc/prettier-config": "^1.0.0",
     "@lightech-llc/stylelint-config": "^1.0.1",
     "@types/jasmine": "~3.10.0",

@@ -175,7 +175,7 @@ export class UiDropdownHostComponent implements AfterViewInit {
   }
 
   private _getOverlayConfig(): OverlayConfig {
-    return <OverlayConfig>{
+    return {
       ...this._config,
       width: this._config.width || this._host.nativeElement.offsetWidth,
       scrollStrategy:
