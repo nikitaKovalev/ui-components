@@ -6,7 +6,15 @@ import {
   OverlayRef,
 } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { ComponentRef, Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import {
+  ComponentRef,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  TemplateRef,
+} from '@angular/core';
 import { UiDestroyedService } from '@ui-components/core/services';
 import { Palette } from '@ui-components/core/types';
 
@@ -22,7 +30,7 @@ export class UiTooltipDirective {
   private _overlayRef: OverlayRef | null = null;
 
   @Input()
-  uiTooltip: any = null;
+  uiTooltip: TemplateRef<NgTemplateOutlet> | string | null = null;
 
   @Input('uiTooltipPosition')
   position: TooltipPosition = 'top';
@@ -55,7 +63,7 @@ export class UiTooltipDirective {
   }
 
   private _getConfig(): OverlayConfig {
-    return <OverlayConfig>{
+    return {
       maxWidth: '200px',
       minHeight: '20px',
       positionStrategy: this._getPositionStrategy(),

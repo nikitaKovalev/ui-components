@@ -24,7 +24,7 @@ export class UiConstDirective<T> {
    */
   static ngTemplateContextGuard<T>(
     _dir: UiConstDirective<T>,
-    _ctx: any,
+    _ctx: unknown,
   ): _ctx is UiConstDirective<T> {
     return true;
   }

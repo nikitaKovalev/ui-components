@@ -19,6 +19,7 @@ export class UiDataSource<T> extends DataSource<T> {
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
+  // eslint-disable-next-line rxjs/finnish
   connect(): Observable<T[]> {
     return this._data$;
   }

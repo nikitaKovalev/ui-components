@@ -34,8 +34,8 @@ export class AutocompleteView {
     this._usersPipe(),
   );
 
-  readonly displayUser = (user: { id: number; name: string }) => user?.name;
-  readonly trackBy = (index: number) => index;
+  readonly displayUser = (user: { id: number; name: string }): string => user?.name;
+  readonly trackBy = (index: number): number => index;
 
   private _usersPipe(): UnaryFunction<Observable<string>, Observable<User[]>> {
     return pipe(

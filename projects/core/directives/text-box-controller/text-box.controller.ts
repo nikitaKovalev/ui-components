@@ -12,7 +12,7 @@ export const BASE_CONTROLLER = new InjectionToken<UiTextBoxController>(
 export const TEXTBOX_CONTROLLER = new InjectionToken<UiTextBoxController>(
   `controller over base text field properties:
    [label], [placeholder], [type], [size], [id], [readOnly], [disabled]`,
-  { factory: () => new UiTextBoxController() },
+  { factory: (): UiTextBoxController => new UiTextBoxController() },
 );
 
 @Directive({

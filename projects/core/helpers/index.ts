@@ -1,3 +1,3 @@
-export { FullStringHelper } from './full-string.helper';
-export { GenerateUrlParamsHelper } from './generate-query-params.helper';
-export { SortArrayObjectHelper } from './sort-array-object.helper';
+export { fullStringHelper } from './full-string.helper';
+export { generateUrlParamsHelper } from './generate-query-params.helper';
+export { sortArrayObjectHelper } from './sort-array-object.helper';

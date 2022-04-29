@@ -5,13 +5,13 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class UiDialogRef<T = any> implements OnDestroy {
-  get component(): Type<any> {
+export class UiDialogRef<T = unknown> implements OnDestroy {
+  get component(): Type<unknown> {
     return this._component;
   }
 
   get data(): T {
-    return this._data;
+    return this._data as T;
   }
 
   get afterClosed$(): Observable<TODO_ANY> {
@@ -24,9 +24,9 @@ export class UiDialogRef<T = any> implements OnDestroy {
   constructor(
     private readonly _overlayRef: OverlayRef,
     @Inject('dialog component')
-    private readonly _component: Type<any>,
+    private readonly _component: Type<unknown>,
     @Inject('dialog data')
-    private readonly _data: any,
+    private readonly _data: unknown,
   ) {
     this._subBackDropClick();
   }

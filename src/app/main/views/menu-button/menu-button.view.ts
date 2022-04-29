@@ -18,5 +18,7 @@ export class MenuButtonView {
     'Option 10',
   ];
 
-  showClicked(): void {}
+  showClicked(): void {
+    console.info('clicked');
+  }
 }

@@ -28,6 +28,6 @@ export class UiProgressCircleComponent {
 
   @HostBinding('style.--ui-progress-circle-percentage')
   get progressPercentage(): number {
-    return <number>this.value / this.max;
+    return Number(this.value) / this.max;
   }
 }

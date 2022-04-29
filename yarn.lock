@@ -1410,10 +1410,10 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-1.0.0.tgz#3fdf5798f0b49e90155896f6291df186eac06c83"
   integrity sha512-9oLAnygRMi8Q5QkYEU4XWK04B+nuoXoxjRvRxgjuChkLZFBja0YPSgdZ7dZtwhncLBcQe/I/E+fLuk5qxcYVJA==
 
-"@lightech-llc/eslint-config-angular@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@lightech-llc/eslint-config-angular/-/eslint-config-angular-1.0.1.tgz#fb850def318823650f254a30679734e517a6587d"
-  integrity sha512-8iU4r/hjtX9ZCppFQxdM5JPIt9NmThZ2C1V4UZr1hC1JCPM6S5ODnqojixTy6MPR6ECWpKCTPy2ejhxn3ZnS7A==
+"@lightech-llc/eslint-config-angular@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@lightech-llc/eslint-config-angular/-/eslint-config-angular-1.0.4.tgz#820789184d179b50cae01b5acc1340af3d476d22"
+  integrity sha512-spB+Umouo/9svGbFB+jTp+CI2ERiMNDr3lwvBDWIwnLTMJEhKA4bFkzwdZClai5xWz8CyMJpUO7AC7JotHiFmQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.20.0"
     "@typescript-eslint/parser" "^5.20.0"
